@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clean Coding"
+  short_description: "Build safe, maintainable, evidence-backed code"
+  default_prompt: "Use $cleancoding to implement or review this change with explicit acceptance criteria, safe boundaries and state, focused design, and evidence-backed verification."

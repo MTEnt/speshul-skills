@@ -8,6 +8,7 @@ Each top-level folder is a self-contained skill. Skills may include concise oper
 
 | Skill | What it does |
 | --- | --- |
+| [`cleancoding`](./cleancoding/) | Enforces root-cause fixes, a three-loop stop rule, explicit acceptance contracts, safe boundaries and state, authoritative documentation, measured performance, deployment recovery, and DRY, KISS, and YAGNI. |
 | [`graph-engineering`](./graph-engineering/) | Designs, simplifies, and audits AI-assisted workflow graphs. It selects the smallest useful topology and defines node contracts, state, evidence checks, bounded retries, approval gates, safe execution, and evaluation. |
 
 ## Typical structure
