@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "campaign_id": "example-workshop-registration",
+  "brand_profile": "workshop-ai",
+  "status": "ready_for_preview",
+  "objective": {
+    "type": "conversion",
+    "audience": "People already interested in the example workshop topic",
+    "primary_cta": "Open the registration page"
+  },
+  "page": {
+    "id": "123456789012345",
+    "name": "Example Workshop Page"
+  },
+  "content": {
+    "format": "photo",
+    "caption": "Registration is open for our next workshop. Review the agenda and reserve your place through the link.",
+    "link": "https://example.com/workshop",
+    "title": null,
+    "description": null,
+    "alt_text": "An illustrated workshop table with notebooks, tools and an open seat ready for a participant.",
+    "language": "en"
+  },
+  "media": [
+    {
+      "asset_id": "workshop-registration-hero-v1",
+      "type": "image",
+      "role": "primary",
+      "source": "owned_storage",
+      "local_path": null,
+      "delivery_url": "https://cdn.example.com/workshop-registration-hero-v1.jpg",
+      "ai_generated": true,
+      "approval": "approved"
+    }
+  ],
+  "publication": {
+    "transport": "theworkshopai_mcp",
+    "action": "publish_now",
+    "scheduled_at": null
+  },
+  "evidence": {
+    "claims_review": "passed",
+    "sources": [
+      {
+        "title": "Approved workshop registration page",
+        "url": "https://example.com/workshop",
+        "supports": "Registration availability and agenda"
+      }
+    ]
+  },
+  "disclosure": {
+    "ai": "disclose",
+    "reason": "The primary illustration was generated with AI.",
+    "identity_consent": "not_applicable"
+  },
+  "qa": {
+    "brand": "passed",
+    "continuity": "not_applicable",
+    "technical": "passed",
+    "policy": "passed",
+    "accessibility": "passed"
+  },
+  "approvals": {
+    "brief": "approved",
+    "references": "not_applicable",
+    "final_asset": "approved",
+    "final_copy": "approved",
+    "publish": "pending_mcp_preview"
+  }
+}

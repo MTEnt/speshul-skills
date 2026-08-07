@@ -1,0 +1,49 @@
+profile_version: 1
+slug: workshop-ai
+display_name: The Workshop AI
+status: needs_interview
+
+# Only the name is known. Null values are unknown and must not be invented.
+facebook_page:
+  id: null
+  name: null
+
+audiences: null
+primary_offers: null
+approved_calls_to_action: null
+
+voice:
+  personality: null
+  formality: null
+  sentence_style: null
+  vocabulary_to_use: null
+  vocabulary_to_avoid: null
+
+visual_identity:
+  logo_assets: null
+  colors: null
+  fonts: null
+  image_style: null
+  video_style: null
+  forbidden_styles: null
+
+claims:
+  approved: null
+  require_evidence: true
+  prohibited: null
+
+identity_assets:
+  people: null
+  mascots: null
+  products: null
+  locations: null
+
+defaults:
+  language: null
+  locale: null
+  timezone: null
+  ai_disclosure: human_review_required
+
+notes:
+  - Complete a brand-profile interview before treating this profile as approved.
+  - Do not infer colors, audience, offers, voice, or Page ID from the brand name.
