@@ -1,0 +1,24 @@
+.field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #06080b;
+  pointer-events: none;
+}
+
+.decoder,
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.decoder {
+  object-fit: cover;
+  opacity: 0;
+}
+
+.canvas {
+  display: block;
+}
