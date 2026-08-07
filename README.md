@@ -17,6 +17,7 @@ Each top-level folder is a self-contained artifact. Skill folders use `SKILL.md`
 | [`cleancoding`](./cleancoding/) | Enforces root-cause fixes, a three-loop stop rule, explicit acceptance contracts, safe boundaries and state, authoritative documentation, measured performance, deployment recovery, and DRY, KISS, and YAGNI. |
 | [`facebook-content-studio`](./facebook-content-studio/) | Researches, plans, continuity-checks, packages, and approval-gates Facebook content, with explicit routing to Higgsfield media workflows and the companion Page publisher. |
 | [`graph-engineering`](./graph-engineering/) | Designs, simplifies, and audits AI-assisted workflow graphs. It selects the smallest useful topology and defines node contracts, state, evidence checks, bounded retries, approval gates, safe execution, and evaluation. |
+| [`video-to-particle-field`](./video-to-particle-field/) | Reconstructs videos and images as dense live particle or ASCII fields, then preserves particle identity through scroll-controlled disintegration, reassembly, and multi-clip scene transitions. |
 
 ## Typical structure
 

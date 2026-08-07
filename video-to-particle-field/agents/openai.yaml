@@ -1,0 +1,4 @@
+interface:
+  display_name: "Video to Particle Field"
+  short_description: "Turn video into live particle worlds"
+  default_prompt: "Use $video-to-particle-field to reconstruct this video as a dense particle field and morph it coherently between scenes."
