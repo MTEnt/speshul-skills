@@ -1,8 +1,23 @@
 # Speshul Skills
 
-A growing collection of reusable skills and focused MCP tools for Codex and other agent runtimes.
+A growing collection of reusable skills, installable plugins, and focused MCP tools for Codex and other agent runtimes.
 
-Each top-level folder is a self-contained artifact. Skill folders use `SKILL.md` as their entry point. Tool folders include their own installation, configuration, security, and verification instructions.
+Each artifact is self-contained. Skill folders use `SKILL.md` as their entry point. Installable plugins live under `plugins/`. Tool folders include their own installation, configuration, security, and verification instructions.
+
+## Plugins
+
+| Plugin | What it does |
+| --- | --- |
+| [`anti-amnesia`](./plugins/anti-amnesia/) | Answers questions about immediately preceding work from the existing conversation and tool record without needless reinspection, while preserving fresh verification for current-state questions. |
+
+Add this repository as a plugin marketplace and install Anti-Amnesia:
+
+```text
+codex plugin marketplace add MTEnt/speshul-skills
+codex plugin add anti-amnesia@speshul-skills
+```
+
+Start a new conversation after installation. Because Anti-Amnesia includes a lifecycle hook, review and trust the hook with `/hooks` before testing it.
 
 ## MCP servers
 

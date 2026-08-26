@@ -1,0 +1,20 @@
+{
+  "description": "Keep recent-work recall available across session starts, resumes, clears, and compaction.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/session_start.py\"",
+            "commandWindows": "python \"${PLUGIN_ROOT}/hooks/session_start.py\"",
+            "timeout": 10,
+            "statusMessage": "Loading recent-work recall policy",
+            "additionalContextLimit": 700
+          }
+        ]
+      }
+    ]
+  }
+}
