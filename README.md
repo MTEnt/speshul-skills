@@ -9,15 +9,22 @@ Each artifact is self-contained. Skill folders use `SKILL.md` as their entry poi
 | Plugin | What it does |
 | --- | --- |
 | [`anti-amnesia`](./plugins/anti-amnesia/) | Answers questions about immediately preceding work from the existing conversation and tool record without needless reinspection, while preserving fresh verification for current-state questions. |
+| [`anti-loop`](./plugins/anti-loop/) | Keeps coding work tied to the requested outcome, warns before permanent control surfaces expand, and stops repeated materially similar failed attempts. |
 
-Add this repository as a plugin marketplace and install Anti-Amnesia:
+Add this repository as a plugin marketplace once:
 
 ```text
 codex plugin marketplace add MTEnt/speshul-skills
-codex plugin add anti-amnesia@speshul-skills
 ```
 
-Start a new conversation after installation. Because Anti-Amnesia includes a lifecycle hook, review and trust the hook with `/hooks` before testing it.
+Then install the plugin you want:
+
+```text
+codex plugin add anti-amnesia@speshul-skills
+codex plugin add anti-loop@speshul-skills
+```
+
+Start a new conversation after installation. Both plugins include lifecycle hooks, so open `/hooks`, review each installed hook definition, and trust the hooks you intend to run. Each plugin folder contains its own detailed installation and verification notes.
 
 ## MCP servers
 

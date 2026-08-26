@@ -1,0 +1,7 @@
+interface:
+  display_name: "Anti Loop"
+  short_description: "Keep coding tasks scoped and bounded"
+  default_prompt: "Use $anti-loop to make the smallest sufficient change and stop repeated failed attempts."
+
+policy:
+  allow_implicit_invocation: true
