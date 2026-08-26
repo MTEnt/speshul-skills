@@ -1,0 +1,20 @@
+{
+  "name": "speshul-skills",
+  "interface": {
+    "displayName": "Speshul Skills"
+  },
+  "plugins": [
+    {
+      "name": "anti-amnesia",
+      "source": {
+        "source": "local",
+        "path": "./plugins/anti-amnesia"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

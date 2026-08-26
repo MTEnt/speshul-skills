@@ -1,0 +1,4 @@
+interface:
+  display_name: "Anti-Amnesia"
+  short_description: "Recall recent work without needless rechecking"
+  default_prompt: "Use $anti-amnesia to explain what you just did without re-running checks."
