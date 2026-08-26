@@ -41,6 +41,12 @@ Start a new conversation after installation. Both plugins include lifecycle hook
 | [`graph-engineering`](./graph-engineering/) | Designs, simplifies, and audits AI-assisted workflow graphs. It selects the smallest useful topology and defines node contracts, state, evidence checks, bounded retries, approval gates, safe execution, and evaluation. |
 | [`video-to-particle-field`](./video-to-particle-field/) | Reconstructs videos and images as dense live particle or ASCII fields, then preserves particle identity through scroll-controlled disintegration, reassembly, and multi-clip scene transitions. |
 
+## Skill hubs
+
+| Hub | What it contains |
+| --- | --- |
+| [`marketing-hub`](./marketing-hub/) | A separate collection of 64 original marketing skills: one orchestrator, domain routers, specialist skills, and provider-neutral integration guidance. |
+
 ## Typical structure
 
 ```text

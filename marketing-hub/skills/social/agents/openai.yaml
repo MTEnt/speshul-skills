@@ -1,0 +1,4 @@
+interface:
+  display_name: "Social"
+  short_description: "Plan and execute Social marketing work"
+  default_prompt: "Use $social to complete this Social request with verified evidence and a usable deliverable."

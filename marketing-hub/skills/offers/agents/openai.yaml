@@ -1,0 +1,4 @@
+interface:
+  display_name: "Offers"
+  short_description: "Plan and execute Offers marketing work"
+  default_prompt: "Use $offers to complete this Offers request with verified evidence and a usable deliverable."

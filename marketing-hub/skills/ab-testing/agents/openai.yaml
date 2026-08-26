@@ -1,0 +1,4 @@
+interface:
+  display_name: "A/B Testing"
+  short_description: "Design and evaluate controlled marketing tests"
+  default_prompt: "Use $ab-testing to design or evaluate this controlled experiment with explicit assumptions and a decision rule."

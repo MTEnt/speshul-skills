@@ -1,0 +1,4 @@
+interface:
+  display_name: "Conversion Optimization"
+  short_description: "Improve conversion, activation, and retention"
+  default_prompt: "Use $conversion-optimization to diagnose this conversion path and produce evidence-led improvements."

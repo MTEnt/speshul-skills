@@ -1,0 +1,4 @@
+interface:
+  display_name: "Directory Submissions"
+  short_description: "Plan and execute Directory Submissions marketing work"
+  default_prompt: "Use $directory-submissions to complete this Directory Submissions request with verified evidence and a usable deliverable."

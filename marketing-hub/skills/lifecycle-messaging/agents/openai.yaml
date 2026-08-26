@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lifecycle Messaging"
+  short_description: "Create email, outbound, and SMS journeys"
+  default_prompt: "Use $lifecycle-messaging to build a compliant message journey tied to customer state."

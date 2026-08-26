@@ -1,0 +1,4 @@
+interface:
+  display_name: "Programmatic SEO"
+  short_description: "Plan and execute Programmatic SEO marketing work"
+  default_prompt: "Use $programmatic-seo to complete this Programmatic SEO request with verified evidence and a usable deliverable."

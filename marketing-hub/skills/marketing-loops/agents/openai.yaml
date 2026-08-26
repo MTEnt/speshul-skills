@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketing Loops"
+  short_description: "Plan and execute Marketing Loops marketing work"
+  default_prompt: "Use $marketing-loops to complete this Marketing Loops request with verified evidence and a usable deliverable."

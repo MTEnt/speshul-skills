@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cold Email"
+  short_description: "Plan and execute Cold Email marketing work"
+  default_prompt: "Use $cold-email to complete this Cold Email request with verified evidence and a usable deliverable."

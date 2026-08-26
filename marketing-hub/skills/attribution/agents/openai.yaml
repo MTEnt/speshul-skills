@@ -1,0 +1,4 @@
+interface:
+  display_name: "Attribution"
+  short_description: "Plan and execute Attribution marketing work"
+  default_prompt: "Use $attribution to complete this Attribution request with verified evidence and a usable deliverable."

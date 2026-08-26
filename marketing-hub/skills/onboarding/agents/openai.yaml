@@ -1,0 +1,4 @@
+interface:
+  display_name: "Onboarding"
+  short_description: "Plan and execute Onboarding marketing work"
+  default_prompt: "Use $onboarding to complete this Onboarding request with verified evidence and a usable deliverable."

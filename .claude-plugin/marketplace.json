@@ -1,0 +1,19 @@
+{
+  "name": "speshul-skills",
+  "owner": {
+    "name": "MTEnt",
+    "url": "https://github.com/MTEnt"
+  },
+  "metadata": {
+    "description": "Original reusable skills and plugins for agent runtimes",
+    "version": "1.0.0",
+    "repository": "https://github.com/MTEnt/speshul-skills"
+  },
+  "plugins": [
+    {
+      "name": "speshul-marketing-os",
+      "description": "Fifty standalone marketing skills, broad routers, an orchestrator, and provider-neutral integration guidance.",
+      "source": "./marketing-hub"
+    }
+  ]
+}

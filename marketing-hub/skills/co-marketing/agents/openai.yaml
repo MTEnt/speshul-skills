@@ -1,0 +1,4 @@
+interface:
+  display_name: "Co Marketing"
+  short_description: "Plan and execute Co Marketing marketing work"
+  default_prompt: "Use $co-marketing to complete this Co Marketing request with verified evidence and a usable deliverable."

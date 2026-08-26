@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pricing"
+  short_description: "Plan and execute Pricing marketing work"
+  default_prompt: "Use $pricing to complete this Pricing request with verified evidence and a usable deliverable."

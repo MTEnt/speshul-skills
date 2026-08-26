@@ -1,0 +1,4 @@
+interface:
+  display_name: "Search and Discovery"
+  short_description: "Improve search, AI, app, and directory discovery"
+  default_prompt: "Use $search-discovery to audit and improve how this product is found across relevant discovery surfaces."
