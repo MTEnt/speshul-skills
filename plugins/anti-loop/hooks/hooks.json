@@ -1,0 +1,35 @@
+{
+  "description": "Keep implementation scoped and warn before permanent control surfaces expand.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/anti_loop.py\"",
+            "commandWindows": "python \"${PLUGIN_ROOT}/hooks/anti_loop.py\"",
+            "timeout": 3,
+            "statusMessage": "Loading anti-loop scope guard",
+            "additionalContextLimit": 700
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "apply_patch|Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/anti_loop.py\"",
+            "commandWindows": "python \"${PLUGIN_ROOT}/hooks/anti_loop.py\"",
+            "timeout": 3,
+            "statusMessage": "Checking persistent scope expansion",
+            "additionalContextLimit": 500
+          }
+        ]
+      }
+    ]
+  }
+}

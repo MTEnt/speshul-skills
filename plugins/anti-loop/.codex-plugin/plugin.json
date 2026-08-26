@@ -1,0 +1,27 @@
+{
+  "name": "anti-loop",
+  "version": "0.2.0",
+  "description": "Keep coding work scoped, minimal, and bounded before process or architecture expands.",
+  "author": {
+    "name": "MTEnt"
+  },
+  "keywords": [
+    "scope-control",
+    "anti-bloat",
+    "coding-agents"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Anti Loop",
+    "shortDescription": "Stop scope creep and repeated failed loops.",
+    "longDescription": "Anti Loop keeps coding tasks tied to observable acceptance, resists unrequested process growth, and stops repeated materially similar attempts.",
+    "developerName": "MTEnt",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive"
+    ],
+    "defaultPrompt": [
+      "Keep this coding task scoped and stop repeated failed attempts."
+    ]
+  }
+}
