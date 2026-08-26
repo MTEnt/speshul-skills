@@ -1,0 +1,57 @@
+{
+  "description": "Provide deterministic, privacy-preserving task-clock signals.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/task_clock.py\"",
+            "commandWindows": "python \"${PLUGIN_ROOT}/hooks/task_clock.py\"",
+            "timeout": 3,
+            "additionalContextLimit": 250
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/task_clock.py\"",
+            "commandWindows": "python \"${PLUGIN_ROOT}/hooks/task_clock.py\"",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/task_clock.py\"",
+            "commandWindows": "python \"${PLUGIN_ROOT}/hooks/task_clock.py\"",
+            "timeout": 3,
+            "additionalContextLimit": 500
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/task_clock.py\"",
+            "commandWindows": "python \"${PLUGIN_ROOT}/hooks/task_clock.py\"",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
+  }
+}
