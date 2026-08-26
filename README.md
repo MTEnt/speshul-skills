@@ -1,10 +1,27 @@
 # Speshul Skills
 
-A growing collection of reusable skills, installable plugins, and focused MCP tools for Codex and other agent runtimes.
+**Odd name. Serious tools for AI-assisted work.**
 
-Each artifact is self-contained. Skill folders use `SKILL.md` as their entry point. Installable plugins live under `plugins/`. Tool folders include their own installation, configuration, security, and verification instructions.
+Speshul Skills is a maintained collection of reusable agent skills, installable plugins, focused MCP tools, and larger skill hubs. The packages here are built for real workflows: each one should make agent behavior more reliable, bounded, inspectable, or repeatable.
 
-## Plugins
+The repository supports more than one agent runtime. Standalone skills use `SKILL.md` as a portable entry point. Codex plugins can bundle skills with lifecycle hooks. MCP servers document their external access, permissions, and side effects inside their own package.
+
+## Repository standards
+
+Packages in this repository should have:
+
+- a clear purpose and trigger
+- self-contained instructions, dependencies, and installation notes
+- explicit permissions, side effects, failure behavior, and safety limits
+- deterministic scripts or tests when prompt instructions alone are not enough
+- verification claims limited to checks that were actually run
+- no committed credentials, private data, generated run artifacts, or machine-specific configuration
+
+Not every package needs the same structure. It does need to be understandable and auditable without relying on undocumented context.
+
+## Installable plugins
+
+Plugins combine agent instructions with runtime components such as lifecycle hooks.
 
 | Plugin | What it does |
 | --- | --- |
@@ -12,7 +29,7 @@ Each artifact is self-contained. Skill folders use `SKILL.md` as their entry poi
 | [`anti-loop`](./plugins/anti-loop/) | Keeps coding work tied to the requested outcome, warns before permanent control surfaces expand, and stops repeated materially similar failed attempts. |
 | [`temporal-tasks`](./plugins/temporal-tasks/) | Estimates substantive task difficulty and active-work budgets, then uses privacy-preserving lifecycle signals to trigger evidence-aware reassessment. |
 
-Add this repository as a plugin marketplace once:
+Add this repository as a Codex plugin marketplace once:
 
 ```text
 codex plugin marketplace add MTEnt/speshul-skills
@@ -26,15 +43,9 @@ codex plugin add anti-loop@speshul-skills
 codex plugin add temporal-tasks@speshul-skills
 ```
 
-Start a new conversation after installation. All three plugins include lifecycle hooks, so open `/hooks`, review each installed hook definition, and trust the hooks you intend to run. Each plugin folder contains its own detailed installation and verification notes.
+Start a new conversation after installation. These plugins include lifecycle hooks, so open `/hooks`, inspect each installed definition, and trust only the hooks you intend to run. Each plugin README contains its own installation, behavior, and verification details.
 
-## MCP servers
-
-| Tool | What it does |
-| --- | --- |
-| [`facebook-pages-mcp`](./facebook-pages-mcp/) | Provides a local stdio MCP server for safely previewing, publishing, scheduling, and verifying allowlisted Facebook Page posts. |
-
-## Skills
+## Standalone skills
 
 | Skill | What it does |
 | --- | --- |
@@ -43,47 +54,44 @@ Start a new conversation after installation. All three plugins include lifecycle
 | [`graph-engineering`](./graph-engineering/) | Designs, simplifies, and audits AI-assisted workflow graphs. It selects the smallest useful topology and defines node contracts, state, evidence checks, bounded retries, approval gates, safe execution, and evaluation. |
 | [`video-to-particle-field`](./video-to-particle-field/) | Reconstructs videos and images as dense live particle or ASCII fields, then preserves particle identity through scroll-controlled disintegration, reassembly, and multi-clip scene transitions. |
 
+Copy a skill folder into the skill location used by your agent runtime, or point the runtime directly at that folder. Invoke the skill by its frontmatter name when explicit skill invocation is supported.
+
 ## Skill hubs
 
 | Hub | What it contains |
 | --- | --- |
 | [`marketing-hub`](./marketing-hub/) | A separate collection of 64 original marketing skills: one orchestrator, domain routers, specialist skills, and provider-neutral integration guidance. |
 
-## Typical structure
+## MCP tools
+
+| Tool | What it does |
+| --- | --- |
+| [`facebook-pages-mcp`](./facebook-pages-mcp/) | Provides a local stdio MCP server for safely previewing, publishing, scheduling, and verifying allowlisted Facebook Page posts. |
+
+MCP tool folders include their own installation, configuration, security, and verification instructions. They remain independently installable and do not rely on sibling skills at runtime.
+
+## Typical skill structure
 
 ```text
 skill-name/
 ├── SKILL.md              # Trigger description and core operating instructions
 ├── agents/
-│   └── openai.yaml       # Optional UI metadata
+│   └── openai.yaml       # Optional runtime-specific metadata
 ├── references/           # Detailed material loaded only when needed
 ├── scripts/              # Optional deterministic utilities
 └── assets/               # Optional reusable output resources
 ```
 
-Not every skill needs every directory. Keep the main instructions concise and move detailed material into references.
+Keep the entry point concise. Put detailed procedures and conditional material in references, and include scripts only when deterministic execution materially improves reliability.
 
-MCP server folders follow their own documented package structure. They must remain independently installable and must not rely on sibling skills at runtime.
+## Contributing
 
-## Using a skill
+- Use lowercase, hyphen-separated package names.
+- Give each skill a valid `SKILL.md` with `name` and `description` frontmatter.
+- Keep packages self-contained and avoid undocumented dependencies on sibling folders.
+- Document every external side effect and deliberately unsupported operation.
+- Test executable code without calling live production APIs.
+- Validate local links and the packed or installed artifact when packaging can change behavior.
+- Never commit credentials, tokens, private data, or machine-specific state.
 
-Copy the required skill folder into the skill location used by your agent runtime, or point the runtime directly at the folder. Invoke it by its frontmatter name when explicit skill invocation is supported.
-
-Always inspect a skill before using it with sensitive data, credentials, external messaging, destructive operations, or production systems.
-
-## Adding skills
-
-- Use a lowercase, hyphen-separated folder name.
-- Include a valid `SKILL.md` with `name` and `description` frontmatter.
-- Keep each folder self-contained and avoid dependencies on unrelated skills.
-- Put long documentation in `references/` and load it progressively.
-- Test included scripts and validate local links before committing.
-- Do not commit credentials, tokens, private data, generated run artifacts, or machine-specific configuration.
-
-## Adding MCP servers
-
-- Keep the server narrowly scoped and document every external side effect.
-- Keep credentials out of tool schemas, logs, fixtures, example commands, and commits.
-- Include deterministic tests that do not call live production APIs.
-- Document supported and deliberately unsupported operations.
-- Verify the packed artifact as well as the source checkout.
+Before using any package with sensitive data, credentials, external messaging, destructive operations, or production systems, inspect its instructions and executable components yourself.
