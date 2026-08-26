@@ -1,0 +1,4 @@
+interface:
+  display_name: "Public Relations"
+  short_description: "Plan and execute Public Relations marketing work"
+  default_prompt: "Use $public-relations to complete this Public Relations request with verified evidence and a usable deliverable."

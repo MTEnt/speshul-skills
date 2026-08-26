@@ -1,0 +1,4 @@
+interface:
+  display_name: "Site Architecture"
+  short_description: "Plan and execute Site Architecture marketing work"
+  default_prompt: "Use $site-architecture to complete this Site Architecture request with verified evidence and a usable deliverable."

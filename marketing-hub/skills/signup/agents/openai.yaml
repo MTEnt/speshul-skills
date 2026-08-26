@@ -1,0 +1,4 @@
+interface:
+  display_name: "Signup"
+  short_description: "Plan and execute Signup marketing work"
+  default_prompt: "Use $signup to complete this Signup request with verified evidence and a usable deliverable."

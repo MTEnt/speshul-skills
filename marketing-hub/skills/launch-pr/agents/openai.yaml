@@ -1,0 +1,4 @@
+interface:
+  display_name: "Launch and PR"
+  short_description: "Coordinate launches and earned media"
+  default_prompt: "Use $launch-pr to prepare a truthful launch or earned-media program with clear readiness gates."

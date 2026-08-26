@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketing Council"
+  short_description: "Plan and execute Marketing Council marketing work"
+  default_prompt: "Use $marketing-council to complete this Marketing Council request with verified evidence and a usable deliverable."

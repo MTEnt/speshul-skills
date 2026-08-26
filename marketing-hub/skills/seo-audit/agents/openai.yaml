@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEO Audit"
+  short_description: "Plan and execute SEO Audit marketing work"
+  default_prompt: "Use $seo-audit to complete this SEO Audit request with verified evidence and a usable deliverable."

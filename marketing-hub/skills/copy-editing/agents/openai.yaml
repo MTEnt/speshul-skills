@@ -1,0 +1,4 @@
+interface:
+  display_name: "Copy Editing"
+  short_description: "Plan and execute Copy Editing marketing work"
+  default_prompt: "Use $copy-editing to complete this Copy Editing request with verified evidence and a usable deliverable."

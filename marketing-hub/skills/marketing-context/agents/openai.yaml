@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketing Context"
+  short_description: "Build verified product and customer context"
+  default_prompt: "Use $marketing-context to establish the product, audience, market, and proof foundation for this work."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image"
+  short_description: "Plan and execute Image marketing work"
+  default_prompt: "Use $image to complete this Image request with verified evidence and a usable deliverable."

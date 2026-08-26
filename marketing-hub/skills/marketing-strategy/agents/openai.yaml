@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketing Strategy"
+  short_description: "Choose positioning, offers, pricing, and plans"
+  default_prompt: "Use $marketing-strategy to turn this business goal into a defensible marketing strategy and prioritized plan."

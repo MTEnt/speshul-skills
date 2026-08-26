@@ -1,0 +1,4 @@
+interface:
+  display_name: "Content Strategy"
+  short_description: "Plan and execute Content Strategy marketing work"
+  default_prompt: "Use $content-strategy to complete this Content Strategy request with verified evidence and a usable deliverable."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sales Enablement"
+  short_description: "Plan and execute Sales Enablement marketing work"
+  default_prompt: "Use $sales-enablement to complete this Sales Enablement request with verified evidence and a usable deliverable."

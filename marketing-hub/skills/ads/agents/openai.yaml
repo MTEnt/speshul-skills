@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ads"
+  short_description: "Plan and execute Ads marketing work"
+  default_prompt: "Use $ads to complete this Ads request with verified evidence and a usable deliverable."

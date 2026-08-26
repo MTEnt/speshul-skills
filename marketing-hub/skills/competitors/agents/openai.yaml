@@ -1,0 +1,4 @@
+interface:
+  display_name: "Competitors"
+  short_description: "Plan and execute Competitors marketing work"
+  default_prompt: "Use $competitors to complete this Competitors request with verified evidence and a usable deliverable."

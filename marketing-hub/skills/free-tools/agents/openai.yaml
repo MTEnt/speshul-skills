@@ -1,0 +1,4 @@
+interface:
+  display_name: "Free Tools"
+  short_description: "Plan and execute Free Tools marketing work"
+  default_prompt: "Use $free-tools to complete this Free Tools request with verified evidence and a usable deliverable."

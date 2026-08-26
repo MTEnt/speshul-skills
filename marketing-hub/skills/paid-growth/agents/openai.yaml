@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paid Growth"
+  short_description: "Plan ads, tests, tracking, and attribution"
+  default_prompt: "Use $paid-growth to design or audit this paid acquisition and measurement system."
