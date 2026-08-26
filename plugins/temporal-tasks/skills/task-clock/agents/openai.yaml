@@ -1,0 +1,7 @@
+interface:
+  display_name: "Task Clock"
+  short_description: "Estimate task budgets and reassess elapsed work"
+  default_prompt: "Use $task-clock to estimate this task and reassess it against real elapsed-work signals."
+
+policy:
+  allow_implicit_invocation: true
