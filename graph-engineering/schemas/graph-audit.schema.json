@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://graph-engineering.local/schemas/graph-audit.schema.json",
+  "title": "GraphAudit",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "artifact": {"type": "string", "const": "GraphAudit"},
+    "schema_version": {"type": "string", "const": "1.0"},
+    "mode": {"type": "string", "const": "audit"},
+    "graph_ref": {"$ref": "#/$defs/graphRef"},
+    "scope": {"type": "array", "items": {"type": "string"}},
+    "verdict": {"type": "string", "enum": ["pass", "pass_with_findings", "fail", "insufficient_evidence"]},
+    "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}},
+    "invariant_coverage": {"type": "array", "items": {"$ref": "#/$defs/coverage"}},
+    "unknowns": {"type": "array", "items": {"type": "string"}}
+  },
+  "required": ["artifact", "schema_version", "mode", "graph_ref", "scope", "verdict", "findings", "invariant_coverage", "unknowns"],
+  "$defs": {
+    "graphRef": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"id": {"type": "string"}, "version": {"type": "string"}, "digest": {"type": "string"}},
+      "required": ["id", "version", "digest"]
+    },
+    "finding": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"id": {"type": "string"}, "severity": {"type": "string", "enum": ["info", "low", "medium", "high", "critical"]}, "location": {"type": "string"}, "claim": {"type": "string"}, "evidence": {"type": "array", "items": {"type": "string"}}, "repair": {"type": "string"}},
+      "required": ["id", "severity", "location", "claim", "evidence", "repair"]
+    },
+    "coverage": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"invariant": {"type": "string"}, "status": {"type": "string", "enum": ["pass", "fail", "not_applicable", "unknown"]}, "evidence": {"type": "array", "items": {"type": "string"}}},
+      "required": ["invariant", "status", "evidence"]
+    }
+  }
+}

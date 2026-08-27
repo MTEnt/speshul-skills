@@ -1,0 +1,13 @@
+{
+  "artifact_type": "EvaluationPlan",
+  "schema_version": "1.0",
+  "graph_ref": {"id": "example-graph", "version": "1.0.0"},
+  "baseline": "one structured model call",
+  "datasets": {"development": "data/dev.jsonl", "held_out": "data/held-out.jsonl", "regression": "data/regression.jsonl"},
+  "repeated_trials": {"count": 3, "randomization": "recorded"},
+  "graders": ["contract", "outcome", "safety", "latency", "cost"],
+  "coverage": ["node", "transition", "path", "state", "recovery"],
+  "mandatory_gates": {"protected_action_negative_tests": "pass", "unauthorized_actions": 0},
+  "promotion_thresholds": {"success_rate": 0.95, "regressions": 0},
+  "rollback_trigger": "Any mandatory gate fails after promotion."
+}

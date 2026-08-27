@@ -1,0 +1,11 @@
+{
+  "artifact": "GraphAudit",
+  "schema_version": "1.0",
+  "mode": "audit",
+  "graph_ref": {"id": "example-graph", "version": "1.0.0", "digest": "sha256:example"},
+  "scope": ["GraphSpec structure and runtime bounds"],
+  "verdict": "pass_with_findings",
+  "findings": [{"id": "AUD-001", "severity": "low", "location": "$.evaluation", "claim": "The held-out dataset version is implicit.", "evidence": ["The dataset path has no digest."], "repair": "Add a dataset digest."}],
+  "invariant_coverage": [{"invariant": "bounded retries", "status": "pass", "evidence": ["All retry policies set max_attempts to one."]}],
+  "unknowns": ["Runtime implementation was not supplied."]
+}

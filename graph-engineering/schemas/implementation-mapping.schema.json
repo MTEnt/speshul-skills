@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://graph-engineering.local/schemas/implementation-mapping.schema.json",
+  "title": "ImplementationMapping",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "artifact": {"type": "string", "const": "ImplementationMapping"},
+    "schema_version": {"type": "string", "const": "1.0"},
+    "mode": {"type": "string", "const": "compile"},
+    "source_graph": {"$ref": "#/$defs/graphRef"},
+    "target": {"$ref": "#/$defs/target"},
+    "semantic_mappings": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/mapping"}},
+    "application_owned_controls": {"type": "array", "items": {"type": "string"}},
+    "gaps": {"type": "array", "items": {"$ref": "#/$defs/gap"}},
+    "conformance_tests": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "residual_risks": {"type": "array", "items": {"type": "string"}}
+  },
+  "required": ["artifact", "schema_version", "mode", "source_graph", "target", "semantic_mappings", "application_owned_controls", "gaps", "conformance_tests", "residual_risks"],
+  "$defs": {
+    "graphRef": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"id": {"type": "string"}, "version": {"type": "string"}, "digest": {"type": "string"}},
+      "required": ["id", "version", "digest"]
+    },
+    "target": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"framework": {"type": "string"}, "version": {"type": "string"}, "verified_at": {"type": "string"}, "official_docs": {"type": "array", "minItems": 1, "items": {"type": "string"}}},
+      "required": ["framework", "version", "verified_at", "official_docs"]
+    },
+    "mapping": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"graphspec_path": {"type": "string"}, "target_primitive": {"type": "string"}, "status": {"type": "string", "enum": ["native", "adapter", "application_owned", "unsupported"]}, "notes": {"type": "string"}},
+      "required": ["graphspec_path", "target_primitive", "status", "notes"]
+    },
+    "gap": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"severity": {"type": "string", "enum": ["low", "medium", "high", "critical"]}, "semantic": {"type": "string"}, "reason": {"type": "string"}, "mitigation": {"type": "string"}},
+      "required": ["severity", "semantic", "reason", "mitigation"]
+    }
+  }
+}

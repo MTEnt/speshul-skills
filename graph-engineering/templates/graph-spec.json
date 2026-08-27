@@ -1,0 +1,188 @@
+{
+  "artifact": "GraphSpec",
+  "schema_version": "1.0",
+  "mode": "design",
+  "graph": {
+    "id": "example-graph",
+    "version": "1.0.0",
+    "objective": "Transform a validated request into a checked result.",
+    "success_criteria": ["The final node accepts a ResultV1 value."],
+    "partial_success_criteria": ["Return a typed failure without external side effects."],
+    "constraints": ["No network access."],
+    "non_goals": ["Execute external actions."],
+    "risk_profile": "low",
+    "assurance_profile": "standard",
+    "entry_points": ["produce"],
+    "terminals": ["finish"],
+    "budgets": {"deadline_ms": 30000, "max_cost_usd": 0, "max_model_calls": 1},
+    "representation": "declarative",
+    "topology_binding": "static"
+  },
+  "nodes": [
+    {
+      "id": "produce",
+      "execution_kind": "model",
+      "semantic_role": "Produce a structured candidate.",
+      "ports": {"inputs": [], "outputs": [{"name": "result", "type": "ResultV1", "required": true}]},
+      "prompt_ref": "produce-prompt",
+      "model_ref": "model-policy/default",
+      "tool_ref": null,
+      "capability_ref": null,
+      "output_schema_ref": "schemas/ResultV1.json",
+      "context_policy_ref": "minimal-context",
+      "state_reads": [],
+      "state_writes": ["result"],
+      "permissions": [],
+      "timeout_ms": 10000,
+      "retry_policy": {"max_attempts": 1, "on_exhausted": "finish"},
+      "side_effect_class": "none",
+      "outcomes": ["produced", "failed"],
+      "acceptance_conditions": ["Output validates against ResultV1."],
+      "idempotency_ref": null,
+      "approval_binding_ref": null,
+      "postcondition_ref": null,
+      "long_running": false
+    },
+    {
+      "id": "finish",
+      "execution_kind": "deterministic",
+      "semantic_role": "Validate and terminate.",
+      "ports": {"inputs": [{"name": "result", "type": "ResultV1", "required": true}], "outputs": []},
+      "prompt_ref": null,
+      "model_ref": null,
+      "tool_ref": null,
+      "capability_ref": null,
+      "output_schema_ref": null,
+      "context_policy_ref": "minimal-context",
+      "state_reads": ["result"],
+      "state_writes": [],
+      "permissions": [],
+      "timeout_ms": 1000,
+      "retry_policy": {"max_attempts": 1, "on_exhausted": "failed"},
+      "side_effect_class": "none",
+      "outcomes": ["success", "failed"],
+      "acceptance_conditions": ["The stored result validates against ResultV1."],
+      "idempotency_ref": null,
+      "approval_binding_ref": null,
+      "postcondition_ref": null,
+      "long_running": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "produce-to-finish",
+      "source": "produce",
+      "source_port": "result",
+      "target": "finish",
+      "target_port": "result",
+      "semantic": "data",
+      "condition": null,
+      "routed_outcome": "produced",
+      "join_behavior": null,
+      "iteration_guard": null,
+      "default": false
+    }
+  ],
+  "prompts": [
+    {
+      "id": "produce-prompt",
+      "version": "1.0.0",
+      "digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "location": "prompts/produce.md",
+      "variables": [],
+      "output_contract": "schemas/ResultV1.json",
+      "optimizer_surfaces": ["instructions", "examples"]
+    }
+  ],
+  "context_policies": [
+    {
+      "id": "minimal-context",
+      "trusted_inputs": ["graph objective"],
+      "untrusted_inputs": [],
+      "max_tokens": 4096,
+      "freshness": "per-run",
+      "sensitivity_ceiling": "internal"
+    }
+  ],
+  "state": {
+    "schema_version": "1.0",
+    "migration_version": "1",
+    "channels": [
+      {
+        "id": "result",
+        "type": "ResultV1",
+        "source_of_truth": "run-state",
+        "owner": "produce",
+        "allowed_writers": ["produce"],
+        "reducer": null,
+        "concurrent_write": "deny",
+        "sensitivity": "internal",
+        "visibility": ["produce", "finish"],
+        "persistence": "checkpointed",
+        "checkpoint_policy": "after-write",
+        "provenance": "required"
+      }
+    ]
+  },
+  "runtime": {
+    "scheduler": "sequential",
+    "ready_rule": "all-required-inputs",
+    "max_concurrency": 1,
+    "fan_out": "none",
+    "fan_in": "none",
+    "subgraphs": [],
+    "cancellation": {"check_before_node": true, "in_flight": "finish-current-read-only", "cancel_route": null},
+    "interrupts": [],
+    "resume": {"checkpoint_compatibility": "exact-or-migrated"},
+    "node_state_transitions": ["pending->ready", "ready->running", "running->succeeded", "running->failed"],
+    "dynamic_expansion": null
+  },
+  "controls": {
+    "authorization": "least-privilege",
+    "tool_boundaries": [],
+    "network_boundaries": [],
+    "secret_handles": [],
+    "trust_labels": ["trusted", "untrusted"],
+    "approval_bindings": [],
+    "idempotency_policies": [],
+    "postconditions": [],
+    "compensations": []
+  },
+  "observability": {
+    "event_schema": "GraphEventV1",
+    "identifiers": ["run_id", "node_id", "attempt_id"],
+    "versions": ["graph", "prompt", "model", "tool"],
+    "metrics": ["latency_ms", "cost_usd"],
+    "lineage": true,
+    "outcome_evidence": true,
+    "immutable_evidence": false,
+    "integrity_hashes": false
+  },
+  "evaluation": {
+    "baseline": "one structured model call",
+    "datasets": ["tests/fixtures/direct-cases.json"],
+    "repeated_trials": {"count": 3, "reason": "model output is stochastic"},
+    "graders": ["schema", "outcome"],
+    "coverage": ["node", "transition", "path", "contract"],
+    "recovery_tests": ["invalid output"],
+    "safety_tests": ["untrusted instruction remains data"],
+    "performance_budgets": {"p95_latency_ms": 30000, "max_cost_usd": 0},
+    "promotion_thresholds": {"success_rate": 0.95, "mandatory_safety": "pass"},
+    "held_out": null
+  },
+  "evolution": {
+    "status": "stable",
+    "mutable_surfaces": ["prompt:produce-prompt"],
+    "baseline_version": "1.0.0",
+    "candidate_version": null,
+    "credit_assignment": "single-surface",
+    "held_out_evaluation_ref": null,
+    "budgets": {"max_candidates": 0, "max_trials_per_case": 0, "max_cost_usd": 0},
+    "promotion_criteria": {"success_delta": 0, "mandatory_safety": "pass"},
+    "structural_ablations": [],
+    "approval_policy": "owner-review",
+    "rollout": "staged",
+    "rollback": "restore 1.0.0",
+    "archival_status": "active"
+  }
+}

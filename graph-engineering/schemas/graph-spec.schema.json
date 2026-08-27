@@ -1,0 +1,241 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://graph-engineering.local/schemas/graph-spec.schema.json",
+  "title": "GraphSpec",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "artifact": {"type": "string", "const": "GraphSpec"},
+    "schema_version": {"type": "string", "const": "1.0"},
+    "mode": {"type": "string", "const": "design"},
+    "graph": {"$ref": "#/$defs/graph"},
+    "nodes": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/node"}},
+    "edges": {"type": "array", "items": {"$ref": "#/$defs/edge"}},
+    "prompts": {"type": "array", "items": {"$ref": "#/$defs/prompt"}},
+    "context_policies": {"type": "array", "items": {"$ref": "#/$defs/contextPolicy"}},
+    "state": {"$ref": "#/$defs/state"},
+    "runtime": {"$ref": "#/$defs/runtime"},
+    "controls": {"$ref": "#/$defs/controls"},
+    "observability": {"$ref": "#/$defs/observability"},
+    "evaluation": {"$ref": "#/$defs/evaluation"},
+    "evolution": {"$ref": "#/$defs/evolution"}
+  },
+  "required": ["artifact", "schema_version", "mode", "graph", "nodes", "edges", "prompts", "context_policies", "state", "runtime", "controls", "observability", "evaluation", "evolution"],
+  "$defs": {
+    "stringArray": {"type": "array", "items": {"type": "string"}},
+    "graph": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"}, "version": {"type": "string"}, "objective": {"type": "string"},
+        "success_criteria": {"$ref": "#/$defs/stringArray"}, "partial_success_criteria": {"$ref": "#/$defs/stringArray"},
+        "constraints": {"$ref": "#/$defs/stringArray"}, "non_goals": {"$ref": "#/$defs/stringArray"},
+        "risk_profile": {"type": "string"}, "assurance_profile": {"type": "string", "enum": ["standard", "protected_action", "high_assurance"]},
+        "entry_points": {"$ref": "#/$defs/stringArray"}, "terminals": {"$ref": "#/$defs/stringArray"},
+        "budgets": {"$ref": "#/$defs/budgets"}, "representation": {"type": "string", "enum": ["declarative", "code-first"]},
+        "topology_binding": {"type": "string", "enum": ["static", "conditional", "runtime-expanded", "bounded-agent-selected"]}
+      },
+      "required": ["id", "version", "objective", "success_criteria", "partial_success_criteria", "constraints", "non_goals", "risk_profile", "assurance_profile", "entry_points", "terminals", "budgets", "representation", "topology_binding"]
+    },
+    "budgets": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"deadline_ms": {"type": "integer", "minimum": 1}, "max_cost_usd": {"type": "number", "minimum": 0}, "max_model_calls": {"type": "integer", "minimum": 0}},
+      "required": ["deadline_ms", "max_cost_usd", "max_model_calls"]
+    },
+    "port": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"name": {"type": "string"}, "type": {"type": "string"}, "required": {"type": "boolean"}},
+      "required": ["name", "type", "required"]
+    },
+    "ports": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"inputs": {"type": "array", "items": {"$ref": "#/$defs/port"}}, "outputs": {"type": "array", "items": {"$ref": "#/$defs/port"}}},
+      "required": ["inputs", "outputs"]
+    },
+    "retry": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"max_attempts": {"type": "integer", "minimum": 1}, "on_exhausted": {"type": "string"}},
+      "required": ["max_attempts", "on_exhausted"]
+    },
+    "node": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"}, "execution_kind": {"type": "string", "enum": ["deterministic", "model", "agent", "tool", "human", "subgraph"]},
+        "semantic_role": {"type": "string"}, "ports": {"$ref": "#/$defs/ports"}, "prompt_ref": {"type": ["string", "null"]},
+        "model_ref": {"type": ["string", "null"]}, "tool_ref": {"type": ["string", "null"]}, "capability_ref": {"type": ["string", "null"]},
+        "output_schema_ref": {"type": ["string", "null"]}, "context_policy_ref": {"type": "string"},
+        "state_reads": {"$ref": "#/$defs/stringArray"}, "state_writes": {"$ref": "#/$defs/stringArray"},
+        "permissions": {"$ref": "#/$defs/stringArray"}, "timeout_ms": {"type": "integer", "minimum": 1},
+        "retry_policy": {"$ref": "#/$defs/retry"}, "side_effect_class": {"type": "string", "enum": ["none", "read_only", "idempotent", "non_idempotent", "protected_action"]},
+        "outcomes": {"$ref": "#/$defs/stringArray"}, "acceptance_conditions": {"$ref": "#/$defs/stringArray"},
+        "idempotency_ref": {"type": ["string", "null"]}, "approval_binding_ref": {"type": ["string", "null"]}, "postcondition_ref": {"type": ["string", "null"]},
+        "long_running": {"type": "boolean"}
+      },
+      "required": ["id", "execution_kind", "semantic_role", "ports", "prompt_ref", "model_ref", "tool_ref", "capability_ref", "output_schema_ref", "context_policy_ref", "state_reads", "state_writes", "permissions", "timeout_ms", "retry_policy", "side_effect_class", "outcomes", "acceptance_conditions", "idempotency_ref", "approval_binding_ref", "postcondition_ref", "long_running"]
+    },
+    "predicateValue": {
+      "anyOf": [
+        {"type": "string"}, {"type": "number"}, {"type": "boolean"}, {"type": "null"},
+        {"type": "array", "items": {"anyOf": [{"type": "string"}, {"type": "number"}, {"type": "boolean"}, {"type": "null"}]}}
+      ]
+    },
+    "predicate": {
+      "anyOf": [
+        {"type": "object", "additionalProperties": false, "properties": {"all": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/predicate"}}}, "required": ["all"]},
+        {"type": "object", "additionalProperties": false, "properties": {"any": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/predicate"}}}, "required": ["any"]},
+        {"type": "object", "additionalProperties": false, "properties": {"not": {"$ref": "#/$defs/predicate"}}, "required": ["not"]},
+        {"type": "object", "additionalProperties": false, "properties": {"exists": {"type": "string"}}, "required": ["exists"]},
+        {"type": "object", "additionalProperties": false, "properties": {"eq": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/predicateValue"}}}, "required": ["eq"]},
+        {"type": "object", "additionalProperties": false, "properties": {"ne": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/predicateValue"}}}, "required": ["ne"]},
+        {"type": "object", "additionalProperties": false, "properties": {"in": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/predicateValue"}}}, "required": ["in"]},
+        {"type": "object", "additionalProperties": false, "properties": {"gt": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/predicateValue"}}}, "required": ["gt"]},
+        {"type": "object", "additionalProperties": false, "properties": {"gte": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/predicateValue"}}}, "required": ["gte"]},
+        {"type": "object", "additionalProperties": false, "properties": {"lt": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/predicateValue"}}}, "required": ["lt"]},
+        {"type": "object", "additionalProperties": false, "properties": {"lte": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/predicateValue"}}}, "required": ["lte"]}
+      ]
+    },
+    "iterationGuard": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"max_iterations": {"type": "integer", "minimum": 1}, "exit_condition": {"type": "string"}},
+      "required": ["max_iterations", "exit_condition"]
+    },
+    "edge": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"}, "source": {"type": "string"}, "source_port": {"type": "string"}, "target": {"type": "string"}, "target_port": {"type": "string"},
+        "semantic": {"type": "string", "enum": ["control", "data", "error", "interrupt", "compensation"]}, "condition": {"anyOf": [{"$ref": "#/$defs/predicate"}, {"type": "null"}]},
+        "routed_outcome": {"type": ["string", "null"]}, "join_behavior": {"type": ["string", "null"]}, "iteration_guard": {"anyOf": [{"$ref": "#/$defs/iterationGuard"}, {"type": "null"}]}, "default": {"type": "boolean"}
+      },
+      "required": ["id", "source", "source_port", "target", "target_port", "semantic", "condition", "routed_outcome", "join_behavior", "iteration_guard", "default"]
+    },
+    "promptVariable": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"name": {"type": "string"}, "type": {"type": "string"}, "required": {"type": "boolean"}, "trust": {"type": "string"}},
+      "required": ["name", "type", "required", "trust"]
+    },
+    "prompt": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"id": {"type": "string"}, "version": {"type": "string"}, "digest": {"type": "string"}, "location": {"type": "string"}, "variables": {"type": "array", "items": {"$ref": "#/$defs/promptVariable"}}, "output_contract": {"type": "string"}, "optimizer_surfaces": {"$ref": "#/$defs/stringArray"}},
+      "required": ["id", "version", "digest", "location", "variables", "output_contract", "optimizer_surfaces"]
+    },
+    "contextPolicy": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"id": {"type": "string"}, "trusted_inputs": {"$ref": "#/$defs/stringArray"}, "untrusted_inputs": {"$ref": "#/$defs/stringArray"}, "max_tokens": {"type": "integer", "minimum": 1}, "freshness": {"type": "string"}, "sensitivity_ceiling": {"type": "string"}},
+      "required": ["id", "trusted_inputs", "untrusted_inputs", "max_tokens", "freshness", "sensitivity_ceiling"]
+    },
+    "channel": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"id": {"type": "string"}, "type": {"type": "string"}, "source_of_truth": {"type": "string"}, "owner": {"type": ["string", "null"]}, "allowed_writers": {"$ref": "#/$defs/stringArray"}, "reducer": {"type": ["string", "null"]}, "concurrent_write": {"type": "string"}, "sensitivity": {"type": "string"}, "visibility": {"$ref": "#/$defs/stringArray"}, "persistence": {"type": "string"}, "checkpoint_policy": {"type": "string"}, "provenance": {"type": "string"}},
+      "required": ["id", "type", "source_of_truth", "owner", "allowed_writers", "reducer", "concurrent_write", "sensitivity", "visibility", "persistence", "checkpoint_policy", "provenance"]
+    },
+    "state": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"schema_version": {"type": "string"}, "migration_version": {"type": "string"}, "channels": {"type": "array", "items": {"$ref": "#/$defs/channel"}}},
+      "required": ["schema_version", "migration_version", "channels"]
+    },
+    "interrupt": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"id": {"type": "string"}, "checkpoint": {"type": "string"}, "resume_node": {"type": "string"}, "resume_validation": {"type": "string"}, "expiry": {"type": "string"}, "cancel_route": {"type": "string"}},
+      "required": ["id", "checkpoint", "resume_node", "resume_validation", "expiry", "cancel_route"]
+    },
+    "cancellation": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"check_before_node": {"type": "boolean"}, "in_flight": {"type": "string"}, "cancel_route": {"type": ["string", "null"]}},
+      "required": ["check_before_node", "in_flight", "cancel_route"]
+    },
+    "resume": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"checkpoint_compatibility": {"type": "string"}},
+      "required": ["checkpoint_compatibility"]
+    },
+    "dynamicExpansion": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"max_nodes": {"type": "integer", "minimum": 1}, "max_edges": {"type": "integer", "minimum": 1}, "max_depth": {"type": "integer", "minimum": 1}, "max_queue": {"type": "integer", "minimum": 1}, "max_concurrency": {"type": "integer", "minimum": 1}},
+      "required": ["max_nodes", "max_edges", "max_depth", "max_queue", "max_concurrency"]
+    },
+    "runtime": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"scheduler": {"type": "string"}, "ready_rule": {"type": "string"}, "max_concurrency": {"type": "integer", "minimum": 1}, "fan_out": {"type": "string"}, "fan_in": {"type": "string"}, "subgraphs": {"$ref": "#/$defs/stringArray"}, "cancellation": {"$ref": "#/$defs/cancellation"}, "interrupts": {"type": "array", "items": {"$ref": "#/$defs/interrupt"}}, "resume": {"$ref": "#/$defs/resume"}, "node_state_transitions": {"$ref": "#/$defs/stringArray"}, "dynamic_expansion": {"anyOf": [{"$ref": "#/$defs/dynamicExpansion"}, {"type": "null"}]}},
+      "required": ["scheduler", "ready_rule", "max_concurrency", "fan_out", "fan_in", "subgraphs", "cancellation", "interrupts", "resume", "node_state_transitions", "dynamic_expansion"]
+    },
+    "approvalScope": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"operation": {"type": "string"}, "target": {"type": "string"}, "environment": {"type": ["string", "null"]}, "payload_ref": {"type": ["string", "null"]}},
+      "required": ["operation", "target", "environment", "payload_ref"]
+    },
+    "approvalBinding": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"id": {"type": "string"}, "action_digest": {"type": "string"}, "scope": {"$ref": "#/$defs/approvalScope"}, "approver_identity": {"type": "string"}, "expires_at": {"type": "string"}, "nonce": {"type": "string"}, "revoked": {"type": "boolean"}},
+      "required": ["id", "action_digest", "scope", "approver_identity", "expires_at", "nonce", "revoked"]
+    },
+    "postcondition": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"id": {"type": "string"}, "authoritative_source": {"type": "string"}, "expected": {"type": "string"}},
+      "required": ["id", "authoritative_source", "expected"]
+    },
+    "toolBoundary": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"id": {"type": "string"}, "allowed_tools": {"$ref": "#/$defs/stringArray"}, "allowed_operations": {"$ref": "#/$defs/stringArray"}, "target_patterns": {"$ref": "#/$defs/stringArray"}},
+      "required": ["id", "allowed_tools", "allowed_operations", "target_patterns"]
+    },
+    "networkBoundary": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"id": {"type": "string"}, "allowed_endpoints": {"$ref": "#/$defs/stringArray"}, "allowed_methods": {"$ref": "#/$defs/stringArray"}, "data_classes": {"$ref": "#/$defs/stringArray"}},
+      "required": ["id", "allowed_endpoints", "allowed_methods", "data_classes"]
+    },
+    "idempotencyPolicy": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"id": {"type": "string"}, "scope": {"type": "string"}, "key_source": {"type": "string"}, "reconciliation": {"type": "string"}},
+      "required": ["id", "scope", "key_source", "reconciliation"]
+    },
+    "compensation": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"id": {"type": "string"}, "action_ref": {"type": "string"}, "requires_new_approval": {"type": "boolean"}, "outcome_verification_ref": {"type": "string"}},
+      "required": ["id", "action_ref", "requires_new_approval", "outcome_verification_ref"]
+    },
+    "controls": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"authorization": {"type": "string"}, "tool_boundaries": {"type": "array", "items": {"$ref": "#/$defs/toolBoundary"}}, "network_boundaries": {"type": "array", "items": {"$ref": "#/$defs/networkBoundary"}}, "secret_handles": {"$ref": "#/$defs/stringArray"}, "trust_labels": {"$ref": "#/$defs/stringArray"}, "approval_bindings": {"type": "array", "items": {"$ref": "#/$defs/approvalBinding"}}, "idempotency_policies": {"type": "array", "items": {"$ref": "#/$defs/idempotencyPolicy"}}, "postconditions": {"type": "array", "items": {"$ref": "#/$defs/postcondition"}}, "compensations": {"type": "array", "items": {"$ref": "#/$defs/compensation"}}},
+      "required": ["authorization", "tool_boundaries", "network_boundaries", "secret_handles", "trust_labels", "approval_bindings", "idempotency_policies", "postconditions", "compensations"]
+    },
+    "observability": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"event_schema": {"type": "string"}, "identifiers": {"$ref": "#/$defs/stringArray"}, "versions": {"$ref": "#/$defs/stringArray"}, "metrics": {"$ref": "#/$defs/stringArray"}, "lineage": {"type": "boolean"}, "outcome_evidence": {"type": "boolean"}, "immutable_evidence": {"type": "boolean"}, "integrity_hashes": {"type": "boolean"}},
+      "required": ["event_schema", "identifiers", "versions", "metrics", "lineage", "outcome_evidence", "immutable_evidence", "integrity_hashes"]
+    },
+    "repeatedTrials": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"count": {"type": "integer", "minimum": 1}, "reason": {"type": "string"}},
+      "required": ["count", "reason"]
+    },
+    "performanceBudgets": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"p95_latency_ms": {"type": "integer", "minimum": 1}, "max_cost_usd": {"type": "number", "minimum": 0}},
+      "required": ["p95_latency_ms", "max_cost_usd"]
+    },
+    "promotionThresholds": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"success_rate": {"type": "number", "minimum": 0}, "mandatory_safety": {"type": "string"}},
+      "required": ["success_rate", "mandatory_safety"]
+    },
+    "evaluation": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"baseline": {"type": "string"}, "datasets": {"$ref": "#/$defs/stringArray"}, "repeated_trials": {"$ref": "#/$defs/repeatedTrials"}, "graders": {"$ref": "#/$defs/stringArray"}, "coverage": {"$ref": "#/$defs/stringArray"}, "recovery_tests": {"$ref": "#/$defs/stringArray"}, "safety_tests": {"$ref": "#/$defs/stringArray"}, "performance_budgets": {"$ref": "#/$defs/performanceBudgets"}, "promotion_thresholds": {"$ref": "#/$defs/promotionThresholds"}, "held_out": {"type": ["string", "null"]}},
+      "required": ["baseline", "datasets", "repeated_trials", "graders", "coverage", "recovery_tests", "safety_tests", "performance_budgets", "promotion_thresholds", "held_out"]
+    },
+    "evolutionBudgets": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"max_candidates": {"type": "integer", "minimum": 0}, "max_trials_per_case": {"type": "integer", "minimum": 0}, "max_cost_usd": {"type": "number", "minimum": 0}},
+      "required": ["max_candidates", "max_trials_per_case", "max_cost_usd"]
+    },
+    "promotionCriteria": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"success_delta": {"type": "number"}, "mandatory_safety": {"type": "string"}},
+      "required": ["success_delta", "mandatory_safety"]
+    },
+    "evolution": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"status": {"type": "string", "enum": ["stable", "candidate", "promoted", "rejected", "archived"]}, "mutable_surfaces": {"$ref": "#/$defs/stringArray"}, "baseline_version": {"type": "string"}, "candidate_version": {"type": ["string", "null"]}, "credit_assignment": {"type": "string"}, "held_out_evaluation_ref": {"type": ["string", "null"]}, "budgets": {"$ref": "#/$defs/evolutionBudgets"}, "promotion_criteria": {"$ref": "#/$defs/promotionCriteria"}, "structural_ablations": {"$ref": "#/$defs/stringArray"}, "approval_policy": {"type": "string"}, "rollout": {"type": "string"}, "rollback": {"type": "string"}, "archival_status": {"type": "string"}},
+      "required": ["status", "mutable_surfaces", "baseline_version", "candidate_version", "credit_assignment", "held_out_evaluation_ref", "budgets", "promotion_criteria", "structural_ablations", "approval_policy", "rollout", "rollback", "archival_status"]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://graph-engineering.local/schemas/run-diagnosis.schema.json",
+  "title": "RunDiagnosis",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "artifact": {"type": "string", "const": "RunDiagnosis"},
+    "schema_version": {"type": "string", "const": "1.0"},
+    "mode": {"type": "string", "const": "diagnose"},
+    "run_ref": {"type": "string"},
+    "graph_ref": {"$ref": "#/$defs/graphRef"},
+    "symptom": {"type": "string"},
+    "first_invalid_transition": {"$ref": "#/$defs/transition"},
+    "root_cause_evidence": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "propagation_path": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "failure_frontier": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "recovery_status": {"type": "string", "enum": ["not_started", "contained", "recovering", "recovered", "blocked", "failed", "unknown"]},
+    "unknowns": {"type": "array", "items": {"type": "string"}},
+    "next_diagnostic_action": {"type": "string"}
+  },
+  "required": ["artifact", "schema_version", "mode", "run_ref", "graph_ref", "symptom", "first_invalid_transition", "root_cause_evidence", "propagation_path", "failure_frontier", "recovery_status", "unknowns", "next_diagnostic_action"],
+  "$defs": {
+    "graphRef": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"id": {"type": "string"}, "version": {"type": "string"}, "digest": {"type": "string"}},
+      "required": ["id", "version", "digest"]
+    },
+    "transition": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"node_id": {"type": "string"}, "attempt_id": {"type": "string"}, "from_state": {"type": "string"}, "to_state": {"type": "string"}, "contract_violation": {"type": "string"}},
+      "required": ["node_id", "attempt_id", "from_state", "to_state", "contract_violation"]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "artifact_type": "PromptContract",
+  "schema_version": "1.0",
+  "id": "prompt-id",
+  "version": "1.0.0",
+  "digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "location": "prompts/prompt-id.md",
+  "purpose": "Produce OutputV1 for the named node.",
+  "supported_nodes": ["node-id"],
+  "variables": [{"name": "input", "type": "InputV1", "required": true, "trust": "untrusted"}],
+  "context_policy_ref": "minimal-context",
+  "output_contract": "schemas/OutputV1.json",
+  "optimizer_surfaces": ["instructions", "examples"],
+  "compatibility": {"graph_versions": ["1.x"], "tests": ["prompt-contract"]}
+}

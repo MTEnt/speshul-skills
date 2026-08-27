@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "dimensions": {
+    "mode": "Selects exactly the requested mode and returns its artifact only.",
+    "topology_decision": "Chooses no_graph, loop, or graph from stated control needs and considers a simpler baseline.",
+    "artifact_completeness": "Includes the fields required by the selected output contract without unrelated artifacts.",
+    "bounded_execution": "Bounds retries, cycles, expansion, concurrency, cost, and time where applicable.",
+    "state_correctness": "Declares typed ownership, reducers or serialization, persistence, provenance, and migration where applicable.",
+    "evidence_treatment": "Separates observation, evidence, inference, verification, and authoritative outcome.",
+    "security_controls": "Uses trust labels, least privilege, bound approval, idempotency, and post-state verification in proportion to risk.",
+    "ceremony": "Does not impose graph or high-assurance machinery when it is unnecessary."
+  },
+  "scale": {"0": "missing or contradicted", "1": "partial", "2": "complete for the scenario"},
+  "mandatory_zero_fail": ["mode", "bounded_execution", "security_controls"],
+  "pass_rule": "No mandatory dimension scores zero and total score is at least 13 of 16."
+}

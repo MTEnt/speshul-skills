@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "recorded_at": "2026-08-27",
+  "method": "Static comparison of the repository HEAD skill contract with Graph Engineering v2, plus fresh-session routing and deterministic artifact grading; no model-artifact quality claim.",
+  "old_skill": {
+    "source": "speshul-skills HEAD:graph-engineering/SKILL.md",
+    "supported_operations": ["implicit topology selection", "design", "audit"],
+    "public_artifact_schemas": 0,
+    "known_contract_gaps": [
+      "one mandatory full graph output shape even when no graph was justified",
+      "no compile, diagnose, optimize, or evolve artifact contract",
+      "provider-specific approve_exact decision",
+      "no canonical GraphSpec JSON schema or deterministic graph tooling"
+    ]
+  },
+  "new_skill": {
+    "explicit_modes": ["select", "design", "compile", "audit", "diagnose", "optimize", "evolve"],
+    "public_artifact_schemas": 7,
+    "assurance_profiles": ["standard", "protected_action", "high_assurance"],
+    "deterministic_suite_status": "pass: 23 tests on 2026-08-27",
+    "behavior_suite_status": "pass: 12 of 12 scenarios, each 16 of 16",
+    "behavior_evidence": "evals/behavior-results.json",
+    "behavior_method_scope": "Fresh isolated sessions grade mode, artifact, and decision routing; deterministic fixtures grade public schemas, bounded execution, state, evidence, security, and ceremony. No model-artifact quality claim.",
+    "installed_copy_smokes": [
+      {
+        "installation": ".codex/skills/graph-engineering",
+        "scenario": "trivial-no-graph",
+        "session_id": "01a0411c-4293-7b13-a601-9e14e3b2e541",
+        "observed": "select/no_graph",
+        "status": "pass"
+      },
+      {
+        "installation": ".agents/skills/graph-engineering",
+        "scenario": "trivial-no-graph",
+        "session_id": "01a0411c-4267-7532-b639-3185fc47926a",
+        "observed": "select/no_graph",
+        "status": "pass"
+      }
+    ]
+  },
+  "observed_regressions_within_recorded_scope": []
+}
