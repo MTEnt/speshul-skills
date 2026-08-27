@@ -51,7 +51,7 @@ Start a new conversation after installation. These plugins include lifecycle hoo
 | --- | --- |
 | [`cleancoding`](./cleancoding/) | Enforces root-cause fixes, a three-loop stop rule, explicit acceptance contracts, safe boundaries and state, authoritative documentation, measured performance, deployment recovery, and DRY, KISS, and YAGNI. |
 | [`facebook-content-studio`](./facebook-content-studio/) | Researches, plans, continuity-checks, packages, and approval-gates Facebook content, with explicit routing to Higgsfield media workflows and the companion Page publisher. |
-| [`graph-engineering`](./graph-engineering/) | Designs, simplifies, and audits AI-assisted workflow graphs. It selects the smallest useful topology and defines node contracts, state, evidence checks, bounded retries, approval gates, safe execution, and evaluation. |
+| [`graph-engineering`](./graph-engineering/) | Selects, designs, compiles, audits, diagnoses, optimizes, and evolves executable prompt, workflow, and agent graphs with typed state, bounded runtime semantics, security controls, and evaluation. |
 | [`video-to-particle-field`](./video-to-particle-field/) | Reconstructs videos and images as dense live particle or ASCII fields, then preserves particle identity through scroll-controlled disintegration, reassembly, and multi-clip scene transitions. |
 
 Copy a skill folder into the skill location used by your agent runtime, or point the runtime directly at that folder. Invoke the skill by its frontmatter name when explicit skill invocation is supported.

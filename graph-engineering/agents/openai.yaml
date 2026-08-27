@@ -1,4 +1,4 @@
 interface:
   display_name: "Graph Engineering"
-  short_description: "Design and audit reliable AI workflow graphs"
-  default_prompt: "Use $graph-engineering to turn this complex request into the smallest safe, testable workflow."
+  short_description: "Engineer and diagnose executable workflow graphs"
+  default_prompt: "Use $graph-engineering to select, design, compile, audit, diagnose, optimize, or evolve this workflow graph."

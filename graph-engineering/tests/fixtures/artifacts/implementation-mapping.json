@@ -1,0 +1,12 @@
+{
+  "artifact": "ImplementationMapping",
+  "schema_version": "1.0",
+  "mode": "compile",
+  "source_graph": {"id": "example-graph", "version": "1.0.0", "digest": "sha256:example"},
+  "target": {"framework": "LangGraph", "version": "verified-current", "verified_at": "2026-08-27", "official_docs": ["https://docs.langchain.com/oss/python/langgraph/graph-api"]},
+  "semantic_mappings": [{"graphspec_path": "$.nodes", "target_primitive": "StateGraph nodes", "status": "native", "notes": "Map typed functions explicitly."}],
+  "application_owned_controls": ["ApprovalBinding enforcement"],
+  "gaps": [{"severity": "medium", "semantic": "protected approval", "reason": "No native equivalence established.", "mitigation": "Enforce in application code."}],
+  "conformance_tests": ["Extracted node and edge sets equal normalized GraphSpec."],
+  "residual_risks": ["Framework behavior can change after the verification date."]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://graph-engineering.local/schemas/evolution-proposal.schema.json",
+  "title": "EvolutionProposal",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "artifact": {"type": "string", "const": "EvolutionProposal"},
+    "schema_version": {"type": "string", "const": "1.0"},
+    "mode": {"type": "string", "const": "evolve"},
+    "baseline_graph": {"$ref": "#/$defs/graphRef"},
+    "candidate_graph": {"$ref": "#/$defs/graphRef"},
+    "structural_hypothesis": {"type": "string"},
+    "graph_diff": {"type": "array", "items": {"type": "string"}},
+    "risk_expansion": {"type": "array", "items": {"type": "string"}},
+    "state_migration": {"type": "string"},
+    "credit_assignment": {"type": "string"},
+    "structural_ablations": {"type": "array", "items": {"type": "string"}},
+    "held_out_gate": {"type": "array", "items": {"type": "string"}},
+    "budgets": {"type": "array", "items": {"type": "string"}},
+    "rollout": {"type": "string"},
+    "rollback": {"type": "string"},
+    "archival_disposition": {"type": "string"}
+  },
+  "required": ["artifact", "schema_version", "mode", "baseline_graph", "candidate_graph", "structural_hypothesis", "graph_diff", "risk_expansion", "state_migration", "credit_assignment", "structural_ablations", "held_out_gate", "budgets", "rollout", "rollback", "archival_disposition"],
+  "$defs": {
+    "graphRef": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"id": {"type": "string"}, "version": {"type": "string"}, "digest": {"type": "string"}},
+      "required": ["id", "version", "digest"]
+    }
+  }
+}

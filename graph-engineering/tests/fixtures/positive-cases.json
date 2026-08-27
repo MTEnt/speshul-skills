@@ -1,0 +1,15 @@
+[
+  {"id": "direct-chain", "feature": "direct chain"},
+  {"id": "conditional-router", "feature": "conditional router with default"},
+  {"id": "parallel-reducer-join", "feature": "parallel fan-out and reducer-backed join"},
+  {"id": "bounded-evaluator-repair", "feature": "bounded evaluator-repair loop"},
+  {"id": "planner-executor", "feature": "planner-executor graph"},
+  {"id": "runtime-work-queue", "feature": "runtime-expanded work queue"},
+  {"id": "subgraph-composition", "feature": "subgraph composition"},
+  {"id": "agent-handoff", "feature": "agent handoff"},
+  {"id": "human-interrupt-resume", "feature": "human interrupt and resume"},
+  {"id": "protected-external-action", "feature": "protected external action"},
+  {"id": "high-assurance-evidence", "feature": "high-assurance evidence workflow"},
+  {"id": "prompt-only-optimization", "feature": "prompt-only optimization"},
+  {"id": "topology-evolution", "feature": "topology evolution proposal"}
+]

@@ -1,0 +1,18 @@
+{
+  "artifact": "EvolutionProposal",
+  "schema_version": "1.0",
+  "mode": "evolve",
+  "baseline_graph": {"id": "example-graph", "version": "1.0.0", "digest": "sha256:baseline"},
+  "candidate_graph": {"id": "example-graph", "version": "1.1.0-candidate.1", "digest": "sha256:candidate"},
+  "structural_hypothesis": "A bounded verifier branch improves material-claim accuracy enough to justify its cost.",
+  "graph_diff": ["Add verifier node.", "Route verified output to finish."],
+  "risk_expansion": ["One additional model call; no new permissions or side effects."],
+  "state_migration": "Add optional VerificationV1 channel; old checkpoints remain readable.",
+  "credit_assignment": "Compare baseline, full candidate, and candidate without verifier.",
+  "structural_ablations": ["Candidate without verifier node."],
+  "held_out_gate": ["Accuracy delta at least five percentage points.", "Mandatory safety tests pass."],
+  "budgets": ["At most eight candidates.", "At most five trials per case.", "Maximum evaluation cost USD 100."],
+  "rollout": "5 percent canary then staged",
+  "rollback": "Restore 1.0.0 and migrate optional channel out.",
+  "archival_disposition": "Archive rejected candidates with results and rejection reason."
+}

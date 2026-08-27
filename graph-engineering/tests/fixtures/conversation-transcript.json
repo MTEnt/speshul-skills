@@ -1,0 +1,12 @@
+{
+  "conversation_id": "example-agent-chat",
+  "messages": [
+    {"sender": "coordinator", "recipient": "researcher", "content": "Find two sources about the topic."},
+    {"sender": "researcher", "recipient": "coordinator", "content": "I found two candidate sources."},
+    {"sender": "coordinator", "recipient": "reviewer", "content": "Check the researcher's summary."},
+    {"sender": "reviewer", "recipient": "coordinator", "content": "The summary appears plausible."}
+  ],
+  "declared_topology": null,
+  "execution_contracts": null,
+  "version": null
+}

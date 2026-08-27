@@ -1,0 +1,15 @@
+{
+  "artifact": "RunDiagnosis",
+  "schema_version": "1.0",
+  "mode": "diagnose",
+  "run_ref": "run-001",
+  "graph_ref": {"id": "example-graph", "version": "1.0.0", "digest": "sha256:example"},
+  "symptom": "The terminal node did not execute.",
+  "first_invalid_transition": {"node_id": "produce", "attempt_id": "attempt-1", "from_state": "running", "to_state": "succeeded", "contract_violation": "Output failed ResultV1 validation."},
+  "root_cause_evidence": ["The trace records a missing required field."],
+  "propagation_path": ["produce", "finish"],
+  "failure_frontier": ["result", "finish"],
+  "recovery_status": "contained",
+  "unknowns": ["The raw provider response was not retained."],
+  "next_diagnostic_action": "Inspect the redacted provider response or reproduce in an isolated trial."
+}

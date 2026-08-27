@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://graph-engineering.local/schemas/graph-decision.schema.json",
+  "title": "GraphDecision",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "artifact": {"type": "string", "const": "GraphDecision"},
+    "schema_version": {"type": "string", "const": "1.0"},
+    "mode": {"type": "string", "const": "select"},
+    "objective": {"type": "string"},
+    "decision": {"type": "string", "enum": ["no_graph", "graph", "human_led", "out_of_scope", "no_graph_artifact"]},
+    "selected_approach": {"type": "string", "enum": ["deterministic_code", "direct_call", "bounded_loop", "graph", "human_led", "not_applicable"]},
+    "rationale": {"type": "array", "items": {"type": "string"}},
+    "alternatives_considered": {"type": "array", "items": {"type": "string"}},
+    "required_controls": {"type": "array", "items": {"type": "string"}},
+    "bounds": {"type": "array", "items": {"type": "string"}},
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "unknowns": {"type": "array", "items": {"type": "string"}}
+  },
+  "required": ["artifact", "schema_version", "mode", "objective", "decision", "selected_approach", "rationale", "alternatives_considered", "required_controls", "bounds", "evidence", "unknowns"]
+}

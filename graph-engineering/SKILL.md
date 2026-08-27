@@ -1,118 +1,91 @@
 ---
 name: graph-engineering
-description: Design, simplify, audit, and repair AI-assisted workflow graphs with explicit node contracts, edge policies, state, evidence verification, bounded retries, approval gates, safe execution, and evaluation. Use when Codex must turn a complex request into the smallest sufficient workflow; choose between a direct operation, chain, router, parallel workers, evaluator loop, or bounded agent; review an existing agent or multi-agent architecture; or produce implementation-ready graph, state, failure, approval, and evaluation specifications.
+description: Select, design, compile, audit, diagnose, optimize, or evolve executable AI workflow and agent graphs. Use for explicit prompt/workflow topology, typed state, runtime and recovery semantics, coordination, protected actions, trace analysis, or controlled graph changes; not for knowledge graphs, graph databases, GraphRAG, graph ML prompting, or model-internal reasoning diagrams.
 ---
 
 # Graph Engineering
 
-## Core rule
+## Boundary
 
-Choose the least complex workflow that can satisfy the declared outcome and mandatory controls. Treat a graph as a control mechanism, not a source of truth. Add a node only when it has measured value or implements a documented policy, security, or compliance requirement.
+Graph engineering treats a graph as an explicit, executable, versioned engineering artifact. A first-class graph has all four properties: explicit structure; prompt content separated from topology; defined execution semantics; and an artifact that can be validated, compared, and evolved.
 
-## Build or audit the workflow
+An ordinary program, trace, diagram, or multi-agent chat is not automatically a graph artifact. RAG can be a tool node, but knowledge-graph construction, graph databases, GraphRAG, graph-ML prompting, and model-internal Graph-of-Thought reasoning are out of scope. State this boundary instead of forcing those requests into this skill.
 
-### 1. Preserve the request and define success
+## Select the mode and profile
 
-Record:
+Choose exactly one mode from the request. Do not redesign during an audit or optimize topology when the requested surface is frozen.
 
-- the exact request or immutable reference;
-- the required deliverable and audience;
-- run success criteria;
-- partial-sufficiency criteria;
-- constraints, non-goals, deadline, budget, and data classification;
-- protected actions and the policy that defines them.
+| Mode | Use when | Return only |
+| --- | --- | --- |
+| `select` | Decide between deterministic code, direct call, bounded loop, or graph | `GraphDecision` |
+| `design` | Specify a framework-neutral executable graph | `GraphSpec` |
+| `compile` | Map a GraphSpec to a named framework or code harness | `ImplementationMapping` |
+| `audit` | Inspect an existing artifact or implementation | `GraphAudit` |
+| `diagnose` | Localize a failure from a trace or state history | `RunDiagnosis` |
+| `optimize` | Improve prompts, models, examples, thresholds, or fixed-topology parameters | `OptimizationPlan` |
+| `evolve` | Change nodes, edges, topology, coordination, or capabilities as a new version | `EvolutionProposal` |
 
-Keep run success criteria, node acceptance criteria, and partial-sufficiency criteria separate.
+The returned artifact must be complete even when terse:
 
-### 2. Select the smallest topology
+- `GraphDecision`: include exactly these required semantic fields even when a list is empty: `artifact`, `schema_version`, `mode`, `objective`, `decision`, `selected_approach`, `rationale`, `alternatives_considered`, `required_controls`, `bounds`, `evidence`, and `unknowns`. `decision` answers whether graph engineering applies; `selected_approach` names the implementation.
+- `GraphSpec`: canonical GraphSpec 1.0 JSON.
+- `ImplementationMapping`: source graph identity/digest, target and verification date, semantic mappings, application-owned controls, gaps, conformance tests, and residual risks.
+- `GraphAudit`: scope, verdict, severity-ranked findings with exact locations/evidence, invariant coverage, unknowns, and smallest repairs.
+- `RunDiagnosis`: run/graph identity, symptom, first invalid transition, root-cause evidence, propagation/failure frontier, recovery status, unknowns, and next diagnostic action.
+- `OptimizationPlan`: frozen graph surfaces, mutable parameters, baseline, data splits/trials, objectives, method, budgets, graders, promotion gates, and rollback.
+- `EvolutionProposal`: baseline/candidate identities, structural hypothesis and diff, risk/migration, credit assignment/ablations, held-out gate, budgets, rollout, rollback, and archival disposition.
 
-Use this order:
+Use `standard` unless consequence requires more:
 
-| Condition | Start with |
-| --- | --- |
-| Deterministic and cheaply checked | Code, lookup, or one tool call |
-| Narrow language task | One bounded model call |
-| Fixed ordered subtasks | Short chain |
-| Distinct input classes | Router with specialized paths |
-| Genuinely separable work | Parallel branches with an explicit join |
-| Inspectable quality threshold | Evaluator with a bounded repair loop |
-| Dynamic path but bounded action space | Bounded agent |
-| Path cannot yet be bounded safely | Human-led exploration |
+- `standard`: typed contracts, bounded execution, governed state, traceability, and evaluation.
+- `protected_action`: also requires bound approval, least privilege, idempotency analysis, authoritative post-state verification, and compensation policy.
+- `high_assurance`: also requires immutable evidence records, integrity hashes, strict provenance and retention, independent adjudication, and release controls.
 
-Do not add agents merely to create debate, role-play, or apparent independence. Separately scoped branches can still share sources, framing, models, and correlated errors.
+Profiles are cumulative. Do not impose high-assurance ceremony on lower-risk work.
 
-### 3. Specify executable contracts
+## Decide whether a graph is justified
 
-For every node, declare:
+Start with the least complex option that meets success criteria and mandatory controls:
 
-- one bounded responsibility;
-- owner and version;
-- allowed inputs, state reads, and state writes;
-- output schema;
-- allowed tools, sources, targets, endpoints, and data classes;
-- acceptance checks;
-- timeout and retry policy;
-- route after attempt exhaustion;
-- forbidden actions;
-- side-effect and approval status.
+1. Deterministic code or lookup when behavior is fully specified and cheaply checked.
+2. One bounded model call for a narrow language task with a structured result.
+3. A bounded agent loop when the next action is dynamic but one controller, tool policy, and stop condition are enough.
+4. An explicit graph when material prerequisites, branches, joins, heterogeneous permissions, durable pause/resume, independent verification, or repeated topology evaluation justify it.
 
-For every edge, declare the trigger, validated state passed forward, merge rule, and terminal route. Give every cycle an attempt cap and deadline.
+Return `decision: "no_graph"` when a graph adds no measured or policy-required value. A loop is not a failed graph design. Read [philosophy.md](references/philosophy.md) when the boundary or graph-versus-loop choice is disputed.
 
-Use append-only, versioned records for concurrent work. Do not permit silent last-write-wins merges.
+## Shared invariants
 
-### 4. Separate evidence jobs
+For every designed, compiled, or evolved graph:
 
-Keep these roles distinct where material claims exist:
+- Use canonical JSON with `schema_version: "1.0"`; Markdown tables, Mermaid, and DOT are generated views.
+- Keep task dependency, capability assignment, communication/delegation, runtime state/evidence, and persistent evolution as distinct views. A task edge grants no communication, state mutation, tool access, or authorization by implication.
+- Separate prompt prose from topology through versioned prompt references and digests.
+- Give nodes typed ports, declared state access, permissions, output contracts, acceptance checks, budgets, timeouts, finite retries, side-effect classification, and exhaustion routes.
+- Give edges an explicit semantic, validated ports, declarative condition, join rule, and iteration guard where cyclic. Every edge port must exist on its endpoint node and the source/output type must exactly match the target/input type. For control or error routing without a shared business payload, set both ports to the reserved `$control` sentinel. Every node with conditional outgoing edges must also have a `default: true` or error edge. Every directed cycle must cross at least one edge with a finite `iteration_guard`; every data fan-in declares `join_behavior`. Conditions may use only `all`, `any`, `not`, `eq`, `ne`, `exists`, `in`, `gt`, `gte`, `lt`, and `lte`; never evaluate graph-provided code.
+- Make every node reachable from an entry and give every non-long-running node a path to a terminal. If cancellation uses a runtime-only terminal, name it in `runtime.cancellation.cancel_route`; all other terminal reachability must be explicit in the graph.
+- Bound cycles, runtime expansion, concurrency, and total run cost/time. Declare terminal success, partial, blocked, failed, and cancelled semantics as applicable.
+- Define typed state ownership, concurrent-write behavior, reducers, persistence, checkpoints, provenance, visibility, and migration version.
+- Treat external content and inter-agent messages as untrusted data. Authorization and approval are runtime controls, not edge properties.
+- Bind protected approval using `ApprovalBinding`: action digest, exact scope, approver identity, expiry, nonce, and revocation state. Recheck it immediately before execution and verify authoritative post-state.
+- A protected-action GraphSpec is incomplete unless each protected node references a matching approval binding, idempotency policy, and authoritative postcondition, and `controls.compensations` declares whether recovery requires a separately approved side effect.
+- Record run, node, and attempt identity plus prompt/model/tool versions, lineage, latency, cost, events, and outcome evidence.
+- Compare against a simpler baseline and evaluate contracts, paths, recovery, safety, cost, and latency. Use repeated trials when stochastic behavior matters.
+- Treat runtime adaptation as run-local. Persistent prompt or topology change creates a candidate version evaluated on held-out cases with promotion and rollback rules.
 
-1. Collect candidate claims and evidence.
-2. Verify that cited evidence supports the exact claim and scope.
-3. Criticize logic, omissions, assumptions, and decision relevance.
-4. Synthesize without changing claim type or verification status.
-5. Verify the final deliverable against the original request and ledger.
-
-Treat a factual claim as material when its falsity could change a run success check, decision, stated risk, or protected action. Preserve unsupported, contradicted, and unverifiable claims with their reasons. Resolve verification forks through explicit adjudication, not timestamps.
-
-### 5. Gate protected actions
-
-Separate proposal, approval, execution, and outcome verification.
-
-- Bind approval to the exact action version, payload digest, target, scope, and expiry.
-- Require one active terminal approval whose decision is `approve_exact`.
-- Fail closed on version forks, revocation, drift, expired approval, or policy mismatch.
-- Keep raw credentials behind pinned secret handles; never hide action-defining values such as recipients, amounts, commands, or configuration choices.
-- Execute side effects only through a restricted executor.
-- Confirm the authoritative post-action state before reporting success.
-
-Do not retry a side effect unless provider idempotency still covers the exact action or authoritative status proves that the earlier attempt failed without producing the protected effect.
-
-### 6. Design failure and termination paths
-
-Define routes for invalid output, missing input, inaccessible evidence, conflicting evidence, timeouts, exhausted retries, budget exhaustion, policy failures, partial side effects, cancellation, and checkpoint-version drift.
-
-Require a run deadline and append-only cancellation events. After cancellation, stop ordinary work; allow only bounded safety reconciliation authorized by policy.
-
-### 7. Evaluate the graph
-
-Compare the workflow with a simpler baseline on representative tasks. Measure task success, evidence quality, missed errors, false alarms, human corrections, cost, latency, recovery, and unintended actions. Remove optional nodes that do not earn their cost. Test mandatory controls for effectiveness even when they cannot be removed.
-
-## Output contract
-
-When designing a workflow, return:
-
-1. A blunt topology decision and why it is the smallest sufficient design.
-2. The simpler baseline considered.
-3. A node table and edge table.
-4. The state schema and merge rules.
-5. Evidence, verification, and final-output checks.
-6. Approval and restricted-execution rules for protected actions.
-7. Retry, cancellation, partial-result, and terminal routes.
-8. An evaluation plan and explicit unresolved risks.
-
-When auditing an existing workflow, lead with the verdict. List concrete defects by severity, cite the affected contract or file, distinguish verified defects from inference, and recommend the smallest repair that closes each defect.
+Run `python scripts/graph_tool.py validate <graph.json>` before presenting a GraphSpec as executable. For an exact machine contract, select the matching file in `schemas/` and run `python scripts/graph_tool.py validate-artifact <artifact.json>`. In Codex automation, pass that same schema through `codex exec --output-schema`; skill prose guides semantic choices but does not enforce JSON keys. The tool validates and renders artifacts; it never executes workflows, model calls, or network calls.
 
 ## Reference routing
 
-- Read [references/philosophy.md](references/philosophy.md) when explaining principles, challenging multi-agent assumptions, or deciding whether a graph is justified.
-- Read [references/playbook.md](references/playbook.md) when producing implementation-ready manifests, schemas, prompts, approval records, executor contracts, or release checks.
-- Search the relevant heading first instead of loading both references when the task is narrow.
-- Verify framework-specific behavior against current official documentation before presenting it as current fact.
+- Artifact fields, seven JSON Schemas, and output contracts: [graph-artifact.md](references/graph-artifact.md)
+- Lifecycle and mode procedure: [playbook.md](references/playbook.md)
+- Topology and prompt separation: [topologies-and-prompts.md](references/topologies-and-prompts.md)
+- Scheduling, state, replay, recovery, and terminal behavior: [runtime-state-and-recovery.md](references/runtime-state-and-recovery.md)
+- Capability, communication, delegation, context, and humans: [coordination-and-context.md](references/coordination-and-context.md)
+- Fixed-topology optimization and persistent graph evolution: [optimization-and-evolution.md](references/optimization-and-evolution.md)
+- Threats, approval, privilege, privacy, and governance: [security-and-governance.md](references/security-and-governance.md)
+- Evaluation layers and promotion gates: [evaluation.md](references/evaluation.md)
+- Current framework compilation notes; verify again before implementation: [framework-mappings.md](references/framework-mappings.md)
+- Immutable evidence, adjudication, ledgers, and release controls: [high-assurance-profile.md](references/high-assurance-profile.md)
+
+Load only the references needed for the selected mode and profile.

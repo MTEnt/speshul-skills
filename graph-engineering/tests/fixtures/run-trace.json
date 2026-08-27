@@ -1,0 +1,16 @@
+{
+  "run_id": "run-router-017",
+  "graph": {"id": "support-router", "version": "1.2.0"},
+  "symptom": "The run reached its deadline without selecting a terminal route.",
+  "contracts": {
+    "route_output": {"type": "RouteV1", "allowed": ["billing", "technical"]},
+    "routing": "billing and technical conditions only; no default route"
+  },
+  "events": [
+    {"sequence": 1, "node_id": "classify", "attempt_id": "a1", "transition": "running->succeeded", "output": {"route": "account"}},
+    {"sequence": 2, "node_id": "router", "attempt_id": "a1", "transition": "pending->ready", "input": {"route": "account"}},
+    {"sequence": 3, "node_id": "router", "attempt_id": "a1", "transition": "ready->failed", "error": "No condition matched and no default route exists."},
+    {"sequence": 4, "node_id": "finish", "attempt_id": null, "transition": "pending->pending"},
+    {"sequence": 5, "node_id": "runtime", "attempt_id": null, "transition": "running->failed", "error": "deadline_exhausted"}
+  ]
+}

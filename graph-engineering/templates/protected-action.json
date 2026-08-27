@@ -1,0 +1,21 @@
+{
+  "artifact_type": "ProtectedActionContract",
+  "schema_version": "1.0",
+  "action": {
+    "id": "action-id",
+    "canonical_payload_ref": "artifacts/action.json",
+    "digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "scope": {"operation": "deploy", "target": "service-id", "environment": "production"}
+  },
+  "approval_binding": {
+    "action_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "scope": {"operation": "deploy", "target": "service-id", "environment": "production"},
+    "approver_identity": "identity-ref",
+    "expires_at": "2030-01-01T00:00:00Z",
+    "nonce": "single-use-nonce",
+    "revoked": false
+  },
+  "executor": {"identity": "restricted-executor", "permissions": ["deploy:service-id"], "idempotency_ref": "deploy-key-policy"},
+  "postcondition": {"id": "deployment-state", "authoritative_source": "deployment-control-plane", "expected": "version digest is active"},
+  "compensation": {"requires_new_approval": true, "proposal": "rollback to prior verified digest"}
+}

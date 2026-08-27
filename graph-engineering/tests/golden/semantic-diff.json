@@ -1,0 +1,29 @@
+{
+  "breaking": true,
+  "breaking_reasons": [
+    "node produce ports changed"
+  ],
+  "categories": [
+    "assurance",
+    "edge",
+    "evaluation",
+    "model",
+    "node",
+    "permission",
+    "prompt",
+    "state"
+  ],
+  "new": {
+    "id": "example-graph",
+    "version": "2.0.0"
+  },
+  "old": {
+    "id": "example-graph",
+    "version": "1.0.0"
+  },
+  "risk_expanding": true,
+  "risk_reasons": [
+    "assurance downgraded: high_assurance -> standard",
+    "node produce added permissions: ['network:example.com']"
+  ]
+}

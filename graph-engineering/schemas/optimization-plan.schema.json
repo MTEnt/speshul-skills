@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://graph-engineering.local/schemas/optimization-plan.schema.json",
+  "title": "OptimizationPlan",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "artifact": {"type": "string", "const": "OptimizationPlan"},
+    "schema_version": {"type": "string", "const": "1.0"},
+    "mode": {"type": "string", "const": "optimize"},
+    "graph_ref": {"$ref": "#/$defs/graphRef"},
+    "frozen_surfaces": {"type": "array", "items": {"type": "string"}},
+    "mutable_parameters": {"type": "array", "items": {"type": "string"}},
+    "baseline": {"type": "string"},
+    "data_splits": {"$ref": "#/$defs/dataSplits"},
+    "repeated_trials": {"$ref": "#/$defs/trials"},
+    "objectives": {"type": "array", "items": {"type": "string"}},
+    "method": {"type": "string"},
+    "budgets": {"type": "array", "items": {"type": "string"}},
+    "graders": {"type": "array", "items": {"type": "string"}},
+    "promotion_gates": {"type": "array", "items": {"type": "string"}},
+    "rollback": {"type": "string"}
+  },
+  "required": ["artifact", "schema_version", "mode", "graph_ref", "frozen_surfaces", "mutable_parameters", "baseline", "data_splits", "repeated_trials", "objectives", "method", "budgets", "graders", "promotion_gates", "rollback"],
+  "$defs": {
+    "graphRef": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"id": {"type": "string"}, "version": {"type": "string"}, "digest": {"type": "string"}},
+      "required": ["id", "version", "digest"]
+    },
+    "dataSplits": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"development": {"type": "string"}, "held_out": {"type": "string"}, "regression": {"type": "string"}},
+      "required": ["development", "held_out", "regression"]
+    },
+    "trials": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"count": {"type": "integer", "minimum": 1}, "randomization": {"type": "string"}},
+      "required": ["count", "randomization"]
+    }
+  }
+}

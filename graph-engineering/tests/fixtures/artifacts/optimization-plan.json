@@ -1,0 +1,17 @@
+{
+  "artifact": "OptimizationPlan",
+  "schema_version": "1.0",
+  "mode": "optimize",
+  "graph_ref": {"id": "example-graph", "version": "1.0.0", "digest": "sha256:example"},
+  "frozen_surfaces": ["topology", "nodes", "edges", "state", "permissions", "assurance_profile"],
+  "mutable_parameters": ["prompt:produce-prompt.instructions", "model:produce"],
+  "baseline": "Graph version 1.0.0 with prompt version 1.0.0.",
+  "data_splits": {"development": "data/dev.jsonl", "held_out": "data/held-out.jsonl", "regression": "data/regression.jsonl"},
+  "repeated_trials": {"count": 3, "randomization": "Record seed and trial order."},
+  "objectives": ["Increase valid ResultV1 rate without increasing safety failures."],
+  "method": "Evaluate isolated prompt and model candidates against the development split.",
+  "budgets": ["At most eight candidates.", "At most 100 USD."],
+  "graders": ["schema", "outcome", "safety", "latency", "cost"],
+  "promotion_gates": ["No mandatory safety regression.", "Held-out success improves by at least five percentage points."],
+  "rollback": "Restore prompt and model references from graph version 1.0.0."
+}

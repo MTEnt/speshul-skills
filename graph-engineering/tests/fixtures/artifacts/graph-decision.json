@@ -1,0 +1,14 @@
+{
+  "artifact": "GraphDecision",
+  "schema_version": "1.0",
+  "mode": "select",
+  "objective": "Capitalize the supplied phrase.",
+  "decision": "no_graph",
+  "selected_approach": "deterministic_code",
+  "rationale": ["The transformation is deterministic and requires no branching or persistent state."],
+  "alternatives_considered": ["A direct model call would add cost without a control benefit.", "A graph would add unnecessary ceremony."],
+  "required_controls": ["Preserve the supplied text except for capitalization."],
+  "bounds": ["One deterministic transformation."],
+  "evidence": ["The requested operation has one fixed input and one mechanically checkable output."],
+  "unknowns": []
+}
