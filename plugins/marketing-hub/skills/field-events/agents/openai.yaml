@@ -1,0 +1,4 @@
+interface:
+  display_name: "Field Events"
+  short_description: "Plan, run, sponsor, attend, speak at, and measure webinars, conferences,..."
+  default_prompt: "Use $field-events to complete this request with verified evidence and a usable deliverable."

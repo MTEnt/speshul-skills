@@ -1,0 +1,4 @@
+interface:
+  display_name: "Creator Partnerships"
+  short_description: "Research, vet, recruit, brief, contract, operate, and measure work with..."
+  default_prompt: "Use $creator-partnerships to complete this request with verified evidence and a usable deliverable."

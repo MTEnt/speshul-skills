@@ -1,4 +1,0 @@
-interface:
-  display_name: "Schema"
-  short_description: "Plan and execute Schema marketing work"
-  default_prompt: "Use $schema to complete this Schema request with verified evidence and a usable deliverable."

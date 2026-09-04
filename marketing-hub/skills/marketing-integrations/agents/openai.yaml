@@ -1,4 +1,0 @@
-interface:
-  display_name: "Marketing Integrations"
-  short_description: "Connect marketing tools through safe current APIs"
-  default_prompt: "Use $marketing-integrations to select or connect the right marketing tool with current documentation and explicit mutation approval."

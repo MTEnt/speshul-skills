@@ -2,96 +2,91 @@
 
 **Odd name. Serious tools for AI-assisted work.**
 
-Speshul Skills is a maintained collection of reusable agent skills, installable plugins, focused MCP tools, and larger skill hubs. The packages here are built for real workflows: each one should make agent behavior more reliable, bounded, inspectable, or repeatable.
+Speshul Skills is a maintained collection of agent plugins for Claude Code and Codex. Every package here is built to make agent behavior more reliable, bounded, inspectable, or repeatable, and every claim of that kind is backed by something you can run: a hook, a validator, a test, or an eval.
 
-The repository supports more than one agent runtime. Standalone skills use `SKILL.md` as a portable entry point. Codex plugins can bundle skills with lifecycle hooks. MCP servers document their external access, permissions, and side effects inside their own package.
+## Install
 
-## Repository standards
+Add the marketplace once, then install what you need.
 
-Packages in this repository should have:
+Claude Code:
 
-- a clear purpose and trigger
-- self-contained instructions, dependencies, and installation notes
-- explicit permissions, side effects, failure behavior, and safety limits
-- deterministic scripts or tests when prompt instructions alone are not enough
-- verification claims limited to checks that were actually run
-- no committed credentials, private data, generated run artifacts, or machine-specific configuration
+```text
+/plugin marketplace add MTEnt/speshul-skills
+/plugin install cleancoding@speshul-skills
+```
 
-Not every package needs the same structure. It does need to be understandable and auditable without relying on undocumented context.
-
-## Installable plugins
-
-Plugins combine agent instructions with runtime components such as lifecycle hooks.
-
-| Plugin | What it does |
-| --- | --- |
-| [`anti-amnesia`](./plugins/anti-amnesia/) | Answers questions about immediately preceding work from the existing conversation and tool record without needless reinspection, while preserving fresh verification for current-state questions. |
-| [`anti-loop`](./plugins/anti-loop/) | Keeps coding work tied to the requested outcome, warns before permanent control surfaces expand, and stops repeated materially similar failed attempts. |
-| [`temporal-tasks`](./plugins/temporal-tasks/) | Estimates substantive task difficulty and active-work budgets, then uses privacy-preserving lifecycle signals to trigger evidence-aware reassessment. |
-
-Add this repository as a Codex plugin marketplace once:
+Codex:
 
 ```text
 codex plugin marketplace add MTEnt/speshul-skills
+codex plugin add cleancoding@speshul-skills
 ```
 
-Then install the plugin you want:
+Every plugin installs the same way; substitute the name from the tables below. Plugins that ship lifecycle hooks say so in their README; review a hook before trusting it (`/hooks` in Codex). Start a new conversation after installing.
 
-```text
-codex plugin add anti-amnesia@speshul-skills
-codex plugin add anti-loop@speshul-skills
-codex plugin add temporal-tasks@speshul-skills
-```
+## Packages
 
-Start a new conversation after installation. These plugins include lifecycle hooks, so open `/hooks`, inspect each installed definition, and trust only the hooks you intend to run. Each plugin README contains its own installation, behavior, and verification details.
+| Plugin | Status | What it does | Enforcement |
+| --- | --- | --- | --- |
+| [`cleancoding`](./plugins/cleancoding/) | stable | Evidence-backed engineering: task contracts, root-cause fixes, DRY/KISS/YAGNI, the shared three-loop stop rule, receipt-based completion. | `Stop` hook requires a receipt after file changes; behavior eval suite with fixture repos. |
+| [`anti-loop`](./plugins/anti-loop/) | stable | Keeps work scoped to the requested outcome and stops repeated failed attempts. | `PreToolUse` advisory on control files; stateful `PostToolUse` loop counter that enforces the stop rule. |
+| [`anti-amnesia`](./plugins/anti-amnesia/) | stable | Answers "what did you just do" from the record and closes work with the shared receipt. | `SessionStart` policy hook. |
+| [`temporal-tasks`](./plugins/temporal-tasks/) | stable | Difficulty scores, active-work budgets, and deterministic elapsed-time and repeated-call signals. | Four lifecycle hooks with SQLite state; tests with injected clocks. |
+| [`untrusted-content`](./plugins/untrusted-content/) | stable | Treats fetched, file, tool, and agent content as data, never as instructions; reports injection attempts. | Prose only, by design. |
+| [`skill-authoring`](./plugins/skill-authoring/) | stable | Writes and audits skills and plugins to this repository's standards. | `skill_lint.py`, the same linter the repository CI runs. |
+| [`graph-engineering`](./plugins/graph-engineering/) | stable | Selects, designs, compiles, audits, diagnoses, optimizes, and evolves executable workflow graphs. | Seven JSON Schemas, deterministic validator, unit tests, behavior suite with recorded results. |
+| [`marketing-hub`](./plugins/marketing-hub/) | stable | One orchestrator and 43 specialist marketing skills organized by the decision each answers, sharing a truth file and deliverable contracts. | Description-overlap check, routing scenarios, script tests. |
+| [`facebook-content-studio`](./plugins/facebook-content-studio/) | experimental | Plans, packages, and approval-gates Facebook Page content with routing to Higgsfield media workflows and the Pages MCP. | Package and post-package validators in CI. |
+| [`video-to-particle-field`](./plugins/video-to-particle-field/) | experimental | Reconstructs video and images as live particle or ASCII fields with stable particle identity and scroll-driven transitions. | Media inspection script; React asset. |
 
-## Standalone skills
-
-| Skill | What it does |
-| --- | --- |
-| [`cleancoding`](./cleancoding/) | Enforces root-cause fixes, a three-loop stop rule, explicit acceptance contracts, safe boundaries and state, authoritative documentation, measured performance, deployment recovery, and DRY, KISS, and YAGNI. |
-| [`facebook-content-studio`](./facebook-content-studio/) | Researches, plans, continuity-checks, packages, and approval-gates Facebook content, with explicit routing to Higgsfield media workflows and the companion Page publisher. |
-| [`graph-engineering`](./graph-engineering/) | Selects, designs, compiles, audits, diagnoses, optimizes, and evolves executable prompt, workflow, and agent graphs with typed state, bounded runtime semantics, security controls, and evaluation. |
-| [`video-to-particle-field`](./video-to-particle-field/) | Reconstructs videos and images as dense live particle or ASCII fields, then preserves particle identity through scroll-controlled disintegration, reassembly, and multi-clip scene transitions. |
-
-Copy a skill folder into the skill location used by your agent runtime, or point the runtime directly at that folder. Invoke the skill by its frontmatter name when explicit skill invocation is supported.
-
-## Skill hubs
-
-| Hub | What it contains |
-| --- | --- |
-| [`marketing-hub`](./marketing-hub/) | A separate collection of 64 original marketing skills: one orchestrator, domain routers, specialist skills, and provider-neutral integration guidance. |
-
-## MCP tools
+MCP server, installed separately:
 
 | Tool | What it does |
 | --- | --- |
-| [`facebook-pages-mcp`](./facebook-pages-mcp/) | Provides a local stdio MCP server for safely previewing, publishing, scheduling, and verifying allowlisted Facebook Page posts. |
+| [`facebook-pages-mcp`](./facebook-pages-mcp/) | Local stdio MCP server for safely previewing, publishing, scheduling, and verifying allowlisted Facebook Page posts. Own README, tests, CI, and security policy. |
 
-MCP tool folders include their own installation, configuration, security, and verification instructions. They remain independently installable and do not rely on sibling skills at runtime.
+## Shared contracts
 
-## Typical skill structure
+Rules that more than one package enforces live once under [`contracts/`](./contracts/) and are embedded verbatim, between marker comments, by each package that uses them. The repository validator fails when an embedded copy drifts.
+
+| Contract | What it fixes | Used by |
+| --- | --- | --- |
+| [Task contract](./contracts/task-contract.schema.json) | One field set for the acceptance contract, task anchor, and budget line. | `cleancoding`, `anti-loop`, `temporal-tasks` |
+| [Repeated-attempt stop rule](./contracts/loop-limit.md) | One definition of a loop and one `LOOP LIMIT REACHED` receipt. | `cleancoding`, `anti-loop` (hook-enforced) |
+| [Handoff receipt](./contracts/handoff-receipt.md) | One `RECEIPT` block that closes work and that later recall reads from. | `cleancoding` (hook-enforced), `anti-amnesia` |
+
+## Repository standards
+
+Every package has:
+
+- a `SKILL.md` under 10 KB with a description written as a routing key, and references loaded on demand;
+- manifests for both runtimes with the same name and version, a README, and a dated CHANGELOG;
+- explicit permissions, side effects, failure behavior, and safety limits;
+- deterministic scripts or hooks where prompt text alone would not hold, and tests for them;
+- no committed credentials, private data, generated artifacts, or machine-specific configuration.
+
+The full standard, with layout and cross-runtime hook conventions, is in [`skill-authoring`](./plugins/skill-authoring/skills/skill-authoring/references/package-standards.md).
+
+## Verify locally
 
 ```text
-skill-name/
-├── SKILL.md              # Trigger description and core operating instructions
-├── agents/
-│   └── openai.yaml       # Optional runtime-specific metadata
-├── references/           # Detailed material loaded only when needed
-├── scripts/              # Optional deterministic utilities
-└── assets/               # Optional reusable output resources
+python scripts/validate_repo.py --strict-overlap
+python -m unittest discover -s scripts/tests
+for p in plugins/*/; do [ -d "$p/tests" ] && (cd "$p" && python -m unittest discover -s tests); done
 ```
 
-Keep the entry point concise. Put detailed procedures and conditional material in references, and include scripts only when deterministic execution materially improves reliability.
+CI runs the same commands on Linux and Windows for each pull request, plus the package-specific suites listed in [`.github/workflows/ci.yml`](./.github/workflows/ci.yml).
 
 ## Contributing
 
-- Use lowercase, hyphen-separated package names.
-- Give each skill a valid `SKILL.md` with `name` and `description` frontmatter.
-- Keep packages self-contained and avoid undocumented dependencies on sibling folders.
+- Use lowercase, hyphen-separated package and skill names; the skill name equals its directory name.
+- Keep packages self-contained; the only cross-package dependency allowed is a verbatim contract embed.
 - Document every external side effect and deliberately unsupported operation.
 - Test executable code without calling live production APIs.
-- Validate local links and the packed or installed artifact when packaging can change behavior.
-- Never commit credentials, tokens, private data, or machine-specific state.
+- Run the validator and the affected test suites before opening a pull request.
 
 Before using any package with sensitive data, credentials, external messaging, destructive operations, or production systems, inspect its instructions and executable components yourself.
+
+## License
+
+MIT. See [LICENSE](./LICENSE).

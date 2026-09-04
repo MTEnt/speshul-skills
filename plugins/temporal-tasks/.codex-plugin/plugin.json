@@ -1,10 +1,13 @@
 {
   "name": "temporal-tasks",
-  "version": "0.1.0",
-  "description": "Estimate substantive task budgets and reassess them against deterministic elapsed-time signals.",
+  "version": "0.2.0",
+  "description": "Estimates task difficulty and active-work budgets, then emits deterministic elapsed-time and repeated-call signals from lifecycle hooks.",
   "author": {
     "name": "MTEnt"
   },
+  "homepage": "https://github.com/MTEnt/speshul-skills",
+  "repository": "https://github.com/MTEnt/speshul-skills",
+  "license": "MIT",
   "keywords": [
     "task-budgeting",
     "difficulty-scoring",
@@ -14,15 +17,12 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Temporal Tasks",
-    "shortDescription": "Budget tasks and reassess elapsed work.",
-    "longDescription": "Temporal Tasks estimates substantive work with a five-factor difficulty score and uses privacy-preserving lifecycle hooks to surface elapsed-time and repeated-call reassessment signals.",
+    "shortDescription": "Estimates task difficulty and active-work budgets, then emits deterministic elap",
+    "longDescription": "Estimates task difficulty and active-work budgets, then emits deterministic elapsed-time and repeated-call signals from lifecycle hooks.",
     "developerName": "MTEnt",
     "category": "Productivity",
     "capabilities": [
       "Interactive"
-    ],
-    "defaultPrompt": [
-      "Estimate this task's active-work budget and reassess when evidence or elapsed time invalidates the route."
     ]
   }
 }

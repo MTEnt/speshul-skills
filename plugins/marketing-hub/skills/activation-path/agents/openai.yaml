@@ -1,0 +1,4 @@
+interface:
+  display_name: "Activation Path"
+  short_description: "Design or repair the path from signup to experienced value: registration and..."
+  default_prompt: "Use $activation-path to complete this request with verified evidence and a usable deliverable."

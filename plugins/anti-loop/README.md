@@ -1,59 +1,45 @@
 # Anti Loop
 
-Anti Loop is an installable Codex plugin that keeps implementation work tied to the requested outcome and warns before edits expand permanent agent or workflow controls.
+Anti Loop keeps implementation work tied to the requested outcome, warns before edits expand permanent agent or workflow controls, and enforces the repository's shared three-loop stop rule.
 
-The first release is deliberately narrow:
+## What it does
 
-- The skill tells the agent to derive a task-local outcome, acceptance check, non-goals, expected change surface, and stop condition.
-- A `SessionStart` hook injects a concise scope reminder.
-- A `PreToolUse` hook shows a visible advisory, but never blocks, when an edit touches persistent agent or workflow control files.
-- When the three-attempt stop rule fires, the skill requires a short user-facing receipt with the reason, evidence, and next step.
-- The hook is stateless and uses only the Python standard library. It does not read transcripts, source files, Git state, or the network.
+- The skill tells the agent to derive a task contract (outcome, acceptance checks, non-goals, surface, stop condition), make the smallest sufficient change, and stop when acceptance is met.
+- `hooks/anti_loop.py` (stateless) injects a concise scope reminder at `SessionStart` and shows a visible, non-blocking advisory at `PreToolUse` when an edit touches persistent control files such as `AGENTS.md`, `CLAUDE.md`, `SKILL.md`, `hooks.json`, `plugin.json`, `marketplace.json`, `.codex/config.toml`, or `.github/workflows/*`.
+- `hooks/loop_limit.py` (stateful) watches `PostToolUse`. When the same verification command fails again after a corrective change, it counts one loop. The second loop gets a reminder to change the hypothesis; the third injects the `LOOP LIMIT REACHED` receipt requirement. A passing run resets the count. Repeated failures with no change in between count once.
+- The stop rule text in `skills/anti-loop/SKILL.md` is a verbatim copy of `contracts/loop-limit.md`, checked by the repository validator, so `cleancoding` and Anti Loop never disagree about what a loop is.
 
 Package files:
 
-- `.codex-plugin/plugin.json` — plugin metadata.
+- `.claude-plugin/plugin.json` and `.codex-plugin/plugin.json` — manifests for both runtimes.
 - `skills/anti-loop/SKILL.md` — agent behavior.
-- `hooks/hooks.json` and `hooks/anti_loop.py` — lifecycle configuration and advisory logic.
+- `hooks/hooks.json`, `hooks/anti_loop.py`, `hooks/loop_limit.py` — lifecycle configuration and logic.
 - `tests/` — package and hook behavior tests.
-
-Research files:
-
-- `report-source.md` — anonymized diagnosis and recommendations.
-- `evidence-ledger.md` — claim-by-claim evidence strength and limitations.
-- `future-skill-brief.md` — the broader design considered before reducing the first release.
-
-The source project used for the research was inspected read-only. Nothing from it is stored here, and nothing in it was edited.
+- `docs/` — the anonymized research that motivated the first release.
 
 ## Install
 
-Anti Loop is distributed through the `speshul-skills` marketplace. Add the marketplace once, then install the plugin:
+Claude Code:
+
+```text
+/plugin marketplace add MTEnt/speshul-skills
+/plugin install anti-loop@speshul-skills
+```
+
+Codex:
 
 ```text
 codex plugin marketplace add MTEnt/speshul-skills
 codex plugin add anti-loop@speshul-skills
 ```
 
-Start a new Codex conversation after installation so the bundled skill and hooks are discovered.
+Start a new conversation after installation. Review the hook definitions before trusting them (`/hooks` in Codex). Both hooks are advisory: they add context and visible warnings but never block a tool.
 
-Open `/hooks` in Codex and review the two Anti Loop hook definitions:
+## Privacy and state
 
-- `SessionStart` injects the task-scope reminder.
-- `PreToolUse` displays an advisory before edits to persistent agent or workflow controls.
-
-Trust both definitions if you want the complete behavior. Codex records trust against the current hook hash, so an updated hook may require review again.
-
-Verify the package is installed and enabled:
-
-```text
-codex plugin list
-```
-
-Then use `/hooks` to confirm both Anti Loop hooks are active. The hook is advisory: it can warn and add context, but it does not block edits.
+`loop_limit.py` stores hashed session ids, hashed normalized commands, counters, and timestamps in a SQLite file under the OS temporary directory (override with `ANTI_LOOP_DB_PATH`). It stores no command text, output, prompts, or file contents. Session rows are removed at `SessionEnd`; abandoned rows expire after 24 hours. Both hooks fail open.
 
 ## Run the tests
-
-From this plugin folder:
 
 ```text
 python -m unittest discover -s tests -v

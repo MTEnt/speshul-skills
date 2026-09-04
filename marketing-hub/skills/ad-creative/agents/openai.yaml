@@ -1,4 +1,0 @@
-interface:
-  display_name: "Ad Creative"
-  short_description: "Plan and execute Ad Creative marketing work"
-  default_prompt: "Use $ad-creative to complete this Ad Creative request with verified evidence and a usable deliverable."

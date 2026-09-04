@@ -1,0 +1,4 @@
+interface:
+  display_name: "Page Copy"
+  short_description: "Write or substantially rewrite persuasive copy for homepages, landing pages,..."
+  default_prompt: "Use $page-copy to complete this request with verified evidence and a usable deliverable."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Decision Lenses"
+  short_description: "Examine one marketing decision through three to five documented strategic..."
+  default_prompt: "Use $decision-lenses to complete this request with verified evidence and a usable deliverable."

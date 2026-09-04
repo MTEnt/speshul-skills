@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ad Units"
+  short_description: "Concept, write, produce, batch, review, and iterate paid creative in..."
+  default_prompt: "Use $ad-units to complete this request with verified evidence and a usable deliverable."

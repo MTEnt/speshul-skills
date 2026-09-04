@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+node_modules/
+.eval-output/
+.env
+.env.*
+!.env.example

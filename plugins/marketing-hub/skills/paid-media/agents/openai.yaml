@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paid Media"
+  short_description: "Plan, build, audit, and optimize paid campaigns on search, social, video,..."
+  default_prompt: "Use $paid-media to complete this request with verified evidence and a usable deliverable."

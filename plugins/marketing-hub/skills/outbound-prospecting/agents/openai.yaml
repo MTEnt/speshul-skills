@@ -1,0 +1,4 @@
+interface:
+  display_name: "Outbound Prospecting"
+  short_description: "Build source-backed prospect lists and write the relevant, lawful cold..."
+  default_prompt: "Use $outbound-prospecting to complete this request with verified evidence and a usable deliverable."

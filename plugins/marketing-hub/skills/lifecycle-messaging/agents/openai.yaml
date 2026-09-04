@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lifecycle Messaging"
+  short_description: "Design, write, audit, and optimize permissioned messages triggered by a..."
+  default_prompt: "Use $lifecycle-messaging to complete this request with verified evidence and a usable deliverable."

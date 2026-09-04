@@ -1,4 +1,0 @@
-interface:
-  display_name: "Copywriting"
-  short_description: "Plan and execute Copywriting marketing work"
-  default_prompt: "Use $copywriting to complete this Copywriting request with verified evidence and a usable deliverable."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Third-Party Listings"
+  short_description: "Audit, write, and maintain the product's presence on discovery platforms the..."
+  default_prompt: "Use $third-party-listings to complete this request with verified evidence and a usable deliverable."

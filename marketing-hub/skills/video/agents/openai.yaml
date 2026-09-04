@@ -1,4 +1,0 @@
-interface:
-  display_name: "Video"
-  short_description: "Plan and execute Video marketing work"
-  default_prompt: "Use $video to complete this Video request with verified evidence and a usable deliverable."

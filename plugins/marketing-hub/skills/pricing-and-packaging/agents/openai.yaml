@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pricing and Packaging"
+  short_description: "Research, design, audit, or change price levels, value metrics, tiers,..."
+  default_prompt: "Use $pricing-and-packaging to complete this request with verified evidence and a usable deliverable."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Customer Evidence"
+  short_description: "Plan, run, or synthesize customer research: interviews, surveys, call and..."
+  default_prompt: "Use $customer-evidence to complete this request with verified evidence and a usable deliverable."

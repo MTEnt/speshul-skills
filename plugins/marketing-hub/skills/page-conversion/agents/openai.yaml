@@ -1,0 +1,4 @@
+interface:
+  display_name: "Page Conversion"
+  short_description: "Audit and repair conversion on marketing pages, lead and contact forms, and..."
+  default_prompt: "Use $page-conversion to complete this request with verified evidence and a usable deliverable."

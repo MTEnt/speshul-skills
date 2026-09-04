@@ -1,4 +1,0 @@
-interface:
-  display_name: "Influencer Marketing"
-  short_description: "Plan and execute Influencer Marketing marketing work"
-  default_prompt: "Use $influencer-marketing to complete this Influencer Marketing request with verified evidence and a usable deliverable."

@@ -1,0 +1,28 @@
+{
+  "name": "skill-authoring",
+  "version": "1.0.0",
+  "description": "Writes and audits agent skills and plugins to this repository's standards, with a deterministic validator for frontmatter, size, links, manifests, and shared contracts.",
+  "author": {
+    "name": "MTEnt"
+  },
+  "homepage": "https://github.com/MTEnt/speshul-skills",
+  "repository": "https://github.com/MTEnt/speshul-skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "plugins",
+    "authoring",
+    "validation"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Skill Authoring",
+    "shortDescription": "Writes and audits agent skills and plugins to this repository's standards, with ",
+    "longDescription": "Writes and audits agent skills and plugins to this repository's standards, with a deterministic validator for frontmatter, size, links, manifests, and shared contracts.",
+    "developerName": "MTEnt",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive"
+    ]
+  }
+}

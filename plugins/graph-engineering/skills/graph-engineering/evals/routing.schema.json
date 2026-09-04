@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GraphEngineeringRoutingEvaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "mode": {"type": "string", "description": "The single public skill mode selected from the request. Use select only for graph-versus-loop decisions or scope/artifact classification; an explicit request to design a new workflow uses design.", "enum": ["select", "design", "compile", "audit", "diagnose", "optimize", "evolve"]},
+    "artifact": {"type": "string", "description": "The public artifact returned by that mode.", "enum": ["GraphDecision", "GraphSpec", "ImplementationMapping", "GraphAudit", "RunDiagnosis", "OptimizationPlan", "EvolutionProposal"]},
+    "decision": {"type": "string", "description": "Use graph for a new design, existing_graph for compile/audit/diagnose/optimize, candidate_graph only for persistent evolution of an existing graph, out_of_scope for excluded GraphRAG or graph-database work, and no_graph_artifact only when the request asks whether supplied material is itself a graph artifact (a diagram, ordinary program, or informal conversation without all four conditions) or the material carries no graph identity; a run trace that names its graph id and version is diagnosed against that graph (existing_graph).", "enum": ["no_graph", "graph", "existing_graph", "candidate_graph", "out_of_scope", "no_graph_artifact"]},
+    "rationale": {"type": "string"}
+  },
+  "required": ["mode", "artifact", "decision", "rationale"]
+}

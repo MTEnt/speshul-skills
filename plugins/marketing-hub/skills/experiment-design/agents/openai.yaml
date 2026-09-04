@@ -1,0 +1,4 @@
+interface:
+  display_name: "Experiment Design"
+  short_description: "Design, size, implement, analyze, and govern controlled tests: A/B and..."
+  default_prompt: "Use $experiment-design to complete this request with verified evidence and a usable deliverable."

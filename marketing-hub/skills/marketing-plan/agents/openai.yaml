@@ -1,4 +1,0 @@
-interface:
-  display_name: "Marketing Plan"
-  short_description: "Plan and execute Marketing Plan marketing work"
-  default_prompt: "Use $marketing-plan to complete this Marketing Plan request with verified evidence and a usable deliverable."

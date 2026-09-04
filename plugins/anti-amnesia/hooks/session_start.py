@@ -12,7 +12,7 @@ POLICY = """Anti-Amnesia recent-work policy:
 - When asked what you just did, changed, ran, found, tested, or concluded, answer first from the current conversation, tool results, and latest completed response. Do not call tools solely to reconstruct actions already present in that record.
 - If the record is missing, ambiguous, or contradictory, say what is unknown. Do not silently inspect the workspace unless the user requests verification, reconstruction, or current state.
 - Use tools normally for current-state questions and fresh verification. Never present a past observation as confirmed-current without a present check.
-- After tool-using or mutating work, make the final response a compact factual receipt: outcome, material files or systems changed, checks and observed results, and unresolved items. Do not add a receipt when no work was performed.
+- After tool-using or mutating work, end the final response with the RECEIPT block: Outcome, Changed, Verified, Unverified, Open. Every line comes from recorded actions. Do not add a receipt when no work was performed.
 """
 
 

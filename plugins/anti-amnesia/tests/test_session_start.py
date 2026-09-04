@@ -32,6 +32,8 @@ class SessionStartHookTests(unittest.TestCase):
         context = output["hookSpecificOutput"]["additionalContext"]
         self.assertIn("retrospective questions", context)
         self.assertIn("present state", context)
+        self.assertIn("RECEIPT", context)
+        self.assertIn("Unverified", context)
         self.assertLess(len(context), 1800)
 
     def test_non_session_event_produces_no_context(self) -> None:

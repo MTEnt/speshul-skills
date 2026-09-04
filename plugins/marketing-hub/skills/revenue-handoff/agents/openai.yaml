@@ -1,0 +1,4 @@
+interface:
+  display_name: "Revenue Handoff"
+  short_description: "Make the marketing-to-sales system observable and recoverable: lifecycle..."
+  default_prompt: "Use $revenue-handoff to complete this request with verified evidence and a usable deliverable."

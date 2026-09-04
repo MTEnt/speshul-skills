@@ -1,0 +1,29 @@
+{
+  "name": "marketing-hub",
+  "version": "2.0.0",
+  "description": "An evidence-to-artifact marketing operating system: one orchestrator and forty-three specialist skills organized by the decision they answer, sharing a truth file, claim ledger, and deliverable contracts.",
+  "author": {
+    "name": "MTEnt"
+  },
+  "homepage": "https://github.com/MTEnt/speshul-skills",
+  "repository": "https://github.com/MTEnt/speshul-skills",
+  "license": "MIT",
+  "keywords": [
+    "marketing",
+    "growth",
+    "copy",
+    "seo",
+    "lifecycle"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Marketing Hub",
+    "shortDescription": "An evidence-to-artifact marketing operating system",
+    "longDescription": "An evidence-to-artifact marketing operating system: one orchestrator and forty-three specialist skills organized by the decision they answer, sharing a truth file, claim ledger, and deliverable contracts.",
+    "developerName": "MTEnt",
+    "category": "Marketing",
+    "capabilities": [
+      "Interactive"
+    ]
+  }
+}

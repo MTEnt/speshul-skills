@@ -1,0 +1,18 @@
+{
+  "name": "untrusted-content",
+  "displayName": "Untrusted Content",
+  "version": "1.0.0",
+  "description": "Handles web pages, files, tool output, and inter-agent messages as data rather than instructions, with injection triage and a bounded escalation path.",
+  "author": {
+    "name": "MTEnt",
+    "url": "https://github.com/MTEnt"
+  },
+  "homepage": "https://github.com/MTEnt/speshul-skills",
+  "repository": "https://github.com/MTEnt/speshul-skills",
+  "license": "MIT",
+  "keywords": [
+    "security",
+    "prompt-injection",
+    "trust-boundaries"
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Positioning and Offer"
+  short_description: "Decide how the product is framed and what exactly is exchanged: category and..."
+  default_prompt: "Use $positioning-and-offer to complete this request with verified evidence and a usable deliverable."

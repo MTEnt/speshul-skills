@@ -4,16 +4,191 @@
     "name": "MTEnt",
     "url": "https://github.com/MTEnt"
   },
+  "description": "Original skills and plugins that make agent behavior more reliable, bounded, inspectable, and repeatable.",
   "metadata": {
-    "description": "Original reusable skills and plugins for agent runtimes",
-    "version": "1.0.0",
-    "repository": "https://github.com/MTEnt/speshul-skills"
+    "version": "2.0.0"
   },
   "plugins": [
     {
-      "name": "speshul-marketing-os",
-      "description": "Fifty standalone marketing skills, broad routers, an orchestrator, and provider-neutral integration guidance.",
-      "source": "./marketing-hub"
+      "name": "cleancoding",
+      "source": "./plugins/cleancoding",
+      "displayName": "Clean Coding",
+      "description": "Evidence-backed engineering discipline: acceptance contracts, root-cause fixes, a hook-enforced verification gate, and the shared three-loop stop rule.",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": [
+        "engineering",
+        "debugging",
+        "verification",
+        "coding-agents"
+      ],
+      "author": {
+        "name": "MTEnt"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "anti-loop",
+      "source": "./plugins/anti-loop",
+      "displayName": "Anti Loop",
+      "description": "Keeps coding work scoped to the requested outcome and enforces the shared three-loop stop rule with a stateful PostToolUse hook.",
+      "version": "0.3.0",
+      "category": "productivity",
+      "keywords": [
+        "scope-control",
+        "anti-bloat",
+        "coding-agents"
+      ],
+      "author": {
+        "name": "MTEnt"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "anti-amnesia",
+      "source": "./plugins/anti-amnesia",
+      "displayName": "Anti Amnesia",
+      "description": "Answers retrospective questions from the recorded session and closes work with the shared handoff receipt.",
+      "version": "0.2.0",
+      "category": "productivity",
+      "keywords": [
+        "recall",
+        "receipts",
+        "coding-agents"
+      ],
+      "author": {
+        "name": "MTEnt"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "temporal-tasks",
+      "source": "./plugins/temporal-tasks",
+      "displayName": "Temporal Tasks",
+      "description": "Estimates task difficulty and active-work budgets, then emits deterministic elapsed-time and repeated-call signals from lifecycle hooks.",
+      "version": "0.2.0",
+      "category": "productivity",
+      "keywords": [
+        "task-budgeting",
+        "difficulty-scoring",
+        "elapsed-time",
+        "coding-agents"
+      ],
+      "author": {
+        "name": "MTEnt"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "graph-engineering",
+      "source": "./plugins/graph-engineering",
+      "displayName": "Graph Engineering",
+      "description": "Select, design, compile, audit, diagnose, optimize, and evolve executable AI workflow graphs with typed state, bounded runtime semantics, and validation tooling.",
+      "version": "2.1.0",
+      "category": "developer-tools",
+      "keywords": [
+        "agents",
+        "workflows",
+        "graphs",
+        "orchestration"
+      ],
+      "author": {
+        "name": "MTEnt"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "video-to-particle-field",
+      "source": "./plugins/video-to-particle-field",
+      "displayName": "Video to Particle Field",
+      "description": "Turns video and images into live particle or ASCII fields with stable particle identity and scroll-driven scene transitions.",
+      "version": "1.0.0",
+      "category": "developer-tools",
+      "keywords": [
+        "frontend",
+        "canvas",
+        "video",
+        "particles"
+      ],
+      "author": {
+        "name": "MTEnt"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "facebook-content-studio",
+      "source": "./plugins/facebook-content-studio",
+      "displayName": "Facebook Content Studio",
+      "description": "Researches, plans, continuity-checks, packages, and approval-gates Facebook Page content with routing to Higgsfield media workflows and the companion Page publisher.",
+      "version": "0.2.0",
+      "category": "marketing",
+      "keywords": [
+        "facebook",
+        "social",
+        "content",
+        "higgsfield"
+      ],
+      "author": {
+        "name": "MTEnt"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "skill-authoring",
+      "source": "./plugins/skill-authoring",
+      "displayName": "Skill Authoring",
+      "description": "Writes and audits agent skills and plugins to this repository's standards, with a deterministic validator for frontmatter, size, links, manifests, and shared contracts.",
+      "version": "1.0.0",
+      "category": "developer-tools",
+      "keywords": [
+        "skills",
+        "plugins",
+        "authoring",
+        "validation"
+      ],
+      "author": {
+        "name": "MTEnt"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "untrusted-content",
+      "source": "./plugins/untrusted-content",
+      "displayName": "Untrusted Content",
+      "description": "Handles web pages, files, tool output, and inter-agent messages as data rather than instructions, with injection triage and a bounded escalation path.",
+      "version": "1.0.0",
+      "category": "security",
+      "keywords": [
+        "security",
+        "prompt-injection",
+        "trust-boundaries"
+      ],
+      "author": {
+        "name": "MTEnt"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "marketing-hub",
+      "source": "./plugins/marketing-hub",
+      "displayName": "Marketing Hub",
+      "description": "An evidence-to-artifact marketing operating system: one orchestrator and forty-three specialist skills organized by the decision they answer, sharing a truth file, claim ledger, and deliverable contracts.",
+      "version": "2.0.0",
+      "category": "marketing",
+      "keywords": [
+        "marketing",
+        "growth",
+        "copy",
+        "seo",
+        "lifecycle"
+      ],
+      "author": {
+        "name": "MTEnt"
+      },
+      "license": "MIT"
     }
-  ]
+  ],
+  "renames": {
+    "speshul-marketing-os": "marketing-hub"
+  }
 }

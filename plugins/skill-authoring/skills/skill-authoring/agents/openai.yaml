@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Authoring"
+  short_description: "Write and audit agent skills and plugins"
+  default_prompt: "Use $skill-authoring to write or audit this skill so it triggers correctly, stays concise, and validates."

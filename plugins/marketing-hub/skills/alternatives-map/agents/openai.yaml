@@ -1,0 +1,4 @@
+interface:
+  display_name: "Alternatives Map"
+  short_description: "Research the alternatives customers can actually choose and write about them..."
+  default_prompt: "Use $alternatives-map to complete this request with verified evidence and a usable deliverable."

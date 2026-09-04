@@ -1,5 +1,5 @@
 {
-  "description": "Keep implementation scoped and warn before permanent control surfaces expand.",
+  "description": "Keep implementation scoped, warn before permanent control surfaces expand, and count repeated failed verification loops.",
   "hooks": {
     "SessionStart": [
       {
@@ -7,8 +7,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"${PLUGIN_ROOT}/hooks/anti_loop.py\"",
-            "commandWindows": "python \"${PLUGIN_ROOT}/hooks/anti_loop.py\"",
+            "command": "if command -v python >/dev/null 2>&1; then python \"${CLAUDE_PLUGIN_ROOT}/hooks/anti_loop.py\"; else python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/anti_loop.py\"; fi",
+            "commandWindows": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/anti_loop.py\"",
             "timeout": 3,
             "statusMessage": "Loading anti-loop scope guard",
             "additionalContextLimit": 700
@@ -18,15 +18,41 @@
     ],
     "PreToolUse": [
       {
-        "matcher": "apply_patch|Edit|Write",
+        "matcher": "apply_patch|Edit|Write|MultiEdit",
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"${PLUGIN_ROOT}/hooks/anti_loop.py\"",
-            "commandWindows": "python \"${PLUGIN_ROOT}/hooks/anti_loop.py\"",
+            "command": "if command -v python >/dev/null 2>&1; then python \"${CLAUDE_PLUGIN_ROOT}/hooks/anti_loop.py\"; else python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/anti_loop.py\"; fi",
+            "commandWindows": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/anti_loop.py\"",
             "timeout": 3,
             "statusMessage": "Checking persistent scope expansion",
             "additionalContextLimit": 500
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v python >/dev/null 2>&1; then python \"${CLAUDE_PLUGIN_ROOT}/hooks/loop_limit.py\"; else python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/loop_limit.py\"; fi",
+            "commandWindows": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/loop_limit.py\"",
+            "timeout": 5,
+            "additionalContextLimit": 700
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v python >/dev/null 2>&1; then python \"${CLAUDE_PLUGIN_ROOT}/hooks/loop_limit.py\"; else python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/loop_limit.py\"; fi",
+            "commandWindows": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/loop_limit.py\"",
+            "timeout": 3
           }
         ]
       }

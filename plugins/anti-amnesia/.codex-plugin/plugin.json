@@ -1,20 +1,27 @@
 {
   "name": "anti-amnesia",
-  "version": "0.1.0",
-  "description": "Recall immediately preceding work from the existing action record before considering reinspection.",
+  "version": "0.2.0",
+  "description": "Answers retrospective questions from the recorded session and closes work with the shared handoff receipt.",
   "author": {
     "name": "MTEnt"
   },
+  "homepage": "https://github.com/MTEnt/speshul-skills",
+  "repository": "https://github.com/MTEnt/speshul-skills",
+  "license": "MIT",
+  "keywords": [
+    "recall",
+    "receipts",
+    "coding-agents"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Anti Amnesia",
-    "shortDescription": "Recall recent work without needless rechecking.",
-    "longDescription": "Anti Amnesia helps Codex answer retrospective questions from the current conversation and tool record while preserving verification for questions about present state.",
+    "shortDescription": "Answers retrospective questions from the recorded session and closes work with t",
+    "longDescription": "Answers retrospective questions from the recorded session and closes work with the shared handoff receipt.",
     "developerName": "MTEnt",
     "category": "Productivity",
     "capabilities": [
       "Interactive"
-    ],
-    "defaultPrompt": "Tell me what you just did without re-running checks unless the record is incomplete."
+    ]
   }
 }

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Credit and Lift"
+  short_description: "Choose, interpret, implement, and reconcile how marketing credit is assigned..."
+  default_prompt: "Use $credit-and-lift to complete this request with verified evidence and a usable deliverable."

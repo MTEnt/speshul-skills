@@ -1,0 +1,76 @@
+name: Repository CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Validate skills, manifests, marketplaces, and shared contracts
+        run: python scripts/validate_repo.py --strict-overlap
+      - name: Validator unit tests
+        run: python -m unittest discover -s scripts/tests -v
+
+  python-packages:
+    name: Python package tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Plugin hook and package tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          for plugin in plugins/*/; do
+            if [ -d "$plugin/tests" ]; then
+              echo "== $plugin"
+              (cd "$plugin" && python -m unittest discover -s tests -v)
+            fi
+          done
+      - name: graph-engineering tool and eval tests
+        shell: bash
+        run: |
+          cd plugins/graph-engineering/skills/graph-engineering
+          python -m unittest discover -s tests -v
+      - name: marketing-hub script tests
+        shell: bash
+        run: |
+          cd plugins/marketing-hub/skills/tool-connectors/scripts && python -m unittest test_api_request -v
+          cd ../../experiment-design/scripts && python -m unittest discover -s . -p "test_*.py" -v
+      - name: skill-authoring lint self-test
+        shell: bash
+        run: |
+          cd plugins/skill-authoring/skills/skill-authoring
+          python -m unittest discover -s tests -v
+
+  content-skill:
+    name: facebook-content-studio validation
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: plugins/facebook-content-studio/skills/facebook-content-studio
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 26
+      - run: node scripts/validate-skill.mjs
+      - run: node scripts/validate-post-package.mjs examples/post-package.example.json

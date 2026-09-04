@@ -1,0 +1,4 @@
+interface:
+  display_name: "Answer Engine Visibility"
+  short_description: "Audit and improve whether AI-generated answers and answer engines can..."
+  default_prompt: "Use $answer-engine-visibility to complete this request with verified evidence and a usable deliverable."

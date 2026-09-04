@@ -1,0 +1,4 @@
+interface:
+  display_name: "Structured Data"
+  short_description: "Select, generate, implement, audit, and validate schema"
+  default_prompt: "Use $structured-data to complete this request with verified evidence and a usable deliverable."

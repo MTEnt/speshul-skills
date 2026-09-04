@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketing OS"
+  short_description: "Orchestrate marketing work that spans more than one specialty: go-to-market..."
+  default_prompt: "Use $marketing-os to complete this request with verified evidence and a usable deliverable."

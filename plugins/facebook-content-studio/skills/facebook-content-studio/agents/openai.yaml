@@ -1,0 +1,4 @@
+interface:
+  display_name: "Facebook Content Studio"
+  short_description: "Plan, produce, and approval-gate Facebook Page content"
+  default_prompt: "Use $facebook-content-studio to research, plan, package, and preview this Facebook Page content before any approved publication."

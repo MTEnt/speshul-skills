@@ -106,7 +106,7 @@ class TaskClockTests(unittest.TestCase):
         self.assertIn("1-2=1-5m/3m", context)
         self.assertIn("TASK CLOCK REASSESSMENT; Elapsed:; Evidence gained:;", context)
         self.assertIn("Delay cause:; Re-score:; Decision:", context)
-        self.assertIn("cannot by themselves trigger the anti-loop hard stop", context)
+        self.assertIn("cannot by themselves trigger the LOOP LIMIT REACHED stop", context)
 
         with closing(sqlite3.connect(self.db_path)) as connection:
             row = connection.execute(
@@ -236,6 +236,31 @@ class TaskClockTests(unittest.TestCase):
         with closing(sqlite3.connect(self.db_path)) as connection:
             count = connection.execute("SELECT completed_calls FROM turns").fetchone()[0]
         self.assertEqual(count, 1)
+
+    def test_claude_code_prompt_id_is_accepted_as_turn(self) -> None:
+        output = TASK_CLOCK.handle_event(
+            {"hook_event_name": "UserPromptSubmit", "session_id": "claude", "prompt_id": "p1", "prompt": "x"},
+            now=0,
+            db_path=self.db_path,
+        )
+        self.assertEqual(output["hookSpecificOutput"]["hookEventName"], "UserPromptSubmit")
+        TASK_CLOCK.handle_event(
+            {"hook_event_name": "PreToolUse", "session_id": "claude", "prompt_id": "p1", "tool_name": "Bash", "tool_use_id": "t1", "tool_input": {"command": "x"}},
+            now=1,
+            db_path=self.db_path,
+        )
+        signal = TASK_CLOCK.handle_event(
+            {"hook_event_name": "PostToolUse", "session_id": "claude", "prompt_id": "p1", "tool_name": "Bash", "tool_use_id": "t1", "tool_input": {"command": "x"}, "tool_response": {"text": "ok"}},
+            now=200,
+            db_path=self.db_path,
+        )
+        self.assertIn("Elapsed: 3m 20s", signal["hookSpecificOutput"]["additionalContext"])
+
+    def test_session_without_turn_identifier_still_tracks(self) -> None:
+        output = TASK_CLOCK.handle_event(
+            {"hook_event_name": "UserPromptSubmit", "session_id": "bare", "prompt": "x"}, now=0, db_path=self.db_path
+        )
+        self.assertIsNotNone(output)
 
     def test_malformed_input_and_database_failure_fail_open(self) -> None:
         self.assertIsNone(TASK_CLOCK.handle_event("not-an-object", db_path=self.db_path))

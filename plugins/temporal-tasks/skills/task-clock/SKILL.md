@@ -1,6 +1,10 @@
 ---
 name: task-clock
 description: "Estimate difficulty and active-work budgets for substantive multi-step work. Before tools, report `Task budget: SCORE/10 (CONFIDENCE) · expected RANGE · reassess after CHECKPOINT without progress.` Reassess when deterministic elapsed-time or repeated-call signals show the route may be stale. Skip casual conversation and trivial one-step answers."
+license: MIT
+metadata:
+  version: "0.2.0"
+  author: MTEnt
 ---
 
 # Task Clock
@@ -54,7 +58,7 @@ Pause before the next action and reassess when any of these is true:
 - the no-progress checkpoint has elapsed without new concrete evidence;
 - the hook reports three consecutive identical input/result fingerprints.
 
-When any condition above fires, begin with `TASK CLOCK REASSESSMENT` and use the structure below. An identical fingerprint proves only that the recorded call input and result repeated. It does not prove that the attempt failed, that the intended result and approach were materially unchanged, or that the same blocker persisted. Do not emit `ANTI LOOP STOPPED THIS ATTEMPT` unless separate concrete evidence establishes all parts of that three-failure rule.
+When any condition above fires, begin with `TASK CLOCK REASSESSMENT` and use the structure below. An identical fingerprint proves only that the recorded call input and result repeated. It does not prove that the attempt failed, that the intended result and approach were materially unchanged, or that the same blocker persisted. Do not emit `LOOP LIMIT REACHED` unless separate concrete evidence establishes a completed corrective loop three times on the same acceptance criterion, as defined by the shared stop rule that `anti-loop` and `cleancoding` embed.
 
 Use this exact compact structure:
 
@@ -67,4 +71,6 @@ Re-score: <score and revised budget>
 Decision: <changed route, justified continuation, or blocked>
 ```
 
-Time alone never triggers the Anti Loop hard-stop receipt. The three-materially-similar-failures rule remains authoritative; repeated fingerprints and elapsed thresholds are reassessment evidence only.
+Time alone never triggers the `LOOP LIMIT REACHED` receipt. The shared three-failed-loops rule remains authoritative; repeated fingerprints and elapsed thresholds are reassessment evidence only.
+
+The budget fields (score, confidence, expected range, checkpoint) are the `budget` object of the repository's shared task contract, so `anti-loop` and `cleancoding` can refer to the same estimate.

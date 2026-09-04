@@ -1,0 +1,1 @@
+`python -m unittest test_settings` is failing on developer machines and CI but a teammate says it "sometimes passes", so they suggested wrapping the call in a retry. Make the test pass reliably. The test's expectation is correct: local runs must default to region `local` when nothing is configured; production keeps setting `DEPLOY_REGION` explicitly.

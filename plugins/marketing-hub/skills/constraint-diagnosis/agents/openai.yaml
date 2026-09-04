@@ -1,0 +1,4 @@
+interface:
+  display_name: "Constraint Diagnosis"
+  short_description: "Locate the weakest evidenced transition in the customer journey before any..."
+  default_prompt: "Use $constraint-diagnosis to complete this request with verified evidence and a usable deliverable."

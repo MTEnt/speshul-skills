@@ -1,4 +1,0 @@
-interface:
-  display_name: "CRO"
-  short_description: "Plan and execute CRO marketing work"
-  default_prompt: "Use $cro to complete this CRO request with verified evidence and a usable deliverable."

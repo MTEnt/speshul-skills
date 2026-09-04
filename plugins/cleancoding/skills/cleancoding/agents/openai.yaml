@@ -1,0 +1,7 @@
+interface:
+  display_name: "Clean Coding"
+  short_description: "Build safe, maintainable, evidence-backed code"
+  default_prompt: "Use $cleancoding to implement or review this change with a task contract, root-cause fixes, evidence-backed verification, and a closing receipt."
+
+policy:
+  allow_implicit_invocation: true

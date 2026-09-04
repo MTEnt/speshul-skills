@@ -1,4 +1,0 @@
-interface:
-  display_name: "Marketing OS"
-  short_description: "Evidence-led marketing planning and production"
-  default_prompt: "Use $marketing-os to turn this marketing goal into a sourced plan and finished deliverables."
