@@ -36,7 +36,9 @@ _SPEC.loader.exec_module(lint)
 Report = lint.Report
 SEMVER_PATTERN = lint.SEMVER_PATTERN
 MARKER_PATTERN = re.compile(r"<!-- contract:([a-z0-9-]+):start -->(.*?)<!-- contract:\1:end -->", re.DOTALL)
-PLUGIN_ROOT_PATTERN = re.compile(r"\$\{(?:CLAUDE_)?PLUGIN_ROOT\}/([^\s\"']+)")
+# The path ends at whitespace, a quote, or the backslash that escapes a quote inside JSON
+# ("...x.py\""); including that backslash made Linux look for a file named "x.py\".
+PLUGIN_ROOT_PATTERN = re.compile(r"\$\{(?:CLAUDE_)?PLUGIN_ROOT\}/([^\s\"'\\]+)")
 FORBIDDEN_DIRS = {"__pycache__", "node_modules", ".eval-output"}
 FORBIDDEN_FILES = {".env"}
 

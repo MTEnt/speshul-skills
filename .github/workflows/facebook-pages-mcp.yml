@@ -4,14 +4,12 @@ on:
   pull_request:
     paths:
       - "facebook-pages-mcp/**"
-      - "facebook-content-studio/**"
-      - ".github/workflows/facebook-pages-mcp-ci.yml"
+      - ".github/workflows/facebook-pages-mcp.yml"
   push:
     branches: [main]
     paths:
       - "facebook-pages-mcp/**"
-      - "facebook-content-studio/**"
-      - ".github/workflows/facebook-pages-mcp-ci.yml"
+      - ".github/workflows/facebook-pages-mcp.yml"
 
 permissions:
   contents: read
@@ -51,16 +49,3 @@ jobs:
       - run: npm ci
       - run: npm audit --omit=dev
       - run: npm pack --dry-run
-
-  content-skill:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: facebook-content-studio
-    steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 26
-      - run: node scripts/validate-skill.mjs
-      - run: node scripts/validate-post-package.mjs examples/post-package.example.json
