@@ -1,0 +1,4 @@
+interface:
+  display_name: "Recurring Loops"
+  short_description: "Turn a repeated marketing decision into a bounded, observable, interruptible..."
+  default_prompt: "Use $recurring-loops to complete this request with verified evidence and a usable deliverable."

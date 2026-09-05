@@ -1,0 +1,4 @@
+interface:
+  display_name: "Search Health"
+  short_description: "Audit and repair how a site is discovered, crawled, rendered, indexed, and..."
+  default_prompt: "Use $search-health to complete this request with verified evidence and a usable deliverable."

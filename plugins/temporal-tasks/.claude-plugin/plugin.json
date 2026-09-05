@@ -1,0 +1,20 @@
+{
+  "name": "temporal-tasks",
+  "displayName": "Temporal Tasks",
+  "version": "0.2.0",
+  "description": "Estimates task difficulty and active-work budgets, then emits deterministic elapsed-time and repeated-call signals from lifecycle hooks.",
+  "author": {
+    "name": "MTEnt",
+    "url": "https://github.com/MTEnt"
+  },
+  "homepage": "https://github.com/MTEnt/speshul-skills",
+  "repository": "https://github.com/MTEnt/speshul-skills",
+  "license": "MIT",
+  "keywords": [
+    "task-budgeting",
+    "difficulty-scoring",
+    "elapsed-time",
+    "coding-agents"
+  ],
+  "hooks": "./hooks/hooks.json"
+}

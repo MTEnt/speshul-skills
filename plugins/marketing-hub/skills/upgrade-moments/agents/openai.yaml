@@ -1,0 +1,4 @@
+interface:
+  display_name: "Upgrade Moments"
+  short_description: "Design, audit, or optimize the in-product moments where an existing user is..."
+  default_prompt: "Use $upgrade-moments to complete this request with verified evidence and a usable deliverable."

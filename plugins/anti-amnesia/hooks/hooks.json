@@ -1,5 +1,5 @@
 {
-  "description": "Keep recent-work recall available across session starts, resumes, clears, and compaction.",
+  "description": "Keep recent-work recall and the receipt policy available across session starts, resumes, clears, and compaction.",
   "hooks": {
     "SessionStart": [
       {
@@ -7,8 +7,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"${PLUGIN_ROOT}/hooks/session_start.py\"",
-            "commandWindows": "python \"${PLUGIN_ROOT}/hooks/session_start.py\"",
+            "command": "if command -v python >/dev/null 2>&1; then python \"${CLAUDE_PLUGIN_ROOT}/hooks/session_start.py\"; else python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/session_start.py\"; fi",
+            "commandWindows": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/session_start.py\"",
             "timeout": 10,
             "statusMessage": "Loading recent-work recall policy",
             "additionalContextLimit": 700

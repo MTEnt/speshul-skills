@@ -1,0 +1,19 @@
+{
+  "name": "facebook-content-studio",
+  "displayName": "Facebook Content Studio",
+  "version": "0.2.0",
+  "description": "Researches, plans, continuity-checks, packages, and approval-gates Facebook Page content with routing to Higgsfield media workflows and the companion Page publisher.",
+  "author": {
+    "name": "MTEnt",
+    "url": "https://github.com/MTEnt"
+  },
+  "homepage": "https://github.com/MTEnt/speshul-skills",
+  "repository": "https://github.com/MTEnt/speshul-skills",
+  "license": "MIT",
+  "keywords": [
+    "facebook",
+    "social",
+    "content",
+    "higgsfield"
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Community Programs"
+  short_description: "Design, launch, operate, grow, audit, or retire member-to-member programs:..."
+  default_prompt: "Use $community-programs to complete this request with verified evidence and a usable deliverable."

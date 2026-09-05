@@ -1,0 +1,4 @@
+interface:
+  display_name: "Content Engine"
+  short_description: "Design the content system: content jobs, themes and clusters from customer..."
+  default_prompt: "Use $content-engine to complete this request with verified evidence and a usable deliverable."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tool Connectors"
+  short_description: "Select, inspect, connect, and operate marketing systems through their APIs,..."
+  default_prompt: "Use $tool-connectors to complete this request with verified evidence and a usable deliverable."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tracking Plan"
+  short_description: "Design, implement, audit, and debug marketing measurement: metric..."
+  default_prompt: "Use $tracking-plan to complete this request with verified evidence and a usable deliverable."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Video Assets"
+  short_description: "Plan, script, storyboard, generate, capture, edit, render, caption, and..."
+  default_prompt: "Use $video-assets to complete this request with verified evidence and a usable deliverable."

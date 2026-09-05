@@ -1,0 +1,4 @@
+interface:
+  display_name: "Capture Assets"
+  short_description: "Plan, build, and deliver the useful things an audience receives in exchange..."
+  default_prompt: "Use $capture-assets to complete this request with verified evidence and a usable deliverable."

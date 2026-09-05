@@ -1,0 +1,4 @@
+interface:
+  display_name: "Behavior Design"
+  short_description: "Explain a customer behavior or improve a choice environment with behavioral..."
+  default_prompt: "Use $behavior-design to complete this request with verified evidence and a usable deliverable."

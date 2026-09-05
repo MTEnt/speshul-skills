@@ -1,0 +1,4 @@
+interface:
+  display_name: "Copy Review"
+  short_description: "Review, edit, tighten, fact-check, proofread, or refresh existing marketing..."
+  default_prompt: "Use $copy-review to complete this request with verified evidence and a usable deliverable."

@@ -1,0 +1,19 @@
+{
+  "name": "video-to-particle-field",
+  "displayName": "Video to Particle Field",
+  "version": "1.0.0",
+  "description": "Turns video and images into live particle or ASCII fields with stable particle identity and scroll-driven scene transitions.",
+  "author": {
+    "name": "MTEnt",
+    "url": "https://github.com/MTEnt"
+  },
+  "homepage": "https://github.com/MTEnt/speshul-skills",
+  "repository": "https://github.com/MTEnt/speshul-skills",
+  "license": "MIT",
+  "keywords": [
+    "frontend",
+    "canvas",
+    "video",
+    "particles"
+  ]
+}

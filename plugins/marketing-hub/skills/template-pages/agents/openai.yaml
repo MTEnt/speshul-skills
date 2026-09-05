@@ -1,0 +1,4 @@
+interface:
+  display_name: "Template Pages"
+  short_description: "Plan, specify, build, audit, or scale search pages generated from structured..."
+  default_prompt: "Use $template-pages to complete this request with verified evidence and a usable deliverable."

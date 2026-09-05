@@ -22,8 +22,8 @@ class HookBehaviorTests(unittest.TestCase):
         context = result["hookSpecificOutput"]["additionalContext"]
         self.assertLess(len(context), 700)
         self.assertIn("smallest sufficient change", context)
-        self.assertIn("three materially similar attempts", context)
-        self.assertIn("ANTI LOOP STOPPED THIS ATTEMPT", context)
+        self.assertIn("three failed corrective loops", context)
+        self.assertIn("LOOP LIMIT REACHED", context)
         self.assertIn("Waiting for user direction", context)
 
     def test_normal_source_patch_has_no_warning(self) -> None:

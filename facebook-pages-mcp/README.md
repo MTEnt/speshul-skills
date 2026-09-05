@@ -4,7 +4,7 @@ A local, safety-focused Model Context Protocol server for drafting, previewing, 
 
 This project is not affiliated with or endorsed by Meta.
 
-The separate [Facebook Content Studio skill](https://github.com/MTEnt/speshul-skills/tree/main/facebook-content-studio) can prepare validated post packages and hand supported text, link, and photo posts to this server's approval flow.
+The separate [Facebook Content Studio skill](https://github.com/MTEnt/speshul-skills/tree/main/plugins/facebook-content-studio) can prepare validated post packages and hand supported text, link, and photo posts to this server's approval flow.
 
 ## What it does
 
@@ -165,4 +165,4 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for change requirements and [CHANGELOG.
 
 ## Companion content skill
 
-The separately installable [Facebook Content Studio skill](https://github.com/MTEnt/speshul-skills/tree/main/facebook-content-studio) adds research, progressive interviewing, continuity planning, Higgsfield routing, QA, and post-package validation. It does not change this server's publication boundary: text, links, and one public HTTPS photo are supported; video remains a manual Meta Business Suite handoff until a separately reviewed uploader implements Meta's additional User-token and App-ID requirements.
+The separately installable [Facebook Content Studio skill](https://github.com/MTEnt/speshul-skills/tree/main/plugins/facebook-content-studio) adds research, progressive interviewing, continuity planning, Higgsfield routing, QA, and post-package validation. It does not change this server's publication boundary: text, links, and one public HTTPS photo are supported; video remains a manual Meta Business Suite handoff until a separately reviewed uploader implements Meta's additional User-token and App-ID requirements.

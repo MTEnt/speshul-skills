@@ -11,15 +11,15 @@ from typing import Any
 
 
 SESSION_CONTEXT = (
-    "Anti-loop guard: define a task-local outcome, acceptance check, non-goals, "
-    "expected change surface, and stop condition. Make the smallest sufficient "
-    "change. Do not turn one failure or an adjacent idea into permanent instructions, "
-    "dependencies, workflows, schemas, or tracking unless requested or required by "
-    "a demonstrated safety or correctness risk. Reuse, consolidate, or remove first. "
-    "After three materially similar attempts hit the same unchanged blocker, stop. "
-    "Begin the next user-visible response with 'ANTI LOOP STOPPED THIS ATTEMPT', then "
-    "give Reason, Evidence, and 'Next step: Waiting for user direction.' Stop when "
-    "acceptance is met; create no compliance artifacts."
+    "Anti-loop guard: derive outcome, acceptance checks, non-goals, change surface, "
+    "and stop condition. Make the smallest sufficient change. Do not turn one failure "
+    "or an adjacent idea into permanent instructions, dependencies, workflows, schemas, "
+    "or tracking unless requested or required by a demonstrated safety or correctness "
+    "risk. Reuse, consolidate, or remove first. "
+    "After three failed corrective loops on the same acceptance criterion, do not start a "
+    "fourth: begin the next user-visible response with the LOOP LIMIT REACHED receipt (Loops, "
+    "Problem, Attempts, Mechanism, Evidence, Decision needed, Next step: Waiting for user "
+    "direction). Stop when acceptance is met; create no compliance artifacts."
 )
 
 CONTROL_BASENAMES = {
@@ -27,6 +27,8 @@ CONTROL_BASENAMES = {
     "claude.md",
     "hooks.json",
     "skill.md",
+    "marketplace.json",
+    "plugin.json",
 }
 
 PATCH_PATH_PATTERN = re.compile(

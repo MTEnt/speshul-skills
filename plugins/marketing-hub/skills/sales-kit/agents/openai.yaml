@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sales Kit"
+  short_description: "Create and govern the evidence-backed material sellers and buying champions..."
+  default_prompt: "Use $sales-kit to complete this request with verified evidence and a usable deliverable."

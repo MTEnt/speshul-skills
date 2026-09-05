@@ -1,4 +1,0 @@
-interface:
-  display_name: "Paywalls"
-  short_description: "Plan and execute Paywalls marketing work"
-  default_prompt: "Use $paywalls to complete this Paywalls request with verified evidence and a usable deliverable."

@@ -1,10 +1,13 @@
 {
   "name": "anti-loop",
-  "version": "0.2.0",
-  "description": "Keep coding work scoped, minimal, and bounded before process or architecture expands.",
+  "version": "0.3.0",
+  "description": "Keeps coding work scoped to the requested outcome and enforces the shared three-loop stop rule with a stateful PostToolUse hook.",
   "author": {
     "name": "MTEnt"
   },
+  "homepage": "https://github.com/MTEnt/speshul-skills",
+  "repository": "https://github.com/MTEnt/speshul-skills",
+  "license": "MIT",
   "keywords": [
     "scope-control",
     "anti-bloat",
@@ -13,15 +16,12 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Anti Loop",
-    "shortDescription": "Stop scope creep and repeated failed loops.",
-    "longDescription": "Anti Loop keeps coding tasks tied to observable acceptance, resists unrequested process growth, and stops repeated materially similar attempts.",
+    "shortDescription": "Keeps coding work scoped to the requested outcome and enforces the shared three-",
+    "longDescription": "Keeps coding work scoped to the requested outcome and enforces the shared three-loop stop rule with a stateful PostToolUse hook.",
     "developerName": "MTEnt",
     "category": "Productivity",
     "capabilities": [
       "Interactive"
-    ],
-    "defaultPrompt": [
-      "Keep this coding task scoped and stop repeated failed attempts."
     ]
   }
 }

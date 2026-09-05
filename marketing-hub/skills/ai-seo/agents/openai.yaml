@@ -1,4 +1,0 @@
-interface:
-  display_name: "AI SEO"
-  short_description: "Plan and execute AI SEO marketing work"
-  default_prompt: "Use $ai-seo to complete this AI SEO request with verified evidence and a usable deliverable."

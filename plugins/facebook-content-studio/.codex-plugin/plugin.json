@@ -1,0 +1,28 @@
+{
+  "name": "facebook-content-studio",
+  "version": "0.2.0",
+  "description": "Researches, plans, continuity-checks, packages, and approval-gates Facebook Page content with routing to Higgsfield media workflows and the companion Page publisher.",
+  "author": {
+    "name": "MTEnt"
+  },
+  "homepage": "https://github.com/MTEnt/speshul-skills",
+  "repository": "https://github.com/MTEnt/speshul-skills",
+  "license": "MIT",
+  "keywords": [
+    "facebook",
+    "social",
+    "content",
+    "higgsfield"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Facebook Content Studio",
+    "shortDescription": "Researches, plans, continuity-checks, packages, and approval-gates Facebook Page",
+    "longDescription": "Researches, plans, continuity-checks, packages, and approval-gates Facebook Page content with routing to Higgsfield media workflows and the companion Page publisher.",
+    "developerName": "MTEnt",
+    "category": "Marketing",
+    "capabilities": [
+      "Interactive"
+    ]
+  }
+}

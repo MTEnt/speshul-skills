@@ -1,4 +1,0 @@
-interface:
-  display_name: "Social and Community"
-  short_description: "Run social, partnerships, events, and referrals"
-  default_prompt: "Use $social-community to design this social or community-led distribution effort."

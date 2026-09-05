@@ -1,0 +1,4 @@
+interface:
+  display_name: "Organic Social"
+  short_description: "Plan, write, repurpose, schedule, review, and measure organic social content..."
+  default_prompt: "Use $organic-social to complete this request with verified evidence and a usable deliverable."

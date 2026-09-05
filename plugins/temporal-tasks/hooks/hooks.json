@@ -6,8 +6,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"${PLUGIN_ROOT}/hooks/task_clock.py\"",
-            "commandWindows": "python \"${PLUGIN_ROOT}/hooks/task_clock.py\"",
+            "command": "if command -v python >/dev/null 2>&1; then python \"${CLAUDE_PLUGIN_ROOT}/hooks/task_clock.py\"; else python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/task_clock.py\"; fi",
+            "commandWindows": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/task_clock.py\"",
             "timeout": 3,
             "additionalContextLimit": 250
           }
@@ -20,8 +20,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"${PLUGIN_ROOT}/hooks/task_clock.py\"",
-            "commandWindows": "python \"${PLUGIN_ROOT}/hooks/task_clock.py\"",
+            "command": "if command -v python >/dev/null 2>&1; then python \"${CLAUDE_PLUGIN_ROOT}/hooks/task_clock.py\"; else python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/task_clock.py\"; fi",
+            "commandWindows": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/task_clock.py\"",
             "timeout": 3
           }
         ]
@@ -33,8 +33,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"${PLUGIN_ROOT}/hooks/task_clock.py\"",
-            "commandWindows": "python \"${PLUGIN_ROOT}/hooks/task_clock.py\"",
+            "command": "if command -v python >/dev/null 2>&1; then python \"${CLAUDE_PLUGIN_ROOT}/hooks/task_clock.py\"; else python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/task_clock.py\"; fi",
+            "commandWindows": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/task_clock.py\"",
             "timeout": 3,
             "additionalContextLimit": 500
           }
@@ -46,8 +46,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"${PLUGIN_ROOT}/hooks/task_clock.py\"",
-            "commandWindows": "python \"${PLUGIN_ROOT}/hooks/task_clock.py\"",
+            "command": "if command -v python >/dev/null 2>&1; then python \"${CLAUDE_PLUGIN_ROOT}/hooks/task_clock.py\"; else python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/task_clock.py\"; fi",
+            "commandWindows": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/task_clock.py\"",
             "timeout": 3
           }
         ]

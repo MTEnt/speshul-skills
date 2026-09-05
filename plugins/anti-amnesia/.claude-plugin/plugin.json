@@ -1,0 +1,19 @@
+{
+  "name": "anti-amnesia",
+  "displayName": "Anti Amnesia",
+  "version": "0.2.0",
+  "description": "Answers retrospective questions from the recorded session and closes work with the shared handoff receipt.",
+  "author": {
+    "name": "MTEnt",
+    "url": "https://github.com/MTEnt"
+  },
+  "homepage": "https://github.com/MTEnt/speshul-skills",
+  "repository": "https://github.com/MTEnt/speshul-skills",
+  "license": "MIT",
+  "keywords": [
+    "recall",
+    "receipts",
+    "coding-agents"
+  ],
+  "hooks": "./hooks/hooks.json"
+}

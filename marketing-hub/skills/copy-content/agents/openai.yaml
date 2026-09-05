@@ -1,4 +1,0 @@
-interface:
-  display_name: "Copy and Content"
-  short_description: "Create persuasive copy and useful content systems"
-  default_prompt: "Use $copy-content to produce specific, evidence-backed copy or content for this audience and goal."

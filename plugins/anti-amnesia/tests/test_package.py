@@ -34,9 +34,9 @@ class PackageTests(unittest.TestCase):
         self.assertEqual(matcher, {"startup", "resume", "clear", "compact"})
 
         handler = session_start[0]["hooks"][0]
-        self.assertIn("${PLUGIN_ROOT}/hooks/session_start.py", handler["command"])
+        self.assertIn("${CLAUDE_PLUGIN_ROOT}/hooks/session_start.py", handler["command"])
         self.assertIn(
-            "${PLUGIN_ROOT}/hooks/session_start.py", handler["commandWindows"]
+            "${CLAUDE_PLUGIN_ROOT}/hooks/session_start.py", handler["commandWindows"]
         )
         self.assertTrue((PLUGIN_ROOT / "hooks" / "session_start.py").is_file())
 

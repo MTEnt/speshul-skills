@@ -1,4 +1,0 @@
-interface:
-  display_name: "ASO"
-  short_description: "Plan and execute ASO marketing work"
-  default_prompt: "Use $aso to complete this ASO request with verified evidence and a usable deliverable."

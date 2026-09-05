@@ -1,4 +1,0 @@
-interface:
-  display_name: "Popups"
-  short_description: "Plan and execute Popups marketing work"
-  default_prompt: "Use $popups to complete this Popups request with verified evidence and a usable deliverable."

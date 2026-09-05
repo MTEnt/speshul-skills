@@ -1,4 +1,0 @@
-interface:
-  display_name: "Community Marketing"
-  short_description: "Plan and execute Community Marketing marketing work"
-  default_prompt: "Use $community-marketing to complete this Community Marketing request with verified evidence and a usable deliverable."

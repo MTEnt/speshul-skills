@@ -1,0 +1,178 @@
+[
+  {
+    "prompt": "Our signups are fine but almost nobody comes back after the first week. Where do we even start?",
+    "expected": "constraint-diagnosis"
+  },
+  {
+    "prompt": "Write the homepage copy for our new invoicing product for freelancers.",
+    "expected": "page-copy"
+  },
+  {
+    "prompt": "Tighten this landing page copy; keep the tone, it's just wordy.",
+    "expected": "copy-review"
+  },
+  {
+    "prompt": "Our pricing page converts badly and the form has nine fields.",
+    "expected": "page-conversion"
+  },
+  {
+    "prompt": "People create accounts and never finish setup. Fix onboarding.",
+    "expected": "activation-path"
+  },
+  {
+    "prompt": "Design the trial-expiry screen and the upgrade prompt when users hit the usage cap.",
+    "expected": "upgrade-moments"
+  },
+  {
+    "prompt": "Cancellations doubled and failed payments are up. What should the cancel flow and dunning look like?",
+    "expected": "retention-recovery"
+  },
+  {
+    "prompt": "Set up Google and Meta campaigns for the launch with a 20k budget.",
+    "expected": "paid-media"
+  },
+  {
+    "prompt": "We need ten new ad concepts; the current creative is fatigued.",
+    "expected": "ad-units"
+  },
+  {
+    "prompt": "Plan our LinkedIn and X content for next month and write the first week of posts.",
+    "expected": "organic-social"
+  },
+  {
+    "prompt": "Should we start a customer Slack community and how would we run it?",
+    "expected": "community-programs"
+  },
+  {
+    "prompt": "Find creators to partner with for the product launch and draft the deal terms.",
+    "expected": "creator-partnerships"
+  },
+  {
+    "prompt": "Design a refer-a-friend program with rewards that can't be gamed.",
+    "expected": "advocacy-loops"
+  },
+  {
+    "prompt": "Should we sponsor this conference, and what's the plan if we do?",
+    "expected": "field-events"
+  },
+  {
+    "prompt": "Write the onboarding email sequence and an SMS reminder flow for trial users.",
+    "expected": "lifecycle-messaging"
+  },
+  {
+    "prompt": "Build a list of 200 target accounts in fintech and write the cold outreach sequence.",
+    "expected": "outbound-prospecting"
+  },
+  {
+    "prompt": "Organic traffic dropped 40% since the site migration. Audit it.",
+    "expected": "search-health"
+  },
+  {
+    "prompt": "Add JSON-LD for our product and organization pages and validate it.",
+    "expected": "structured-data"
+  },
+  {
+    "prompt": "ChatGPT never mentions us when people ask for tools in our category. What do we do?",
+    "expected": "answer-engine-visibility"
+  },
+  {
+    "prompt": "Generate integration pages for all 300 integrations without making doorway pages.",
+    "expected": "template-pages"
+  },
+  {
+    "prompt": "Our App Store listing converts poorly and we're not on any software directories.",
+    "expected": "third-party-listings"
+  },
+  {
+    "prompt": "Define the events and metrics we should track in GA4 and audit the current tags.",
+    "expected": "tracking-plan"
+  },
+  {
+    "prompt": "Meta says it drove 400 signups, GA says 90. Which is right and what do we report?",
+    "expected": "credit-and-lift"
+  },
+  {
+    "prompt": "Design an A/B test for the new checkout and tell me the sample size.",
+    "expected": "experiment-design"
+  },
+  {
+    "prompt": "Plan the launch of our v2 next month with a beta phase and a Product Hunt day.",
+    "expected": "launch-runbook"
+  },
+  {
+    "prompt": "Leads sit unassigned for days and MQL means nothing. Fix the handoff.",
+    "expected": "revenue-handoff"
+  },
+  {
+    "prompt": "Set up a weekly loop that reviews campaign health and flags creative fatigue.",
+    "expected": "recurring-loops"
+  },
+  {
+    "prompt": "Connect HubSpot and pull last month's campaign performance through the API.",
+    "expected": "tool-connectors"
+  },
+  {
+    "prompt": "Write the press release and pitch journalists about our funding round.",
+    "expected": "press-kit"
+  },
+  {
+    "prompt": "Build a battlecard against our two main competitors for the sales team.",
+    "expected": "sales-kit"
+  },
+  {
+    "prompt": "Make a hero image and social graphics for the launch.",
+    "expected": "visual-assets"
+  },
+  {
+    "prompt": "Script and storyboard a 60-second product demo video.",
+    "expected": "video-assets"
+  },
+  {
+    "prompt": "Create a downloadable checklist and an ROI calculator for the landing page.",
+    "expected": "capture-assets"
+  },
+  {
+    "prompt": "Decide what content we should be producing this quarter and why.",
+    "expected": "content-engine"
+  },
+  {
+    "prompt": "Interview ten churned customers and tell us what we're missing.",
+    "expected": "customer-evidence"
+  },
+  {
+    "prompt": "Profile our three main competitors and write the comparison page.",
+    "expected": "alternatives-map"
+  },
+  {
+    "prompt": "Set up the shared marketing context file so we stop re-explaining the product.",
+    "expected": "truth-file"
+  },
+  {
+    "prompt": "Build a 90-day growth plan for the new segment.",
+    "expected": "growth-plan"
+  },
+  {
+    "prompt": "Our offer is a 12-week coaching program; nobody buys. Fix the offer and positioning.",
+    "expected": "positioning-and-offer"
+  },
+  {
+    "prompt": "Should we move from per-seat to usage pricing, and what tiers make sense?",
+    "expected": "pricing-and-packaging"
+  },
+  {
+    "prompt": "Give me growth ideas we haven't tried, ranked.",
+    "expected": "tactic-portfolio"
+  },
+  {
+    "prompt": "Run a council review of whether we should go product-led or sales-led.",
+    "expected": "decision-lenses"
+  },
+  {
+    "prompt": "Why do people abandon at the plan chooser, psychologically, and what would change it?",
+    "expected": "behavior-design"
+  },
+  {
+    "prompt": "We're launching in a new market next quarter; plan the whole marketing side.",
+    "expected": "marketing-os"
+  }
+]

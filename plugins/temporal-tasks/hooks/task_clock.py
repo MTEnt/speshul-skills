@@ -142,12 +142,18 @@ def _connect(db_path: str | os.PathLike[str] | None) -> sqlite3.Connection:
 
 
 def _event_keys(event: dict[str, Any]) -> tuple[str, str] | None:
+    """Return hashed (session, turn) keys.
+
+    Codex supplies ``turn_id`` on turn-scoped events. Claude Code supplies ``prompt_id``
+    instead, so it is accepted as the turn identifier; when neither exists the whole
+    session is treated as one turn so the clock still works.
+    """
     session_id = event.get("session_id")
-    turn_id = event.get("turn_id")
     if not isinstance(session_id, str) or not session_id:
         return None
+    turn_id = event.get("turn_id") or event.get("prompt_id")
     if not isinstance(turn_id, str) or not turn_id:
-        return None
+        turn_id = "session-scope"
     return (
         _hash_identifier("session", session_id),
         _hash_identifier("turn", turn_id),
@@ -211,8 +217,8 @@ def _user_prompt_submit(
         "Use this timestamp only for elapsed-work accounting. When a later clock threshold "
         "or repeat signal requires action, pause and output these exact labels in order: "
         "TASK CLOCK REASSESSMENT; Elapsed:; Evidence gained:; Delay cause:; Re-score:; "
-        "Decision:. Elapsed time and identical fingerprints do not prove failed attempts or "
-        "an unchanged blocker and cannot by themselves trigger the anti-loop hard stop."
+        "Decision:. Elapsed time and identical fingerprints do not prove failed corrective loops "
+        "and cannot by themselves trigger the LOOP LIMIT REACHED stop."
     )
     return {
         "hookSpecificOutput": {
@@ -282,8 +288,8 @@ def _clock_signal(
         "no-progress checkpoint, and concrete evidence. If a clock reassessment condition "
         "is met, pause and begin with TASK CLOCK REASSESSMENT. Identical fingerprints prove "
         "only that recorded calls repeated; they do not prove failed attempts or an unchanged "
-        "blocker. Do not use the anti-loop hard-stop receipt without separate concrete evidence "
-        "for its three-materially-similar-failures rule."
+        "blocker. Do not use the LOOP LIMIT REACHED receipt without separate concrete evidence "
+        "for the shared three-failed-loops rule."
     )
     return {
         "hookSpecificOutput": {

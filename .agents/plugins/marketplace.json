@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "anti-amnesia",
+      "name": "cleancoding",
       "source": {
         "source": "local",
-        "path": "./plugins/anti-amnesia"
+        "path": "./plugins/cleancoding"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -29,6 +29,18 @@
       "category": "Productivity"
     },
     {
+      "name": "anti-amnesia",
+      "source": {
+        "source": "local",
+        "path": "./plugins/anti-amnesia"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
       "name": "temporal-tasks",
       "source": {
         "source": "local",
@@ -39,6 +51,78 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "graph-engineering",
+      "source": {
+        "source": "local",
+        "path": "./plugins/graph-engineering"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    },
+    {
+      "name": "video-to-particle-field",
+      "source": {
+        "source": "local",
+        "path": "./plugins/video-to-particle-field"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    },
+    {
+      "name": "facebook-content-studio",
+      "source": {
+        "source": "local",
+        "path": "./plugins/facebook-content-studio"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Marketing"
+    },
+    {
+      "name": "skill-authoring",
+      "source": {
+        "source": "local",
+        "path": "./plugins/skill-authoring"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    },
+    {
+      "name": "untrusted-content",
+      "source": {
+        "source": "local",
+        "path": "./plugins/untrusted-content"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Security"
+    },
+    {
+      "name": "marketing-hub",
+      "source": {
+        "source": "local",
+        "path": "./plugins/marketing-hub"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Marketing"
     }
   ]
 }

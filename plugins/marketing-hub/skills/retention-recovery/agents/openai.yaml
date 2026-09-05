@@ -1,0 +1,4 @@
+interface:
+  display_name: "Retention Recovery"
+  short_description: "Diagnose and reduce voluntary and involuntary churn: cancellation flows,..."
+  default_prompt: "Use $retention-recovery to complete this request with verified evidence and a usable deliverable."

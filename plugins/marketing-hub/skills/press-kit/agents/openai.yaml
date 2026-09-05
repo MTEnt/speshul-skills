@@ -1,0 +1,4 @@
+interface:
+  display_name: "Press Kit"
+  short_description: "Plan and produce earned-media work: story angles, journalist and outlet..."
+  default_prompt: "Use $press-kit to complete this request with verified evidence and a usable deliverable."

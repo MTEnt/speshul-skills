@@ -1,0 +1,688 @@
+{
+  "schema_version": "1.0",
+  "recorded_at": "2026-09-04T23:05:09.534436+00:00",
+  "runner": "codex-cli 0.153.2",
+  "skill_digest": "sha256:e7ac7842bb3a6c91b0b27cedc8e5673ae8891b0cb3f4977a0836963cdee4766d",
+  "method": "Independent fresh routing sessions in a disposable copy of the skill; deterministic scenario artifacts validated against exact public schemas and semantic checks; no model-artifact quality claim; raw routing runs and the temporary workspace discarded.",
+  "results": [
+    {
+      "id": "audit-only",
+      "expected": {
+        "mode": "audit",
+        "decision": "existing_graph",
+        "artifact": "GraphAudit"
+      },
+      "observed_route": {
+        "mode": "audit",
+        "artifact": "GraphAudit",
+        "decision": "existing_graph",
+        "rationale": "The supplied GraphSpec identifies a versioned graph with explicit topology, separate prompt references, execution semantics, and validation/evolution metadata. The request explicitly asks to audit this existing artifact without redesigning it; potential defects are audit findings, not grounds to reject its graph identity."
+      },
+      "route_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 7.531,
+        "session_id": "01a06eaa-e39b-7c50-892c-d8e80aeb4234",
+        "sha256": "2e93741e7b9d95f6a50e4273794eb679b346efbd07cd39ce4c3fede7d7808325"
+      },
+      "artifact_attempts": [
+        {
+          "ok": true,
+          "error": null,
+          "duration_seconds": 0,
+          "session_id": null,
+          "sha256": "caadeecdf9831d5da0e8f7055a528063281a2b9eca258bcf43f0ff5a10c5996a"
+        }
+      ],
+      "artifact_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 0,
+        "session_id": null,
+        "sha256": "caadeecdf9831d5da0e8f7055a528063281a2b9eca258bcf43f0ff5a10c5996a",
+        "source": "deterministic_fixture"
+      },
+      "passed": true,
+      "dimensions": {
+        "mode": 2,
+        "topology_decision": 2,
+        "artifact_completeness": 2,
+        "bounded_execution": 2,
+        "state_correctness": 2,
+        "evidence_treatment": 2,
+        "security_controls": 2,
+        "ceremony": 2
+      },
+      "total": 16,
+      "required_checks": {
+        "verdict": true,
+        "evidence": true,
+        "no_unsolicited_redesign": true
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "conversation-not-artifact",
+      "expected": {
+        "mode": "select",
+        "decision": "no_graph_artifact",
+        "artifact": "GraphDecision"
+      },
+      "observed_route": {
+        "mode": "select",
+        "artifact": "GraphDecision",
+        "decision": "no_graph_artifact",
+        "rationale": "The supplied transcript is an informal multi-agent conversation, not a first-class graph artifact. It has no declared topology, execution contracts, or version, and does not separate prompt content from topology. Sender-recipient messages alone do not establish the four required graph properties."
+      },
+      "route_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 6.937,
+        "session_id": "01a06eab-1be9-7bc3-9542-4e92238ae5e9",
+        "sha256": "a7f168af2d0cf41b35b06c84bd65c41ee86f7589d4f8d0817fb194c7e1259242"
+      },
+      "artifact_attempts": [
+        {
+          "ok": true,
+          "error": null,
+          "duration_seconds": 0,
+          "session_id": null,
+          "sha256": "109fcf6e73cea12d903dc6451c0f0d83451418cae0eed8c55c0825b1ed37024f"
+        }
+      ],
+      "artifact_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 0,
+        "session_id": null,
+        "sha256": "109fcf6e73cea12d903dc6451c0f0d83451418cae0eed8c55c0825b1ed37024f",
+        "source": "deterministic_fixture"
+      },
+      "passed": true,
+      "dimensions": {
+        "mode": 2,
+        "topology_decision": 2,
+        "artifact_completeness": 2,
+        "bounded_execution": 2,
+        "state_correctness": 2,
+        "evidence_treatment": 2,
+        "security_controls": 2,
+        "ceremony": 2
+      },
+      "total": 16,
+      "required_checks": {
+        "four_conditions": true,
+        "no_false_claim": true
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "cyclic-repair",
+      "expected": {
+        "mode": "design",
+        "decision": "graph",
+        "artifact": "GraphSpec"
+      },
+      "observed_route": {
+        "mode": "design",
+        "artifact": "GraphSpec",
+        "decision": "graph",
+        "rationale": "The request explicitly asks to design a new draft-evaluate-repair workflow, which is an executable workflow within the skill boundary. It routes to design rather than graph-versus-loop selection."
+      },
+      "route_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 6.828,
+        "session_id": "01a06eaa-c8fa-75b2-b67b-6338b38208a8",
+        "sha256": "d705ab2f109691dcb744c17ddfe378863f490c2140518b5f501ce4fc7d5edac2"
+      },
+      "artifact_attempts": [
+        {
+          "ok": true,
+          "error": null,
+          "duration_seconds": 0,
+          "session_id": null,
+          "sha256": "6a88da9b393936274fae1c7b6883198472daca8711f0d9cb66b3e657a6f08c78"
+        }
+      ],
+      "artifact_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 0,
+        "session_id": null,
+        "sha256": "6a88da9b393936274fae1c7b6883198472daca8711f0d9cb66b3e657a6f08c78",
+        "source": "deterministic_fixture"
+      },
+      "passed": true,
+      "dimensions": {
+        "mode": 2,
+        "topology_decision": 2,
+        "artifact_completeness": 2,
+        "bounded_execution": 2,
+        "state_correctness": 2,
+        "evidence_treatment": 2,
+        "security_controls": 2,
+        "ceremony": 2
+      },
+      "total": 16,
+      "required_checks": {
+        "iteration_guard": true,
+        "exit_route": true,
+        "exhaustion_route": true
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "framework-compile",
+      "expected": {
+        "mode": "compile",
+        "decision": "existing_graph",
+        "artifact": "ImplementationMapping"
+      },
+      "observed_route": {
+        "mode": "compile",
+        "artifact": "ImplementationMapping",
+        "decision": "existing_graph",
+        "rationale": "The supplied versioned GraphSpec has explicit topology, separate prompt references, execution semantics, and validation/evolution metadata. Mapping it to LangGraph while preserving semantics is compilation of an existing graph."
+      },
+      "route_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 6.578,
+        "session_id": "01a06eab-1c8f-7d42-9d57-5aa827caef5e",
+        "sha256": "1d9edba4d3ce39311c6ce650b412e0bf46d66762c2da04559ff10c1b7bbe4c24"
+      },
+      "artifact_attempts": [
+        {
+          "ok": true,
+          "error": null,
+          "duration_seconds": 0,
+          "session_id": null,
+          "sha256": "6346eb7dccd7c100b7b7ca2da26836347fec465633a9625c4c04e1659ed7b86c"
+        }
+      ],
+      "artifact_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 0,
+        "session_id": null,
+        "sha256": "6346eb7dccd7c100b7b7ca2da26836347fec465633a9625c4c04e1659ed7b86c",
+        "source": "deterministic_fixture"
+      },
+      "passed": true,
+      "dimensions": {
+        "mode": 2,
+        "topology_decision": 2,
+        "artifact_completeness": 2,
+        "bounded_execution": 2,
+        "state_correctness": 2,
+        "evidence_treatment": 2,
+        "security_controls": 2,
+        "ceremony": 2
+      },
+      "total": 16,
+      "required_checks": {
+        "version_date": true,
+        "semantic_mapping": true,
+        "gaps": true,
+        "conformance_tests": true
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "graphrag-out-of-scope",
+      "expected": {
+        "mode": "select",
+        "decision": "out_of_scope",
+        "artifact": "GraphDecision"
+      },
+      "observed_route": {
+        "mode": "select",
+        "artifact": "GraphDecision",
+        "decision": "out_of_scope",
+        "rationale": "Knowledge-graph construction and GraphRAG are explicitly outside the graph-engineering skill boundary."
+      },
+      "route_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 6.047,
+        "session_id": "01a06eab-1b62-7831-8aa0-7a1b5362dcb0",
+        "sha256": "048e3e94949112a1dc19d86306a0318ae31ee6a25d9dfb47707cf0e8f6a101c4"
+      },
+      "artifact_attempts": [
+        {
+          "ok": true,
+          "error": null,
+          "duration_seconds": 0,
+          "session_id": null,
+          "sha256": "cdb4fff2673f36cfe1dd4f9213e6c3b39e1d7a5b9781f287dcdab4367504eeac"
+        }
+      ],
+      "artifact_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 0,
+        "session_id": null,
+        "sha256": "cdb4fff2673f36cfe1dd4f9213e6c3b39e1d7a5b9781f287dcdab4367504eeac",
+        "source": "deterministic_fixture"
+      },
+      "passed": true,
+      "dimensions": {
+        "mode": 2,
+        "topology_decision": 2,
+        "artifact_completeness": 2,
+        "bounded_execution": 2,
+        "state_correctness": 2,
+        "evidence_treatment": 2,
+        "security_controls": 2,
+        "ceremony": 2
+      },
+      "total": 16,
+      "required_checks": {
+        "explicit_scope_boundary": true
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "parallel-research-verification",
+      "expected": {
+        "mode": "design",
+        "decision": "graph",
+        "artifact": "GraphSpec"
+      },
+      "observed_route": {
+        "mode": "design",
+        "artifact": "GraphSpec",
+        "decision": "graph",
+        "rationale": "The request explicitly asks for a new workflow with independent parallel research branches, material-claim verification, and a join dependent on verification. These execution dependencies justify an explicit graph."
+      },
+      "route_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 7.563,
+        "session_id": "01a06eaa-c8e1-70f0-8a68-53ecc234f0a4",
+        "sha256": "df4e828e9ecd432a164f4ac926bdf8ab1946781d12cdd31eeed37fdd8d2d9502"
+      },
+      "artifact_attempts": [
+        {
+          "ok": true,
+          "error": null,
+          "duration_seconds": 0,
+          "session_id": null,
+          "sha256": "f00fe4d86c0d041b1e4cddcd2ff9ed365982954230e052b778de480061a87d0b"
+        }
+      ],
+      "artifact_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 0,
+        "session_id": null,
+        "sha256": "f00fe4d86c0d041b1e4cddcd2ff9ed365982954230e052b778de480061a87d0b",
+        "source": "deterministic_fixture"
+      },
+      "passed": true,
+      "dimensions": {
+        "mode": 2,
+        "topology_decision": 2,
+        "artifact_completeness": 2,
+        "bounded_execution": 2,
+        "state_correctness": 2,
+        "evidence_treatment": 2,
+        "security_controls": 2,
+        "ceremony": 2
+      },
+      "total": 16,
+      "required_checks": {
+        "fan_out": true,
+        "join": true,
+        "verification": true,
+        "correlated_error_controls": true
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "persistent-topology-evolution",
+      "expected": {
+        "mode": "evolve",
+        "decision": "candidate_graph",
+        "artifact": "EvolutionProposal"
+      },
+      "observed_route": {
+        "mode": "evolve",
+        "artifact": "EvolutionProposal",
+        "decision": "candidate_graph",
+        "rationale": "The supplied versioned GraphSpec has explicit topology, separate prompt references, and defined execution semantics. Adding a verifier node as a candidate version changes its persistent structure, so the request routes to evolve."
+      },
+      "route_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 7.078,
+        "session_id": "01a06eab-003f-7872-9735-188204f4625f",
+        "sha256": "73ea1b0feaad7ee32d4cd16069cb66d5fba4240a18a51afcde8162a076017181"
+      },
+      "artifact_attempts": [
+        {
+          "ok": true,
+          "error": null,
+          "duration_seconds": 0,
+          "session_id": null,
+          "sha256": "968991a41291485bc72974ecc3815b7bfe852a1ecdfa5185efe0a1443e882bef"
+        }
+      ],
+      "artifact_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 0,
+        "session_id": null,
+        "sha256": "968991a41291485bc72974ecc3815b7bfe852a1ecdfa5185efe0a1443e882bef",
+        "source": "deterministic_fixture"
+      },
+      "passed": true,
+      "dimensions": {
+        "mode": 2,
+        "topology_decision": 2,
+        "artifact_completeness": 2,
+        "bounded_execution": 2,
+        "state_correctness": 2,
+        "evidence_treatment": 2,
+        "security_controls": 2,
+        "ceremony": 2
+      },
+      "total": 16,
+      "required_checks": {
+        "baseline": true,
+        "candidate": true,
+        "held_out": true,
+        "ablation": true,
+        "rollback": true
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "prompt-optimization-frozen-topology",
+      "expected": {
+        "mode": "optimize",
+        "decision": "existing_graph",
+        "artifact": "OptimizationPlan"
+      },
+      "observed_route": {
+        "mode": "optimize",
+        "artifact": "OptimizationPlan",
+        "decision": "existing_graph",
+        "rationale": "The supplied versioned GraphSpec has explicit topology, separate prompt references, and execution semantics. Improving prompts and model choices while freezing topology and permissions routes to fixed-topology optimization."
+      },
+      "route_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 7.468,
+        "session_id": "01a06eaa-ff44-7f21-bf41-71ad9bd77b5b",
+        "sha256": "ac23ff2c02803ebc5d2b3d92d8eaeb5796af9bb64c27e6d0f5a02a0308df5f15"
+      },
+      "artifact_attempts": [
+        {
+          "ok": true,
+          "error": null,
+          "duration_seconds": 0,
+          "session_id": null,
+          "sha256": "dfb3ed78f188b6c9f1b323609c9e80caa1a4f05dff3f8e7645ffab013ca1f8ec"
+        }
+      ],
+      "artifact_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 0,
+        "session_id": null,
+        "sha256": "dfb3ed78f188b6c9f1b323609c9e80caa1a4f05dff3f8e7645ffab013ca1f8ec",
+        "source": "deterministic_fixture"
+      },
+      "passed": true,
+      "dimensions": {
+        "mode": 2,
+        "topology_decision": 2,
+        "artifact_completeness": 2,
+        "bounded_execution": 2,
+        "state_correctness": 2,
+        "evidence_treatment": 2,
+        "security_controls": 2,
+        "ceremony": 2
+      },
+      "total": 16,
+      "required_checks": {
+        "frozen_topology": true,
+        "held_out": true,
+        "budgets": true,
+        "rollback": true
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "protected-deployment",
+      "expected": {
+        "mode": "design",
+        "decision": "graph",
+        "artifact": "GraphSpec"
+      },
+      "observed_route": {
+        "mode": "design",
+        "artifact": "GraphSpec",
+        "decision": "graph",
+        "rationale": "The request explicitly asks for a new executable deployment workflow. Human approval justifies explicit gating and pause/resume semantics; deployment requires the protected_action profile with bound approval and authoritative post-state verification."
+      },
+      "route_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 6.766,
+        "session_id": "01a06eab-0113-7a73-9ea8-e9b85cf29ec6",
+        "sha256": "a73ae6d1f39a7deefb1aabe5b444f28a881797e66195ae221e0d2deaefda77d4"
+      },
+      "artifact_attempts": [
+        {
+          "ok": true,
+          "error": null,
+          "duration_seconds": 0,
+          "session_id": null,
+          "sha256": "27157468b2e2c49b5607a05ddccbfd75d34b1f012362eb4300751897b3188d56"
+        }
+      ],
+      "artifact_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 0,
+        "session_id": null,
+        "sha256": "27157468b2e2c49b5607a05ddccbfd75d34b1f012362eb4300751897b3188d56",
+        "source": "deterministic_fixture"
+      },
+      "passed": true,
+      "dimensions": {
+        "mode": 2,
+        "topology_decision": 2,
+        "artifact_completeness": 2,
+        "bounded_execution": 2,
+        "state_correctness": 2,
+        "evidence_treatment": 2,
+        "security_controls": 2,
+        "ceremony": 2
+      },
+      "total": 16,
+      "required_checks": {
+        "approval_binding": true,
+        "least_privilege": true,
+        "post_state": true,
+        "compensation": true
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "trace-diagnosis",
+      "expected": {
+        "mode": "diagnose",
+        "decision": "existing_graph",
+        "artifact": "RunDiagnosis"
+      },
+      "observed_route": {
+        "mode": "diagnose",
+        "artifact": "RunDiagnosis",
+        "decision": "existing_graph",
+        "rationale": "The request asks to localize failure and propagation from a run trace identifying support-router version 1.2.0. The graph-artifact boundary applies to that identified graph, not to the trace itself, so this routes to diagnose."
+      },
+      "route_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 6.375,
+        "session_id": "01a06eaa-e660-7c30-86cc-3cef7b5de1b0",
+        "sha256": "b98fbba87bd58aaee4e62791a6560835646451a6cf75db04b3687a98e571586d"
+      },
+      "artifact_attempts": [
+        {
+          "ok": true,
+          "error": null,
+          "duration_seconds": 0,
+          "session_id": null,
+          "sha256": "c86e20adc37ea873a3103dc6c9252a1c1714fe558daeb00c2c3a49d20be1d302"
+        }
+      ],
+      "artifact_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 0,
+        "session_id": null,
+        "sha256": "c86e20adc37ea873a3103dc6c9252a1c1714fe558daeb00c2c3a49d20be1d302",
+        "source": "deterministic_fixture"
+      },
+      "passed": true,
+      "dimensions": {
+        "mode": 2,
+        "topology_decision": 2,
+        "artifact_completeness": 2,
+        "bounded_execution": 2,
+        "state_correctness": 2,
+        "evidence_treatment": 2,
+        "security_controls": 2,
+        "ceremony": 2
+      },
+      "total": 16,
+      "required_checks": {
+        "first_invalid_transition": true,
+        "failure_frontier": true,
+        "unknowns": true
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "trivial-no-graph",
+      "expected": {
+        "mode": "select",
+        "decision": "no_graph",
+        "artifact": "GraphDecision"
+      },
+      "observed_route": {
+        "mode": "select",
+        "artifact": "GraphDecision",
+        "decision": "no_graph",
+        "rationale": "Capitalizing one supplied sentence is a narrow transformation suited to deterministic code; it requires no executable workflow graph."
+      },
+      "route_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 6.594,
+        "session_id": "01a06eaa-c912-7833-bd93-f8561b9e9f9f",
+        "sha256": "0db478709d360595b746f8b6aa548d03950b0d033ce6d023e6099bff0e408618"
+      },
+      "artifact_attempts": [
+        {
+          "ok": true,
+          "error": null,
+          "duration_seconds": 0,
+          "session_id": null,
+          "sha256": "433a4f6e2307c5cb063eabed615547d1d9e2c49b063a39413baa8c35471111cb"
+        }
+      ],
+      "artifact_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 0,
+        "session_id": null,
+        "sha256": "433a4f6e2307c5cb063eabed615547d1d9e2c49b063a39413baa8c35471111cb",
+        "source": "deterministic_fixture"
+      },
+      "passed": true,
+      "dimensions": {
+        "mode": 2,
+        "topology_decision": 2,
+        "artifact_completeness": 2,
+        "bounded_execution": 2,
+        "state_correctness": 2,
+        "evidence_treatment": 2,
+        "security_controls": 2,
+        "ceremony": 2
+      },
+      "total": 16,
+      "required_checks": {
+        "deterministic_or_direct": true,
+        "no_unnecessary_ceremony": true
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "unknown-runtime-expansion",
+      "expected": {
+        "mode": "design",
+        "decision": "graph",
+        "artifact": "GraphSpec"
+      },
+      "observed_route": {
+        "mode": "design",
+        "artifact": "GraphSpec",
+        "decision": "graph",
+        "rationale": "The request explicitly asks for a new workflow design with runtime-discovered work items. Route to design; dynamic expansion requires declared limits on item count, concurrency, and total execution budgets."
+      },
+      "route_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 7.594,
+        "session_id": "01a06eaa-e294-7552-8da2-9bc5245ebe0c",
+        "sha256": "31a2fa99d4bf483b278841f437fe30c1e26c36abfa5404ddf2ad3dc43e157dee"
+      },
+      "artifact_attempts": [
+        {
+          "ok": true,
+          "error": null,
+          "duration_seconds": 0,
+          "session_id": null,
+          "sha256": "e2728d6c74ade20e41e38136fa701628948e846a06c15136f4bbf1502a2b82c0"
+        }
+      ],
+      "artifact_run": {
+        "ok": true,
+        "error": null,
+        "duration_seconds": 0,
+        "session_id": null,
+        "sha256": "e2728d6c74ade20e41e38136fa701628948e846a06c15136f4bbf1502a2b82c0",
+        "source": "deterministic_fixture"
+      },
+      "passed": true,
+      "dimensions": {
+        "mode": 2,
+        "topology_decision": 2,
+        "artifact_completeness": 2,
+        "bounded_execution": 2,
+        "state_correctness": 2,
+        "evidence_treatment": 2,
+        "security_controls": 2,
+        "ceremony": 2
+      },
+      "total": 16,
+      "required_checks": {
+        "runtime_expansion_bounds": true,
+        "queue_bounds": true,
+        "permissions_unchanged": true
+      },
+      "diagnostics": []
+    }
+  ],
+  "summary": {
+    "passed": 12,
+    "failed": 0,
+    "total": 12
+  }
+}

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Sales and Revenue"
-  short_description: "Connect prospecting, sales enablement, and RevOps"
-  default_prompt: "Use $sales-revenue to design the prospecting, handoff, enablement, or revenue-operations workflow."

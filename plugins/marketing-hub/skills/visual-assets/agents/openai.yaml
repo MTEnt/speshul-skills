@@ -1,0 +1,4 @@
+interface:
+  display_name: "Visual Assets"
+  short_description: "Plan, generate, capture, design, optimize, and package marketing images:..."
+  default_prompt: "Use $visual-assets to complete this request with verified evidence and a usable deliverable."

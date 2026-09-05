@@ -1,4 +1,0 @@
-interface:
-  display_name: "Marketing Automation"
-  short_description: "Build bounded recurring marketing loops"
-  default_prompt: "Use $marketing-automation to turn this repeated marketing task into a safe, measurable operating loop."

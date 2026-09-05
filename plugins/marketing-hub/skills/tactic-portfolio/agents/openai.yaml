@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tactic Portfolio"
+  short_description: "Generate, compare, and rank growth mechanisms into a small evidence-backed..."
+  default_prompt: "Use $tactic-portfolio to complete this request with verified evidence and a usable deliverable."

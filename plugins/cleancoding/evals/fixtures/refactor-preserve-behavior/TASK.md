@@ -1,0 +1,1 @@
+Refactor `slugs.py`: rename `mk_slug` to `slugify` and `mk_slugs` to `slugify_all`, add type hints, and make `slugify_all` a one-line comprehension. Update every caller. Observable behavior must not change; `python -m unittest test_pages` is the baseline.

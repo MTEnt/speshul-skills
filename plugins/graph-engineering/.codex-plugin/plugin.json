@@ -1,0 +1,28 @@
+{
+  "name": "graph-engineering",
+  "version": "2.1.0",
+  "description": "Select, design, compile, audit, diagnose, optimize, and evolve executable AI workflow graphs with typed state, bounded runtime semantics, and validation tooling.",
+  "author": {
+    "name": "MTEnt"
+  },
+  "homepage": "https://github.com/MTEnt/speshul-skills",
+  "repository": "https://github.com/MTEnt/speshul-skills",
+  "license": "MIT",
+  "keywords": [
+    "agents",
+    "workflows",
+    "graphs",
+    "orchestration"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Graph Engineering",
+    "shortDescription": "Select, design, compile, audit, diagnose, optimize, and evolve executable AI wor",
+    "longDescription": "Select, design, compile, audit, diagnose, optimize, and evolve executable AI workflow graphs with typed state, bounded runtime semantics, and validation tooling.",
+    "developerName": "MTEnt",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive"
+    ]
+  }
+}

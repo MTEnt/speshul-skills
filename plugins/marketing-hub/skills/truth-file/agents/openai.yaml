@@ -1,0 +1,4 @@
+interface:
+  display_name: "Truth File"
+  short_description: "Create or update the shared marketing truth file: product truth, audience..."
+  default_prompt: "Use $truth-file to complete this request with verified evidence and a usable deliverable."

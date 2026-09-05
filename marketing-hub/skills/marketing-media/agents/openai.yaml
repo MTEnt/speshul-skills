@@ -1,4 +1,0 @@
-interface:
-  display_name: "Marketing Media"
-  short_description: "Produce and optimize marketing images and video"
-  default_prompt: "Use $marketing-media to plan or create the right image or video asset for this marketing job."

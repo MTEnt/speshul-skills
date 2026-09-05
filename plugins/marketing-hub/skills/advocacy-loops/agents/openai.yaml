@@ -1,0 +1,4 @@
+interface:
+  display_name: "Advocacy Loops"
+  short_description: "Design, launch, audit, and optimize the mechanisms by which customers bring..."
+  default_prompt: "Use $advocacy-loops to complete this request with verified evidence and a usable deliverable."

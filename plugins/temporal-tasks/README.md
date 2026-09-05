@@ -1,8 +1,8 @@
 # Temporal Tasks
 
-Temporal Tasks is a standalone local Codex plugin for difficulty estimates, active-work budgets, and deterministic elapsed-time reassessment signals.
+Temporal Tasks is a standalone plugin for Codex and Claude Code for difficulty estimates, active-work budgets, and deterministic elapsed-time reassessment signals.
 
-It intentionally does not implement scope control or the Anti Loop three-failure hard stop. Those remain in the separate `anti-loop` plugin.
+It intentionally does not implement scope control or the shared three-loop stop rule. Those remain in the separate `anti-loop` plugin.
 
 The package provides:
 
@@ -13,11 +13,18 @@ The package provides:
 
 The hook stores temporary SQLite state under the operating system's temporary directory. Persisted fields are limited to hashed session, turn, tool-use, input, and result identifiers; timestamps; tool names; counters; and fingerprints. It does not store prompts, commands, source text, tool output, transcript contents, or secrets. Session state is removed at `SessionEnd`, records expire after 24 hours, and hook failures do not block tools.
 
-Clock signals request reassessment. They do not cancel tools and do not independently trigger Anti Loop's hard-stop receipt.
+Clock signals request reassessment. They do not cancel tools and do not independently trigger the `LOOP LIMIT REACHED` receipt.
 
 ## Install
 
-Temporal Tasks is distributed through the `speshul-skills` marketplace. Add the marketplace once, then install the plugin:
+Claude Code:
+
+```text
+/plugin marketplace add MTEnt/speshul-skills
+/plugin install temporal-tasks@speshul-skills
+```
+
+Codex:
 
 ```text
 codex plugin marketplace add MTEnt/speshul-skills

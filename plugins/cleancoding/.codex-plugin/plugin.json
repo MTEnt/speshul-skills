@@ -1,0 +1,28 @@
+{
+  "name": "cleancoding",
+  "version": "1.0.0",
+  "description": "Evidence-backed engineering discipline: acceptance contracts, root-cause fixes, a hook-enforced verification gate, and the shared three-loop stop rule.",
+  "author": {
+    "name": "MTEnt"
+  },
+  "homepage": "https://github.com/MTEnt/speshul-skills",
+  "repository": "https://github.com/MTEnt/speshul-skills",
+  "license": "MIT",
+  "keywords": [
+    "engineering",
+    "debugging",
+    "verification",
+    "coding-agents"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Clean Coding",
+    "shortDescription": "Evidence-backed engineering discipline",
+    "longDescription": "Evidence-backed engineering discipline: acceptance contracts, root-cause fixes, a hook-enforced verification gate, and the shared three-loop stop rule.",
+    "developerName": "MTEnt",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive"
+    ]
+  }
+}

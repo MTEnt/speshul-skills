@@ -1,0 +1,4 @@
+interface:
+  display_name: "Launch Runbook"
+  short_description: "Plan and operate a product, feature, beta, early-access, or..."
+  default_prompt: "Use $launch-runbook to complete this request with verified evidence and a usable deliverable."

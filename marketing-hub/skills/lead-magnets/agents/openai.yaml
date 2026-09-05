@@ -1,4 +1,0 @@
-interface:
-  display_name: "Lead Magnets"
-  short_description: "Plan and execute Lead Magnets marketing work"
-  default_prompt: "Use $lead-magnets to complete this Lead Magnets request with verified evidence and a usable deliverable."

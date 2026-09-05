@@ -1,4 +1,0 @@
-interface:
-  display_name: "Churn Prevention"
-  short_description: "Plan and execute Churn Prevention marketing work"
-  default_prompt: "Use $churn-prevention to complete this Churn Prevention request with verified evidence and a usable deliverable."

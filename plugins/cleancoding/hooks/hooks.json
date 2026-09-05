@@ -1,0 +1,58 @@
+{
+  "description": "Verification gate: a final response that changed files must carry a receipt, and the agent is told when no verification ran after the last change.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v python >/dev/null 2>&1; then python \"${CLAUDE_PLUGIN_ROOT}/hooks/verification_gate.py\"; else python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/verification_gate.py\"; fi",
+            "commandWindows": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/verification_gate.py\"",
+            "timeout": 5,
+            "statusMessage": "Loading clean-coding completion gate",
+            "additionalContextLimit": 500
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v python >/dev/null 2>&1; then python \"${CLAUDE_PLUGIN_ROOT}/hooks/verification_gate.py\"; else python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/verification_gate.py\"; fi",
+            "commandWindows": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/verification_gate.py\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v python >/dev/null 2>&1; then python \"${CLAUDE_PLUGIN_ROOT}/hooks/verification_gate.py\"; else python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/verification_gate.py\"; fi",
+            "commandWindows": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/verification_gate.py\"",
+            "timeout": 5,
+            "statusMessage": "Checking completion gate"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v python >/dev/null 2>&1; then python \"${CLAUDE_PLUGIN_ROOT}/hooks/verification_gate.py\"; else python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/verification_gate.py\"; fi",
+            "commandWindows": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/verification_gate.py\"",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
+  }
+}

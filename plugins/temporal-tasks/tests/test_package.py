@@ -16,6 +16,9 @@ class PackageTests(unittest.TestCase):
             "skills/task-clock/agents/openai.yaml",
             "hooks/hooks.json",
             "hooks/task_clock.py",
+            ".claude-plugin/plugin.json",
+            "README.md",
+            "CHANGELOG.md",
         )
         for relative in required:
             with self.subTest(relative=relative):
@@ -24,7 +27,7 @@ class PackageTests(unittest.TestCase):
     def test_manifest_identity_and_component_path(self) -> None:
         manifest = json.loads((ROOT / ".codex-plugin" / "plugin.json").read_text())
         self.assertEqual(manifest["name"], "temporal-tasks")
-        self.assertEqual(manifest["version"].split("+", 1)[0], "0.1.0")
+        self.assertEqual(manifest["version"].split("+", 1)[0], "0.2.0")
         self.assertEqual(manifest["author"]["name"], "MTEnt")
         self.assertEqual(manifest["skills"], "./skills/")
         self.assertNotIn("hooks", manifest)

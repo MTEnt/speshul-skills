@@ -1,4 +1,0 @@
-interface:
-  display_name: "SMS"
-  short_description: "Plan and execute SMS marketing work"
-  default_prompt: "Use $sms to complete this SMS request with verified evidence and a usable deliverable."

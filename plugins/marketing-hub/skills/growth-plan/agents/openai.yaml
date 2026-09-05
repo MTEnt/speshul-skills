@@ -1,0 +1,4 @@
+interface:
+  display_name: "Growth Plan"
+  short_description: "Build a coordinated marketing, growth, go-to-market, fractional-CMO, 90-day,..."
+  default_prompt: "Use $growth-plan to complete this request with verified evidence and a usable deliverable."
