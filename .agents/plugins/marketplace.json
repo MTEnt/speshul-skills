@@ -123,6 +123,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Marketing"
+    },
+    {
+      "name": "ai-native-sdlc",
+      "source": {
+        "source": "local",
+        "path": "./plugins/ai-native-sdlc"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
     }
   ]
 }

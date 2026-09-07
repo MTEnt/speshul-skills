@@ -186,6 +186,24 @@
         "name": "MTEnt"
       },
       "license": "MIT"
+    },
+    {
+      "name": "ai-native-sdlc",
+      "source": "./plugins/ai-native-sdlc",
+      "displayName": "AI Native SDLC",
+      "description": "Coordinate software-delivery handoffs, verification, release, and operational feedback with provider-neutral instructions and explicit host capability limits.",
+      "version": "0.1.0",
+      "category": "developer-tools",
+      "keywords": [
+        "sdlc",
+        "software-delivery",
+        "handoffs",
+        "provider-neutral"
+      ],
+      "author": {
+        "name": "MTEnt"
+      },
+      "license": "MIT"
     }
   ],
   "renames": {
