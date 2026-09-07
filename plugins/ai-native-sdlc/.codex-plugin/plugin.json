@@ -1,0 +1,29 @@
+{
+  "name": "ai-native-sdlc",
+  "version": "0.1.0",
+  "description": "Coordinate software-delivery handoffs, verification, release, and operational feedback with provider-neutral instructions and explicit host capability limits.",
+  "author": {
+    "name": "MTEnt"
+  },
+  "homepage": "https://github.com/MTEnt/speshul-skills",
+  "repository": "https://github.com/MTEnt/speshul-skills",
+  "license": "MIT",
+  "keywords": [
+    "sdlc",
+    "software-delivery",
+    "handoffs",
+    "provider-neutral"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "AI Native SDLC",
+    "shortDescription": "Coordinate software delivery across AI providers",
+    "longDescription": "Coordinate software-delivery handoffs, verification, release, and operational feedback with provider-neutral instructions and explicit host capability limits.",
+    "developerName": "MTEnt",
+    "category": "Developer Tools",
+    "defaultPrompt": "Use $ai-native-sdlc to move this software change through its next delivery stage using our existing records and available tools.",
+    "capabilities": [
+      "Interactive"
+    ]
+  }
+}

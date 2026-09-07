@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Native SDLC"
+  short_description: "Coordinate software delivery across AI providers"
+  default_prompt: "Use $ai-native-sdlc to move this software change through its next delivery stage using our existing records and available tools."
